@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "migrate:cms": "node scripts/migrate-cms.mjs",
+    "migrate:payload": "NODE_OPTIONS=\"${NODE_OPTIONS:-} --require=$PWD/scripts/undici-preload.cjs\" PAYLOAD_CONFIG_PATH=\"$PWD/payload.config.mjs\" node node_modules/payload/bin.js migrate",
     "migrate:media": "node scripts/migrate-media-to-supabase.mjs"
   },
   "dependencies": {

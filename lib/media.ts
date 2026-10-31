@@ -6,5 +6,5 @@ export function normalizeMediaUrl(url: string): string {
   if (!match) return url;
 
   const filename = decodeURIComponent(match[1]).split("/").pop() ?? "";
-  return `https://qbfgapkitvhlylyrbivs.supabase.co/storage/v1/object/public/media/${encodeURIComponent(filename)}`;
+  return `${process.env.SUPABASE_URL ?? "https://qbfgapkitvhlylyrbivs.supabase.co"}/storage/v1/object/public/media/${encodeURIComponent(filename)}`;
 }

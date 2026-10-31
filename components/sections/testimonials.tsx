@@ -69,7 +69,7 @@ export function Testimonials({
   const testimonials = items ?? [];
   return (
     <Section eyebrow="Testimoni" title={title} description={description} tone="gray" className={className}>
-      <div className="-mx-6 flex flex-col gap-4">
+      <div className="-mx-5 flex flex-col gap-4">
         <MarqueeRow items={testimonials} />
         <MarqueeRow items={testimonials} reverse />
       </div>

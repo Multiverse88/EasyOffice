@@ -63,7 +63,7 @@ export function PromoSection({
                    <Image src={promo.image ?? service.image} alt={service.imageAlt} fill sizes="(max-width: 640px) 82vw, (max-width: 1024px) 65vw, 30vw" className="object-cover transition duration-500 hover:scale-105" />
                 </div>
                 <div className="flex flex-1 flex-col px-1 pb-0.5 pt-3 sm:px-1.5 sm:pt-3">
-                   <span className="mb-2 inline-flex w-fit rounded-full bg-orange-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-orange-700">{promo.badge}</span>
+                   <span className="mb-2 inline-flex w-fit rounded-full bg-yellow-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-navy">{promo.badge}</span>
                    <h3 className="line-clamp-2 min-h-12 font-display text-base font-semibold leading-snug text-navy sm:min-h-14 sm:text-lg">{promo.title}</h3>
                    <p className="mt-1.5 line-clamp-2 min-h-10 text-xs leading-relaxed text-neutral-600">{promo.description}</p>
                    {promo.period ? <p className="mt-2 text-[11px] font-semibold text-neutral-500">Periode: {promo.period}</p> : null}

@@ -6,9 +6,9 @@ EasyOffice website rebuild.
 
 ## Current Phase
 
-Phase 2 — Complete Frontend Development (mock/static data, Bahasa Indonesia).
+Phase 3 — Payload-backed public website and content management.
 
-No CMS, page editor, booking system, or payment is implemented yet.
+Payload CMS, PostgreSQL, and the Puck page editor are configured. Booking is not implemented.
 
 ## Technology
 
@@ -18,9 +18,8 @@ No CMS, page editor, booking system, or payment is implemented yet.
 - Tailwind CSS
 - ESLint
 - Poppins (`next/font/google`)
-- Payload CMS — planned (Phase 3)
-- PostgreSQL — planned (Phase 3)
-- Puck Editor — planned (Phase 4)
+- Payload CMS with PostgreSQL
+- Puck Editor for visual page editing
 
 ## Run locally
 
@@ -36,10 +35,16 @@ npm run lint
 npm run build
 ```
 
+
+Apply pending Payload schema migrations before deploying:
+
+```bash
+npm run migrate:payload
+```
+
 ## Current scope
 
-Phase 2 provides the full public frontend with mock data in
-`lib/data/mock-data.ts`:
+Public pages read content from Payload through `lib/data/cms-data.ts`; optional CMS sections may remain empty.
 
 - Routes: `/`, `/layanan/[service]`,
   `/layanan/[service]/[location]` (VO × Bandung/Jakarta/Bekasi,
@@ -54,18 +59,9 @@ Phase 2 provides the full public frontend with mock data in
 - All CTAs link to WhatsApp via `lib/whatsapp.ts` with per-location
   sample numbers (Bandung `...7890`, Jakarta `...7891`,
   Bekasi `...7892` — replace before launch)
-- Prices, promos, testimonials, addresses, and contact details are
-  SAMPLE data, each marked in code and UI
 
-Phase 1 provided:
+## Recent changes
 
-- Next.js + App Router + TypeScript + Tailwind + ESLint
-- Poppins font loading in `app/layout.tsx`
-- `@/*` path alias
-- Brand tokens (Navy `#0A1750` + White `#FFFFFF`)
-  as Tailwind v4 `@theme` variables in `app/globals.css`.
-  Gold is NOT a brand color. Neutral grays use Tailwind defaults.
-- Folder architecture (`components/`, `lib/`, `types/`, `payload/`, `puck/`, `public/images/`)
-- `.env.example` placeholders for future integrations
-- Empty architectural placeholders for `payload/` and `puck/`
-  (NOT implemented — Phases 3 and 4)
+- Added the office SEO slug migration; apply Payload migrations before deploying this code.
+- Fixed empty CMS collections, missing service/partner images, contact submission status, and fallback contact links.
+- Refined public spacing, service cards, hero styling, and section reveal motion.

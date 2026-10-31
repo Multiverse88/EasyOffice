@@ -13,6 +13,11 @@ function mediaUrl(value: unknown): string | undefined {
   if (value && typeof value === "object" && typeof (value as { url?: unknown }).url === "string") return normalizeMediaUrl((value as { url: string }).url);
   return undefined;
 }
+const serviceImages: Record<string, string> = {
+  "virtual-office": "/images/unsplash/office-01.webp",
+  "coworking-space": "/images/unsplash/office-02.webp",
+  "meeting-room": "/images/unsplash/office-03.webp",
+};
 
 export type HomepageLayoutData = { content?: Array<{ type?: string; props?: Record<string, unknown> }>; root?: Record<string, unknown> };
 export type PublishedPuckPage = { id?: string | number; name?: string; route?: string; seoTitle?: string; seoDescription?: string; layout?: HomepageLayoutData };
@@ -37,7 +42,7 @@ async function payloadList<T>(collection: string): Promise<T[]> {
 
 export const getCmsServices = cache(async function getCmsServices(): Promise<Service[]> {
   const docs = await payloadList<Partial<Service>>("services");
-  if (!docs.length) throw new Error("No services configured in CMS");
+  if (!docs.length) return [];
   const preferredOrder = ["virtual-office", "coworking-space", "meeting-room", "private-office"];
   return docs.map((doc) => ({
     ...doc,
@@ -54,7 +59,7 @@ export const getCmsServices = cache(async function getCmsServices(): Promise<Ser
     features: [],
     icon: doc.icon ?? "briefcase",
     href: `/layanan/${doc.slug ?? ""}`,
-    image: mediaUrl(doc.image) ?? "",
+    image: mediaUrl(doc.image) ?? serviceImages[doc.slug ?? ""] ?? "/images/unsplash/office-01.webp",
     imageAlt: doc.imageAlt ?? doc.title ?? "",
     seo: doc.seo ? { ...(doc.seo as Record<string, unknown>), ogImage: mediaUrl((doc.seo as Record<string, unknown>).ogImage) } : undefined,
   })).sort((a, b) => {
@@ -70,7 +75,7 @@ export const getCmsLocations = cache(async function getCmsLocations(): Promise<L
   if (!response.ok) throw new Error(`CMS request failed: kantor (${response.status})`);
   const data = (await response.json()) as PayloadList<Record<string, unknown>>;
   const docs = data.docs ?? [];
-  if (!docs.length) throw new Error("No locations configured in CMS");
+  if (!docs.length) return [];
   return docs.map((doc) => ({
     slug: String(doc.slug ?? "").replace(/^easyoffice-/, ""),
     name: String(doc.kota ?? doc.nama ?? ""),
@@ -133,7 +138,7 @@ export const getCmsServiceLocations = cache(async function getCmsServiceLocation
   if (!response.ok) throw new Error(`CMS request failed: layanan-kantor (${response.status})`);
   const data = (await response.json()) as PayloadList<Record<string, unknown>>;
   const docs = data.docs ?? [];
-  if (!docs.length) throw new Error("No service offices configured in CMS");
+  if (!docs.length) return [];
   return docs.map((doc) => {
     const service = doc.layanan && typeof doc.layanan === "object" ? doc.layanan as Record<string, unknown> : {};
     const office = doc.kantor && typeof doc.kantor === "object" ? doc.kantor as Record<string, unknown> : {};

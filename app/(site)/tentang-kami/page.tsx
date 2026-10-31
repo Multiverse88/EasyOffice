@@ -44,7 +44,7 @@ export default async function AboutPage() {
   const [cmsServices, about, site] = await Promise.all([getCmsServices(), getCmsAbout(), getCmsSite()]);
   return (
     <>
-      <section className="bg-navy py-10 sm:py-12 lg:py-14">
+      <section className="bg-gradient-to-br from-navy via-[#0d2066] to-navy-950 py-10 sm:py-12 lg:py-14">
         <Container>
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-white/60">
             <Link href="/" className="text-white/60 hover:text-white">
@@ -57,13 +57,13 @@ export default async function AboutPage() {
           <div className="mt-8 grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <p className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-white/80">
-                {about.eyebrow}
+                {about.eyebrow || "Tentang EasyOffice"}
               </p>
               <h1 className="font-display mt-5 text-4xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl">
-                {about.heroTitle}{" "}<span className="text-white/70">{about.heroTitleAccent}</span>
+                {about.heroTitle || "Ruang Kerja Profesional"}{" "}<span className="text-white/70">{about.heroTitleAccent || "untuk Bisnis Anda"}</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-                {about.heroDescription}
+                {about.heroDescription || "EasyOffice menyediakan Virtual Office, Coworking Space, dan Meeting Room untuk kebutuhan bisnis Anda."}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button
@@ -71,7 +71,7 @@ export default async function AboutPage() {
                   external
                   size="lg"
                   variant="white"
-                  className="rounded-full px-9"
+                  className="rounded-full px-9 transition-all duration-300 hover:bg-yellow-400 hover:text-navy"
                 >
                   Hubungi Kami
                 </Button>
@@ -86,11 +86,11 @@ export default async function AboutPage() {
               </div>
               <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 <li className="inline-flex items-center gap-2 text-sm font-semibold text-white/85">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-400" aria-hidden />
+                  <CheckCircle2 className="h-5 w-5 text-yellow-400" aria-hidden />
                   Alamat Bisnis Prestisius
                 </li>
                 <li className="inline-flex items-center gap-2 text-sm font-semibold text-white/85">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-400" aria-hidden />
+                  <CheckCircle2 className="h-5 w-5 text-yellow-400" aria-hidden />
                   Lokasi Strategis
                 </li>
               </ul>
@@ -111,28 +111,24 @@ export default async function AboutPage() {
                   <span className="font-display text-3xl font-bold tracking-wide text-white/80">EasyOffice</span>
                 </div>
               )}
-              <div className="absolute left-5 top-5 rounded-2xl border border-white/15 bg-white/95 px-5 py-3.5 text-navy shadow-card">
-                <strong className="font-display block text-lg font-bold leading-none">
-                  {about.heroBadgeTitle}
-                </strong>
-                <small className="text-xs font-semibold text-neutral-500">
-                  {about.heroBadgeText}
-                </small>
-              </div>
-              <div className="absolute bottom-5 right-5 rounded-2xl border border-white/15 bg-navy-950/90 px-5 py-3.5 text-white shadow-card backdrop-blur">
-                <strong className="font-display block text-lg font-bold leading-none">
-                  {about.heroRating}
-                </strong>
-                <small className="text-xs font-semibold text-white/60">
-                  {about.heroRatingText}
-                </small>
-              </div>
+              {about.heroBadgeTitle || about.heroBadgeText ? (
+                <div className="absolute left-5 top-5 rounded-2xl border border-white/15 bg-white/95 px-5 py-3.5 text-navy shadow-card">
+                  <strong className="font-display block text-lg font-bold leading-none">{about.heroBadgeTitle}</strong>
+                  <small className="text-xs font-semibold text-neutral-500">{about.heroBadgeText}</small>
+                </div>
+              ) : null}
+              {about.heroRating || about.heroRatingText ? (
+                <div className="absolute bottom-5 right-5 rounded-2xl border border-white/15 bg-navy-950/90 px-5 py-3.5 text-white shadow-card backdrop-blur">
+                  <strong className="font-display block text-lg font-bold leading-none">{about.heroRating}</strong>
+                  <small className="text-xs font-semibold text-white/60">{about.heroRatingText}</small>
+                </div>
+              ) : null}
             </div>
           </div>
         </Container>
       </section>
 
-      <section id="cerita" className="bg-white py-8 sm:py-10 lg:py-12">
+      <section id="cerita" className="bg-white py-12 sm:py-16 lg:py-20">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="relative min-h-[360px] overflow-hidden rounded-3xl bg-surface shadow-soft sm:min-h-[420px]">
@@ -149,33 +145,33 @@ export default async function AboutPage() {
                   <span className="font-display text-2xl font-bold tracking-wide text-navy/60">Cerita EasyOffice</span>
                 </div>
               )}
-              <div className="absolute bottom-5 left-5 rounded-2xl bg-navy px-5 py-3.5 text-white shadow-card">
-                <strong className="font-display block text-lg font-bold leading-none">
-                  {about.storyBadgeTitle}
-                </strong>
-                <small className="text-xs font-semibold text-white/60">
-                  {about.storyBadgeText}
-                </small>
-              </div>
+              {about.storyBadgeTitle || about.storyBadgeText ? (
+                <div className="absolute bottom-5 left-5 rounded-2xl bg-navy px-5 py-3.5 text-white shadow-card">
+                  <strong className="font-display block text-lg font-bold leading-none">{about.storyBadgeTitle}</strong>
+                  <small className="text-xs font-semibold text-white/60">{about.storyBadgeText}</small>
+                </div>
+              ) : null}
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.15em] text-navy/60">
-                {about.storyEyebrow}
+                {about.storyEyebrow || "Mengenal EasyOffice"}
               </p>
               <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-                {about.storyTitle}{" "}<span className="text-navy/60">{about.storyTitleAccent}</span>
+                {about.storyTitle || "Solusi ruang kerja"}{" "}<span className="text-navy/60">{about.storyTitleAccent || "untuk kebutuhan bisnis"}</span>
               </h2>
               <p className="mt-5 text-base leading-relaxed text-neutral-600">
-                {about.storyDescription}
+                {about.storyDescription || "EasyOffice menyediakan Virtual Office, Coworking Space, dan Meeting Room untuk mendukung kebutuhan ruang kerja bisnis Anda."}
               </p>
-              <ul className="mt-7 grid gap-3.5 border-t border-neutral-100 pt-6">
-                {about.storyHighlights.map((item: string) => (
-                  <li key={item} className="flex items-center gap-3 text-sm font-medium text-neutral-700">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500" aria-hidden />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              {about.storyHighlights.length ? (
+                <ul className="mt-7 grid gap-3.5 border-t border-neutral-100 pt-6">
+                  {about.storyHighlights.map((item: string) => (
+                    <li key={item} className="flex items-center gap-3 text-sm font-medium text-neutral-700">
+                      <CheckCircle2 className="h-5 w-5 text-yellow-500" aria-hidden />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           </div>
         </Container>
@@ -184,9 +180,9 @@ export default async function AboutPage() {
       <StatsBand items={site.statsBanner} variant="previous" />
 
       <Section
-        eyebrow={about.valuesEyebrow}
-        title={about.valuesTitle}
-        description={about.valuesDescription}
+        eyebrow={about.valuesEyebrow || "Nilai Kami"}
+        title={about.valuesTitle || "Layanan yang berfokus pada kebutuhan bisnis"}
+        description={about.valuesDescription || "Solusi ruang kerja profesional untuk mendukung operasional bisnis Anda."}
       >
         <div className="grid gap-6 md:grid-cols-3">
           {(about.values.length ? about.values : values).map((v: { title: string; description: string; icon?: string }) => (

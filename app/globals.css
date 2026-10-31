@@ -9,7 +9,6 @@
   --color-navy: #0a1750;
   --color-navy-950: #070e24;
   --color-surface: #f4f7fb;
-
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Outfit", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -79,7 +78,7 @@ body {
 }
 
 @keyframes scroll-section-reveal {
-  from { opacity: 0.35; transform: translate3d(0, 20px, 0); }
+  from { opacity: 0.82; transform: translate3d(0, 10px, 0); }
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 

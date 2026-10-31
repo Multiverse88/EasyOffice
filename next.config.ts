@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
 
+const supabaseHost = new URL(process.env.SUPABASE_URL ?? "https://qbfgapkitvhlylyrbivs.supabase.co").hostname;
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/media/**" },
     ],
   },
   async redirects() {

@@ -1,29 +1,6 @@
 import Image from "next/image";
 import type { CmsPartner } from "@/lib/data/cms-data";
 
-const localPartners: CmsPartner[] = [
-  { name: "Arava Tour", logoUrl: "/images/partners/arava-tour.webp" },
-  { name: "Oseal", logoUrl: "/images/partners/oseal.webp" },
-  { name: "Javarudraksha", logoUrl: "/images/partners/javarudraksha.webp" },
-  { name: "Moonbow", logoUrl: "/images/partners/moonbow.webp" },
-  { name: "Vidichi", logoUrl: "/images/partners/vidichi.webp" },
-  { name: "Power Computerindo", logoUrl: "/images/partners/power-computerindo.webp" },
-  { name: "Callme", logoUrl: "/images/partners/callme.webp" },
-  { name: "Happy Eats", logoUrl: "/images/partners/happyeats.webp" },
-  { name: "GMK Door", logoUrl: "/images/partners/gmk-door.webp" },
-  { name: "Pabriek Kuweh", logoUrl: "/images/partners/pabriek-kuweh.webp" },
-  { name: "Akiha", logoUrl: "/images/partners/akiha.webp" },
-  { name: "Artave", logoUrl: "/images/partners/artave.webp" },
-  { name: "Beeskin", logoUrl: "/images/partners/beeskin.webp" },
-  { name: "Daing Super", logoUrl: "/images/partners/daingsuper.webp" },
-  { name: "Dewa Rackindo", logoUrl: "/images/partners/dewa-rackindo.webp" },
-  { name: "Guri Senbei", logoUrl: "/images/partners/guri-senbei.webp" },
-  { name: "Kafeel Netz", logoUrl: "/images/partners/kafeel-netz.webp" },
-  { name: "KMS", logoUrl: "/images/partners/kms.webp" },
-  { name: "Satoshi", logoUrl: "/images/partners/satoshi.webp" },
-  { name: "Sumber Aneka Wangi", logoUrl: "/images/partners/sumber-aneka-wangi.webp" },
-  { name: "Tantri", logoUrl: "/images/partners/tantri.webp" },
-];
 
 function PartnerSet({ partners, copy }: { partners: CmsPartner[]; copy: number }) {
   return partners.map((partner, index) => {
@@ -48,7 +25,7 @@ function PartnerSet({ partners, copy }: { partners: CmsPartner[]; copy: number }
 }
 
 export function PartnersCarousel({ partners = [] }: { partners?: CmsPartner[] }) {
-  const items = partners.length ? partners : localPartners;
+  const items = partners;
   if (!items.length) return null;
   return (
     <section aria-label="Mitra EasyOffice" className="overflow-hidden bg-white py-12 sm:py-16">

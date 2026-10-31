@@ -43,11 +43,12 @@ export function Hero({
   visual,
 }: HeroProps) {
   return (
-    <section className="bg-navy">
-      <Container className="grid items-center gap-8 py-10 sm:py-12 lg:grid-cols-2 lg:gap-14 lg:py-14">
+    <section className="bg-gradient-to-br from-navy via-[#0d2066] to-navy-950">
+      <Container className="grid items-center gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14 lg:py-20">
         <div>
           {eyebrow ? (
-            <p className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-white/80">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-white/80">
+              <span className="h-2 w-2 rounded-full bg-yellow-400" aria-hidden />
               {eyebrow}
             </p>
           ) : null}
@@ -61,9 +62,9 @@ export function Hero({
             <Button
               href={primaryCta.href}
               external={primaryCta.external}
-              size="lg"
               variant="white"
-              className="rounded-full px-9"
+              size="lg"
+              className="rounded-full px-9 shadow-soft transition-all duration-300 hover:bg-yellow-400 hover:text-navy"
             >
               <MessageCircle className="h-5 w-5" aria-hidden />
               {primaryCta.label}
@@ -73,7 +74,7 @@ export function Hero({
                 href={secondaryCta.href}
                 variant="outline-white"
                 size="lg"
-                className="rounded-full px-9"
+                className="rounded-full px-9 transition-all duration-300 hover:border-yellow-400 hover:text-yellow-300"
               >
                 {secondaryCta.label}
                 <ArrowRight className="h-5 w-5" aria-hidden />
@@ -86,7 +87,7 @@ export function Hero({
                 key={item}
                 className="inline-flex items-center gap-2.5 text-sm font-semibold text-white/85"
               >
-                <CheckCircle2 className="h-5 w-5 text-emerald-400" aria-hidden />
+                <CheckCircle2 className="h-5 w-5 text-yellow-400" aria-hidden />
                 {item}
               </li>
             ))}
@@ -104,7 +105,7 @@ export function Hero({
                 style={{ objectFit: "cover" }}
               />
               <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 rounded-2xl border border-white/20 bg-navy-950/90 px-5 py-4 text-white shadow-card backdrop-blur">
-                <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-yellow-400" aria-hidden />
                 <div>
                   <p className="text-sm font-bold">EasyOffice</p>
                   <p className="text-xs text-white/60">

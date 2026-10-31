@@ -18,24 +18,24 @@ export function ServicesOverview({
   const services = items ?? [];
   return (
     <Section eyebrow="Layanan" title={title} description={description} tone={tone} className="pt-5 sm:pt-7 lg:pt-9">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => {
           return (
             <div
               key={service.slug}
-              className="flex flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-soft transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-card"
             >
-              <div className="relative h-48 w-full">
+              <div className="relative h-48 w-full overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
               <div className="flex flex-1 flex-col p-7 sm:p-8">
-                <h3 className="mt-5 text-lg font-semibold text-navy">{service.title}</h3>
+                <h3 className="mt-0 text-lg font-semibold text-navy">{service.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-600">
                   {service.description}
                 </p>

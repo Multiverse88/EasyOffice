@@ -16,7 +16,7 @@ export function locationWhatsappNumber(locationSlug: string): string {
 }
 
 export function whatsappUrl(message?: string, number: string = WHATSAPP_NUMBER): string {
-  const base = `https://wa.me/${number}`;
+  const base = `https://wa.me/${number.trim() || WHATSAPP_NUMBER}`;
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
@@ -35,7 +35,7 @@ export function whatsappFor(
 
 export function routedWhatsappNumber(numbers?: WhatsAppRoute[], fallback?: string, excludedNumber?: string): string {
   const active = (numbers ?? [])
-    .filter((item) => item.active !== false && item.number && item.number !== excludedNumber)
+    .filter((item) => item.active !== false && item.number?.trim() && item.number !== excludedNumber)
     .sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0));
-  return active[0]?.number ?? fallback ?? WHATSAPP_NUMBER;
+  return active[0]?.number.trim() || fallback?.trim() || WHATSAPP_NUMBER;
 }

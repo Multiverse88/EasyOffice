@@ -25,7 +25,7 @@ function buildQuickCards(site: Awaited<ReturnType<typeof getCmsSite>>) {
   {
     icon: MessageCircle,
     eyebrow: "WHATSAPP · TERCEPAT",
-    title: site.phoneDisplay,
+    title: site.phoneDisplay || "Hubungi kami via WhatsApp",
     text: "Respons cepat via WhatsApp. Tersedia Senin–Jumat, 08.00–17.00 WIB.",
     action: "Mulai chat WhatsApp",
     href: whatsappUrl("Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", site.primaryWhatsapp),
@@ -34,10 +34,10 @@ function buildQuickCards(site: Awaited<ReturnType<typeof getCmsSite>>) {
   {
     icon: Mail,
     eyebrow: "EMAIL · FORMAL",
-    title: site.email,
+    title: site.email || "halo@easyoffice.id",
     text: "Untuk pertanyaan detail atau dokumen kerja sama. Pesan ditindaklanjuti tim kami.",
     action: "Kirim email",
-    href: `mailto:${site.email}`,
+    href: `mailto:${site.email || "halo@easyoffice.id"}`,
     external: false,
   },
   {
@@ -83,7 +83,7 @@ export default async function ContactPage() {
             {quickCards.map((card) => (
               <article
                 key={card.eyebrow}
-                className="flex min-h-[240px] flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-7 shadow-card"
+                className="flex min-h-[240px] flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
               >
                 <div>
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-navy text-white">
@@ -128,15 +128,15 @@ export default async function ContactPage() {
             </div>
 
             <aside className="grid gap-5">
-              <div className="flex items-center gap-4 rounded-3xl border border-emerald-200 bg-emerald-50 p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-emerald-500 text-white">
+              <div className="flex items-center gap-4 rounded-3xl border border-yellow-200 bg-yellow-50 p-6">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-yellow-400 text-navy">
                   <CheckCircle2 className="h-6 w-6" aria-hidden />
                 </span>
                 <div>
-                  <strong className="block font-display text-emerald-900">
+                  <strong className="block font-display text-navy">
                     Respons Cepat
                   </strong>
-                  <span className="text-sm text-emerald-700">
+                  <span className="text-sm text-neutral-600">
                     Rata-rata kurang dari 5 menit via WhatsApp.
                   </span>
                 </div>

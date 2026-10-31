@@ -29,7 +29,7 @@ export function Section({
 }: SectionProps) {
   const dark = tone === "navy";
   return (
-    <section id={id} className={cn(tones[tone], "py-10 sm:py-12 lg:py-16", className)}>
+    <section id={id} className={cn(tones[tone], "py-12 sm:py-16 lg:py-20", className)}>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           {eyebrow ? (
@@ -46,7 +46,7 @@ export function Section({
           ) : null}
           <h2
             className={cn(
-              "mt-3 font-display text-2xl font-bold tracking-tight sm:text-4xl",
+              "mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem]",
               dark ? "text-white" : "text-navy",
             )}
           >

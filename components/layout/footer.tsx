@@ -69,13 +69,13 @@ export function Footer({ site, services, navItems }: { site: { name?: string; ta
                   className="inline-flex items-center gap-2.5 py-2 transition-colors hover:text-white"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden />
-                  {site.phoneDisplay ?? "Hubungi EasyOffice"}
+                  {site.phoneDisplay || "Hubungi EasyOffice"}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 py-2 transition-colors hover:text-white">
+                <a href={`mailto:${site.email || "halo@easyoffice.id"}`} className="inline-flex items-center gap-2.5 py-2 transition-colors hover:text-white">
                   <Mail className="h-4 w-4" aria-hidden />
-                  {site.email ?? "halo@easyoffice.id"}
+                  {site.email || "halo@easyoffice.id"}
                 </a>
               </li>
               <li className="inline-flex items-center gap-2.5">

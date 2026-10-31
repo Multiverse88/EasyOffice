@@ -14,18 +14,30 @@ const topics = [
 export function ContactForm({ services = [], whatsappNumber }: { services?: Array<{ id?: string | number; slug: string; title: string }>; whatsappNumber?: string }) {
   const [topic, setTopic] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") ?? "");
     const business = String(data.get("business") ?? "");
     const message = String(data.get("message") ?? "");
     const service = services.find((item) => item.title === topic);
-    void fetch("/api/leads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, contact: `${data.get("email") ?? ""} / ${data.get("phone") ?? ""}`, interestedService: service?.id, sourcePage: window.location.pathname, notes: `${topic}: ${message}` }) }).catch(() => undefined);
-    setSubmitted(true);
     const text = `Halo EasyOffice, saya ${name}${business ? ` dari ${business}` : ""}. Topik: ${topic}. ${message}`;
     window.open(whatsappUrl(text, whatsappNumber), "_blank", "noopener,noreferrer");
+    setSubmitted(false);
+    setError("");
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/leads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, contact: `${data.get("email") ?? ""} / ${data.get("phone") ?? ""}`, interestedService: service?.id, sourcePage: window.location.pathname, notes: `${topic}: ${message}` }) });
+      if (!response.ok) throw new Error(`Lead request failed: ${response.status}`);
+      setSubmitted(true);
+    } catch {
+      setError("Pertanyaan belum berhasil tersimpan. Silakan coba lagi atau hubungi tim melalui WhatsApp.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -101,11 +113,14 @@ export function ContactForm({ services = [], whatsappNumber }: { services?: Arra
       </label>
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-8 py-4 text-base font-semibold text-white transition-transform hover:-translate-y-0.5"
+        disabled={submitting}
+        aria-busy={submitting}
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-yellow-400 hover:text-navy disabled:cursor-wait disabled:opacity-60"
       >
-        Kirim Pertanyaan
+        {submitting ? "Mengirim..." : "Kirim Pertanyaan"}
       </button>
-      {submitted ? <p className="text-sm text-emerald-700">Data Anda sudah diterima. Tim kami akan segera menghubungi Anda.</p> : null}
+      {submitted ? <p aria-live="polite" className="text-sm text-emerald-700">Data Anda sudah diterima. Tim kami akan segera menghubungi Anda.</p> : null}
+      {error ? <p role="alert" className="text-sm text-red-700">{error}</p> : null}
     </form>
   );
 }
