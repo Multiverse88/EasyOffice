@@ -68,3 +68,4 @@ Public pages read content from Payload through `lib/data/cms-data.ts`; optional 
 - Updated the Shopee marketplace section with an EasyLegal-style responsive layout, local illustration fallback, and Shopee logo.
 - Added a homepage Virtual Office location-card section without redundant city-filter tabs.
 
+- Added Google Maps review fallbacks and comparison rows for empty homepage CMS sections, with reduced-motion support for the testimonial slider.

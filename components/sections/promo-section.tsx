@@ -55,7 +55,7 @@ export function PromoSection({
         </button> : null}
         <div ref={track} className="flex snap-x snap-mandatory justify-center gap-3 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Daftar promo">
           {filteredPromotions.map((promo) => {
-            const service = services.find((item) => item.slug === promo.serviceSlug);
+            const service = services.find((item) => item.slug === promo.serviceSlug) ?? services[0];
             if (!service) return null;
             return (
               <Card key={promo.title} className="flex w-[min(67vw,297px)] shrink-0 snap-start flex-col rounded-[1.35rem] border border-neutral-200/80 bg-white !p-2.5 shadow-[0_12px_40px_rgba(15,23,42,0.04)] sm:w-[min(44vw,306px)] sm:!p-3 lg:w-[31%]">

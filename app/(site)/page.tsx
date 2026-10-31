@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ComparisonTable } from "@/components/sections/comparison-table";
 import { FacilitiesGrid } from "@/components/sections/facilities-grid";
 import { getCmsComparisonRows, getCmsHomepageFacilities, getCmsLocations, getCmsPartners, getCmsPromotions, getCmsServices, getCmsServiceLocations, getCmsSite, getCmsTestimonials } from "@/lib/data/cms-data";
+import { googleReviews, googleReviewsUrl } from "@/lib/data/google-reviews";
+import { comparisonRows } from "@/lib/data/mock-data";
 import { Hero } from "@/components/sections/hero";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { PromoSection } from "@/components/sections/promo-section";
@@ -45,6 +47,8 @@ export default async function Home() {
     getCmsLocations().catch(() => []),
     getCmsServiceLocations().catch(() => []),
   ]);
+  const homepageTestimonials = cmsTestimonials.length ? cmsTestimonials : googleReviews;
+  const homepageTestimonialsSourceUrl = cmsTestimonials.length ? undefined : googleReviewsUrl;
   const virtualOfficeService = cmsServices.find((service) => service.slug === "virtual-office");
   const virtualOfficeItems = virtualOfficeService
     ? cmsServiceLocations
@@ -110,13 +114,13 @@ export default async function Home() {
       ) : null}
       <HowItWorks items={Array.isArray(site.howItWorks) && site.howItWorks.length ? site.howItWorks : undefined} />
       <ComparisonTable
-        rows={cmsComparisonRows}
+        rows={cmsComparisonRows.length ? cmsComparisonRows : comparisonRows}
         title={site.homepageComparisonTitle ?? "Perbandingan dengan Office Lain"}
         description={site.homepageComparisonDescription ?? "Perbandingan fasilitas yang Anda dapatkan bersama EasyOffice."}
         showPkpNote
       />
       <PartnersCarousel partners={partners} />
-      <Testimonials items={cmsTestimonials} />
+      <Testimonials items={homepageTestimonials} sourceUrl={homepageTestimonialsSourceUrl} />
         <WhatsappCta whatsappNumber={site.whatsappNumber} title={site.homepageCtaTitle} description={site.homepageCtaDescription} />
     </>
   );

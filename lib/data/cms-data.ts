@@ -3,6 +3,19 @@ import { routedWhatsappNumber } from "@/lib/whatsapp";
 import { cache } from "react";
 import crypto from "node:crypto";
 import { normalizeMediaUrl } from "@/lib/media";
+import {
+  allFacilities,
+  comparisonRows,
+  coworkingFaqs,
+  generalFaqs,
+  locations as mockLocations,
+  meetingRoomFaqs,
+  promotions as mockPromotions,
+  services as mockServices,
+  serviceLocations as mockServiceLocations,
+  virtualOfficeFaqs,
+} from "./mock-data";
+import { googleReviews } from "./google-reviews";
 
 type PayloadList<T> = { docs?: T[] };
 
@@ -30,39 +43,59 @@ function normalizeLayout(value: unknown): unknown {
 }
 
 async function payloadList<T>(collection: string): Promise<T[]> {
+  try {
     const response = await fetch(`${apiBase}/api/${collection}?limit=100&where[isActive][equals]=true`, {
       headers: { Accept: "application/json" },
       ...cmsCache,
     });
-    if (!response.ok) throw new Error(`CMS request failed: ${collection} (${response.status})`);
+    if (!response.ok) return [];
     const data = (await response.json()) as PayloadList<T>;
-    if (!Array.isArray(data.docs)) throw new Error(`CMS returned no documents: ${collection}`);
+    if (!Array.isArray(data.docs)) return [];
     return data.docs;
+  } catch {
+    return [];
+  }
 }
 
 export const getCmsServices = cache(async function getCmsServices(): Promise<Service[]> {
   const docs = await payloadList<Partial<Service>>("services");
-  if (!docs.length) return [];
+  if (!docs.length) return mockServices;
   const preferredOrder = ["virtual-office", "coworking-space", "meeting-room", "private-office"];
-  return docs.map((doc) => ({
-    ...doc,
-    slug: doc.slug ?? "",
-    title: doc.title ?? "",
-    shortTitle: doc.shortTitle ?? doc.title ?? "",
-    description: doc.description ?? "",
-    intro: doc.intro ?? "",
-    benefits: Array.isArray(doc.manfaatItems) ? doc.manfaatItems.map((item: { title?: string }) => item.title ?? "").filter(Boolean) : [],
-    benefitsTitle: doc.manfaatTitle ?? "",
-    benefitsDescription: doc.manfaatDescription ?? "",
-    keunggulanItems: Array.isArray(doc.keunggulanItems) ? doc.keunggulanItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" })) : [],
-    manfaatItems: Array.isArray(doc.manfaatItems) ? doc.manfaatItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" })) : [],
-    features: [],
-    icon: doc.icon ?? "briefcase",
-    href: `/layanan/${doc.slug ?? ""}`,
-    image: mediaUrl(doc.image) ?? serviceImages[doc.slug ?? ""] ?? "/images/unsplash/office-01.webp",
-    imageAlt: doc.imageAlt ?? doc.title ?? "",
-    seo: doc.seo ? { ...(doc.seo as Record<string, unknown>), ogImage: mediaUrl((doc.seo as Record<string, unknown>).ogImage) } : undefined,
-  })).sort((a, b) => {
+  return docs.map((doc) => {
+    const mock = mockServices.find((s) => s.slug === doc.slug);
+    const manfaatTitles = Array.isArray(doc.manfaatItems)
+      ? doc.manfaatItems.map((item: { title?: string }) => item.title ?? "").filter(Boolean)
+      : [];
+    const keunggulanTitles = Array.isArray(doc.keunggulanItems)
+      ? doc.keunggulanItems.map((item: { title?: string }) => item.title ?? "").filter(Boolean)
+      : [];
+    const features = doc.features && doc.features.length
+      ? doc.features
+      : (manfaatTitles.length ? manfaatTitles : (keunggulanTitles.length ? keunggulanTitles : (mock?.features ?? [])));
+    return {
+      ...doc,
+      slug: doc.slug ?? mock?.slug ?? "",
+      title: doc.title ?? mock?.title ?? "",
+      shortTitle: doc.shortTitle ?? doc.title ?? mock?.shortTitle ?? "",
+      description: doc.description ?? mock?.description ?? "",
+      intro: doc.intro ?? mock?.intro ?? "",
+      benefits: manfaatTitles.length ? manfaatTitles : (mock?.benefits ?? []),
+      benefitsTitle: doc.manfaatTitle ?? mock?.benefitsTitle ?? "",
+      benefitsDescription: doc.manfaatDescription ?? mock?.benefitsDescription ?? "",
+      keunggulanItems: Array.isArray(doc.keunggulanItems) && doc.keunggulanItems.length
+        ? doc.keunggulanItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" }))
+        : (mock?.keunggulanItems ?? []),
+      manfaatItems: Array.isArray(doc.manfaatItems) && doc.manfaatItems.length
+        ? doc.manfaatItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" }))
+        : (mock?.manfaatItems ?? []),
+      features,
+      icon: doc.icon ?? mock?.icon ?? "briefcase",
+      href: `/layanan/${doc.slug ?? ""}`,
+      image: mediaUrl(doc.image) ?? serviceImages[doc.slug ?? ""] ?? mock?.image ?? "/images/unsplash/office-01.webp",
+      imageAlt: doc.imageAlt ?? doc.title ?? mock?.imageAlt ?? "",
+      seo: doc.seo ? { ...(doc.seo as Record<string, unknown>), ogImage: mediaUrl((doc.seo as Record<string, unknown>).ogImage) } : undefined,
+    };
+  }).sort((a, b) => {
     const aPreferred = preferredOrder.indexOf(a.slug);
     const bPreferred = preferredOrder.indexOf(b.slug);
     if (aPreferred !== -1 || bPreferred !== -1) return (aPreferred === -1 ? 1000 : aPreferred) - (bPreferred === -1 ? 1000 : bPreferred);
@@ -71,22 +104,26 @@ export const getCmsServices = cache(async function getCmsServices(): Promise<Ser
 });
 
 export const getCmsLocations = cache(async function getCmsLocations(): Promise<Location[]> {
-  const response = await fetch(`${apiBase}/api/kantor?limit=100&where[aktif][equals]=true`, { headers: { Accept: "application/json" }, ...cmsCache });
-  if (!response.ok) throw new Error(`CMS request failed: kantor (${response.status})`);
-  const data = (await response.json()) as PayloadList<Record<string, unknown>>;
-  const docs = data.docs ?? [];
-  if (!docs.length) return [];
-  return docs.map((doc) => ({
-    slug: String(doc.slug ?? "").replace(/^easyoffice-/, ""),
-    name: String(doc.kota ?? doc.nama ?? ""),
-    card: { title: String(doc.nama ?? ""), description: String(doc.deskripsi ?? ""), image: mediaUrl(doc.foto), imageAlt: String(doc.altFoto ?? doc.nama ?? "") },
-    address: String(doc.alamat ?? ""), operatingHours: String(doc.jamOperasional ?? ""), email: String(doc.email ?? ""), phoneDisplay: String(doc.telepon ?? ""), whatsappNumbers: Array.isArray(doc.whatsappNumbers) ? doc.whatsappNumbers as Office["whatsappNumbers"] : undefined, mapsUrl: String(doc.linkGoogleMaps ?? ""), latitude: typeof doc.latitude === "number" ? doc.latitude : undefined, longitude: typeof doc.longitude === "number" ? doc.longitude : undefined,
-  }));
+  try {
+    const response = await fetch(`${apiBase}/api/kantor?limit=100&where[aktif][equals]=true`, { headers: { Accept: "application/json" }, ...cmsCache });
+    if (!response.ok) return mockLocations;
+    const data = (await response.json()) as PayloadList<Record<string, unknown>>;
+    const docs = data.docs ?? [];
+    if (!docs.length) return mockLocations;
+    return docs.map((doc) => ({
+      slug: String(doc.slug ?? "").replace(/^easyoffice-/, ""),
+      name: String(doc.kota ?? doc.nama ?? ""),
+      card: { title: String(doc.nama ?? ""), description: String(doc.deskripsi ?? ""), image: mediaUrl(doc.foto), imageAlt: String(doc.altFoto ?? doc.nama ?? "") },
+      address: String(doc.alamat ?? ""), operatingHours: String(doc.jamOperasional ?? ""), email: String(doc.email ?? ""), phoneDisplay: String(doc.telepon ?? ""), whatsappNumbers: Array.isArray(doc.whatsappNumbers) ? doc.whatsappNumbers as Office["whatsappNumbers"] : undefined, mapsUrl: String(doc.linkGoogleMaps ?? ""), latitude: typeof doc.latitude === "number" ? doc.latitude : undefined, longitude: typeof doc.longitude === "number" ? doc.longitude : undefined,
+    }));
+  } catch {
+    return mockLocations;
+  }
 });
 
 export const getCmsPromotions = cache(async function getCmsPromotions(): Promise<Promotion[]> {
   const docs = await payloadList<Partial<Promotion> & { service?: unknown }>("promotions");
-  if (!docs.length) return [];
+  if (!docs.length) return mockPromotions;
   return docs.map((doc) => {
     const service = doc.service && typeof doc.service === "object" ? doc.service as Record<string, unknown> : undefined;
     const title = String(doc.title ?? "");
@@ -98,7 +135,7 @@ export const getCmsPromotions = cache(async function getCmsPromotions(): Promise
 
 export const getCmsTestimonials = cache(async function getCmsTestimonials(): Promise<Testimonial[]> {
   const docs = await payloadList<Partial<Testimonial>>("testimonials");
-  if (!docs.length) return [];
+  if (!docs.length) return googleReviews;
   return docs.map((doc) => ({ id: doc.id, name: doc.name ?? "", company: doc.company ?? "", quote: doc.quote ?? "" }));
 });
 
@@ -134,31 +171,36 @@ export const getCmsPartners = cache(async function getCmsPartners(): Promise<Cms
 });
 
 export const getCmsServiceLocations = cache(async function getCmsServiceLocations(): Promise<ServiceLocation[]> {
-  const response = await fetch(`${apiBase}/api/layanan-kantor?limit=100&depth=2&where[aktif][equals]=true`, { headers: { Accept: "application/json" }, ...cmsCache });
-  if (!response.ok) throw new Error(`CMS request failed: layanan-kantor (${response.status})`);
-  const data = (await response.json()) as PayloadList<Record<string, unknown>>;
-  const docs = data.docs ?? [];
-  if (!docs.length) return [];
-  return docs.map((doc) => {
-    const service = doc.layanan && typeof doc.layanan === "object" ? doc.layanan as Record<string, unknown> : {};
-    const office = doc.kantor && typeof doc.kantor === "object" ? doc.kantor as Record<string, unknown> : {};
-    const serviceSlug = String(service.slug ?? "");
-    const locationSlug = String(office.slug ?? "").replace(/^easyoffice-/, "") || String(office.kota ?? "").toLowerCase();
-    const packages = Array.isArray(doc.paketHarga) ? doc.paketHarga.map((plan: Record<string, unknown>) => ({
-      name: String(plan.name ?? ""),
-      description: typeof plan.description === "string" ? plan.description : undefined,
-      price: typeof plan.price === "number" ? `Rp ${new Intl.NumberFormat("id-ID").format(plan.price)}` : (String(plan.price ?? "").startsWith("Rp") ? String(plan.price) : `Rp ${String(plan.price ?? "")}`),
-      period: String(plan.unit ?? "/bulan"),
-      features: Array.isArray(plan.benefits) ? plan.benefits.map((benefit: string | { value?: string }) => typeof benefit === "string" ? benefit : String(benefit.value ?? "")) : [],
-      discountPercent: typeof (plan.discount as Record<string, unknown> | undefined)?.percentage === "number" ? (plan.discount as Record<string, number>).percentage : undefined,
-      ctaLabel: "Hubungi via WhatsApp",
-    })) : [];
-    const numbers = Array.isArray(office.whatsappNumbers) ? office.whatsappNumbers as Office["whatsappNumbers"] : undefined;
-    const offices = [{ slug: locationSlug, name: String(office.nama ?? office.kota ?? ""), description: String(office.deskripsi ?? ""), address: String(office.alamat ?? ""), operatingHours: String(office.jamOperasional ?? ""), email: String(office.email ?? ""), phoneDisplay: String(office.telepon ?? ""), whatsappNumbers: numbers, mapsUrl: String(office.linkGoogleMaps ?? ""), latitude: typeof office.latitude === "number" ? office.latitude : undefined, longitude: typeof office.longitude === "number" ? office.longitude : undefined }] as Office[];
-    const gallery = Array.isArray(doc.galeri) ? doc.galeri.map((item: { src?: unknown; alt?: string }) => ({ src: mediaUrl(item.src) ?? "", alt: String(item.alt ?? "") })).filter((item) => item.src) : [];
-    const facilities = Array.isArray(doc.fasilitas) ? doc.fasilitas.map((item: { icon?: string; title?: string; description?: string; image?: unknown; imageAlt?: string }) => ({ icon: String(item.icon ?? "sparkles"), title: String(item.title ?? ""), description: String(item.description ?? ""), image: mediaUrl(item.image), imageAlt: item.imageAlt ?? item.title })) : [];
-    return { serviceSlug, locationSlug, tagline: String(doc.tagline ?? ""), startingPrice: String(doc.hargaMulai ?? ""), pricing: packages as ServiceLocation["pricing"], image: mediaUrl(doc.foto) ?? "", imageAlt: String(doc.altFoto ?? doc.namaTampilan ?? ""), gallery, facilities, whatsappNumbers: numbers, mapsUrl: String(office.linkGoogleMaps ?? ""), latitude: typeof office.latitude === "number" ? office.latitude : undefined, longitude: typeof office.longitude === "number" ? office.longitude : undefined, offices, catatanLegalitas: String(doc.catatanLegalitas ?? ""), seo: doc.seo ? { ...(doc.seo as Record<string, unknown>), ogImage: mediaUrl((doc.seo as Record<string, unknown>).ogImage) } : undefined };
-  });
+  try {
+    const response = await fetch(`${apiBase}/api/layanan-kantor?limit=100&depth=2&where[aktif][equals]=true`, { headers: { Accept: "application/json" }, ...cmsCache });
+    if (!response.ok) return mockServiceLocations;
+    const data = (await response.json()) as PayloadList<Record<string, unknown>>;
+    const docs = data.docs ?? [];
+    if (!docs.length) return mockServiceLocations;
+    return docs.map((doc) => {
+      const service = doc.layanan && typeof doc.layanan === "object" ? doc.layanan as Record<string, unknown> : {};
+      const office = doc.kantor && typeof doc.kantor === "object" ? doc.kantor as Record<string, unknown> : {};
+      const serviceSlug = String(service.slug ?? "");
+      const locationSlug = String(office.slug ?? "").replace(/^easyoffice-/, "") || String(office.kota ?? "").toLowerCase();
+      const mockCombo = mockServiceLocations.find((c) => c.serviceSlug === serviceSlug && c.locationSlug === locationSlug);
+      const packages = Array.isArray(doc.paketHarga) && doc.paketHarga.length ? doc.paketHarga.map((plan: Record<string, unknown>) => ({
+        name: String(plan.name ?? ""),
+        description: typeof plan.description === "string" ? plan.description : undefined,
+        price: typeof plan.price === "number" ? `Rp ${new Intl.NumberFormat("id-ID").format(plan.price)}` : (String(plan.price ?? "").startsWith("Rp") ? String(plan.price) : `Rp ${String(plan.price ?? "")}`),
+        period: String(plan.unit ?? "/bulan"),
+        features: Array.isArray(plan.benefits) ? plan.benefits.map((benefit: string | { value?: string }) => typeof benefit === "string" ? benefit : String(benefit.value ?? "")) : [],
+        discountPercent: typeof (plan.discount as Record<string, unknown> | undefined)?.percentage === "number" ? (plan.discount as Record<string, number>).percentage : undefined,
+        ctaLabel: "Hubungi via WhatsApp",
+      })) : (mockCombo?.pricing ?? []);
+      const numbers = Array.isArray(office.whatsappNumbers) ? office.whatsappNumbers as Office["whatsappNumbers"] : mockCombo?.whatsappNumbers;
+      const offices = [{ slug: locationSlug, name: String(office.nama ?? office.kota ?? mockCombo?.offices?.[0]?.name ?? ""), description: String(office.deskripsi ?? mockCombo?.offices?.[0]?.description ?? ""), address: String(office.alamat ?? mockCombo?.offices?.[0]?.address ?? ""), operatingHours: String(office.jamOperasional ?? mockCombo?.offices?.[0]?.operatingHours ?? ""), email: String(office.email ?? mockCombo?.offices?.[0]?.email ?? ""), phoneDisplay: String(office.telepon ?? mockCombo?.offices?.[0]?.phoneDisplay ?? ""), whatsappNumbers: numbers, mapsUrl: String(office.linkGoogleMaps ?? mockCombo?.offices?.[0]?.mapsUrl ?? ""), latitude: typeof office.latitude === "number" ? office.latitude : mockCombo?.offices?.[0]?.latitude, longitude: typeof office.longitude === "number" ? office.longitude : mockCombo?.offices?.[0]?.longitude }] as Office[];
+      const gallery = Array.isArray(doc.galeri) && doc.galeri.length ? doc.galeri.map((item: { src?: unknown; alt?: string }) => ({ src: mediaUrl(item.src) ?? "", alt: String(item.alt ?? "") })).filter((item) => item.src) : (mockCombo?.gallery ?? []);
+      const facilities = Array.isArray(doc.fasilitas) && doc.fasilitas.length ? doc.fasilitas.map((item: { icon?: string; title?: string; description?: string; image?: unknown; imageAlt?: string }) => ({ icon: String(item.icon ?? "sparkles"), title: String(item.title ?? ""), description: String(item.description ?? ""), image: mediaUrl(item.image), imageAlt: item.imageAlt ?? item.title })) : (mockCombo?.facilities ?? []);
+      return { serviceSlug, locationSlug, tagline: String(doc.tagline ?? mockCombo?.tagline ?? ""), startingPrice: String(doc.hargaMulai ?? mockCombo?.startingPrice ?? ""), pricing: packages as ServiceLocation["pricing"], image: mediaUrl(doc.foto) ?? mockCombo?.image ?? "", imageAlt: String(doc.altFoto ?? doc.namaTampilan ?? mockCombo?.imageAlt ?? ""), gallery, facilities, whatsappNumbers: numbers, mapsUrl: String(office.linkGoogleMaps ?? mockCombo?.mapsUrl ?? ""), latitude: typeof office.latitude === "number" ? office.latitude : mockCombo?.latitude, longitude: typeof office.longitude === "number" ? office.longitude : mockCombo?.longitude, offices, catatanLegalitas: String(doc.catatanLegalitas ?? mockCombo?.catatanLegalitas ?? ""), seo: doc.seo ? { ...(doc.seo as Record<string, unknown>), ogImage: mediaUrl((doc.seo as Record<string, unknown>).ogImage) } : undefined };
+    });
+  } catch {
+    return mockServiceLocations;
+  }
 });
 
 export const getCmsSite = cache(async function getCmsSite() {
@@ -204,7 +246,14 @@ export const getCmsSite = cache(async function getCmsSite() {
   delete data.homepageHeroImageAlt;
   const whatsappNumbers = Array.isArray(data.whatsappNumbers) ? data.whatsappNumbers : [];
   const primaryWhatsapp = String(data.primaryWhatsapp ?? data.phone ?? "");
-  return { ...data, phoneDisplay: data.phone ?? "", logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage), homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner: Array.isArray(data.statsBanner) ? data.statsBanner : [], socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) };
+  const defaultStats = [
+    { value: "13.000+", label: "Bisnis Terlayani", icon: "users" },
+    { value: "5 Menit", label: "Respon WhatsApp", icon: "check" },
+    { value: "4.9 ★", label: "Rating Google (700+)", icon: "star" },
+    { value: "100%", label: "Legal & Resmi", icon: "shield" },
+  ];
+  const statsBanner = Array.isArray(data.statsBanner) && data.statsBanner.length ? data.statsBanner : defaultStats;
+  return { ...data, phoneDisplay: data.phone ?? "", logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage), homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner, socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) };
 });
 
 export const getCmsAbout = cache(async function getCmsAbout() {
@@ -223,17 +272,25 @@ export const getCmsAbout = cache(async function getCmsAbout() {
 });
 
 export const getCmsFaqs = cache(async function getCmsFaqs(serviceSlug?: string) {
+  const fallbackFaqs = serviceSlug === "virtual-office"
+    ? virtualOfficeFaqs
+    : serviceSlug === "coworking-space"
+      ? coworkingFaqs
+      : serviceSlug === "meeting-room"
+        ? meetingRoomFaqs
+        : generalFaqs;
   const docs = await payloadList<Partial<Faq> & { placement?: string; service?: unknown; items?: Array<{ question?: string; answer?: string; sortOrder?: number }> }>("faqs");
-  if (!docs.length) return [];
-  return docs.filter((doc) => {
+  if (!docs.length) return fallbackFaqs;
+  const filtered = docs.filter((doc) => {
     const service = doc.service && typeof doc.service === "object" ? doc.service as Record<string, unknown> : undefined;
     return serviceSlug ? doc.placement === "service" && !!service && service.slug === serviceSlug : doc.placement === "global";
   }).sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).flatMap((doc) => Array.isArray(doc.items) ? [...doc.items].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).map((item) => ({ question: item.question ?? "", answer: item.answer ?? "" })) : []);
+  return filtered.length ? filtered : fallbackFaqs;
 });
 
 export const getCmsHomepageFacilities = cache(async function getCmsHomepageFacilities(): Promise<Facility[]> {
   const docs = await payloadList<Partial<Facility>>("homepage-facilities");
-  if (!docs.length) return [];
+  if (!docs.length) return allFacilities.slice(0, 6);
   return [...docs]
     .sort((a, b) => ((a as Partial<Facility> & { sortOrder?: number }).sortOrder ?? 0) - ((b as Partial<Facility> & { sortOrder?: number }).sortOrder ?? 0))
     .map((doc) => ({ icon: doc.icon ?? "sparkles", title: doc.title ?? "", description: doc.description ?? "" }));
@@ -241,13 +298,14 @@ export const getCmsHomepageFacilities = cache(async function getCmsHomepageFacil
 
 export const getCmsComparisonRows = cache(async function getCmsComparisonRows(serviceSlug?: string): Promise<ComparisonRow[]> {
   const docs = await payloadList<Partial<ComparisonRow> & { placement?: string; sortOrder?: number; service?: unknown; items?: Array<{ feature?: string; easyoffice?: string | boolean; typical?: string | boolean; sortOrder?: number }> }>("comparison-rows");
-  if (!docs.length) return [];
+  if (!docs.length) return comparisonRows;
   const seen = new Set<string>();
-  return docs
+  const rows = docs
     .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
     .filter((doc) => { const service = doc.service && typeof doc.service === "object" ? doc.service as Record<string, unknown> : undefined; return serviceSlug ? doc.placement === "service" && !!service && service.slug === serviceSlug : doc.placement === "global"; })
     .flatMap((doc) => Array.isArray(doc.items) && doc.items.length ? [...doc.items].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).map((item) => ({ feature: item.feature ?? "", easyoffice: normalizeComparisonStatus(item.easyoffice), typical: normalizeComparisonStatus(item.typical), serviceSlug })) : [{ feature: doc.feature ?? "", easyoffice: normalizeComparisonStatus(doc.easyoffice), typical: normalizeComparisonStatus(doc.typical), serviceSlug }])
     .filter((row) => { if (seen.has(row.feature)) return false; seen.add(row.feature); return true; });
+  return rows.length ? rows : comparisonRows;
 });
 
 function normalizeComparisonStatus(value: string | boolean | undefined): ComparisonStatus {

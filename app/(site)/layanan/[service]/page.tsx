@@ -14,6 +14,7 @@ import { ServiceLocationGrid } from "@/components/sections/service-location-grid
 import { StatsBand } from "@/components/sections/stats-band";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
 import { getCmsComparisonRows, getCmsFaqs, getCmsPartners, getCmsPromotions, getCmsServiceLocations, getCmsServices, getCmsSite, getCmsTestimonials } from "@/lib/data/cms-data";
+import { googleReviewsUrl } from "@/lib/data/google-reviews";
 import { whatsappFor } from "@/lib/whatsapp";
 
 export async function generateStaticParams() {
@@ -48,14 +49,14 @@ export default async function ServiceLandingPage({
 }) {
   const { service: slug } = await params;
   const [cmsServices, cmsCombos, cmsPromotions, cmsComparisonRows, cmsTestimonials, site, cmsFaqs, partners] = await Promise.all([
-    getCmsServices(),
-    getCmsServiceLocations(),
-    getCmsPromotions(),
-    getCmsComparisonRows(slug),
-    getCmsTestimonials(),
+    getCmsServices().catch(() => []),
+    getCmsServiceLocations().catch(() => []),
+    getCmsPromotions().catch(() => []),
+    getCmsComparisonRows(slug).catch(() => []),
+    getCmsTestimonials().catch(() => []),
     getCmsSite(),
-    getCmsFaqs(slug),
-    getCmsPartners(),
+    getCmsFaqs(slug).catch(() => []),
+    getCmsPartners().catch(() => []),
   ]);
   const service = cmsServices.find((item) => item.slug === slug);
   if (!service) notFound();
@@ -69,7 +70,6 @@ export default async function ServiceLandingPage({
      combo,
      office: combo.offices?.[0],
    }));
-   const preview = cmsServiceCombos[0];
    const serviceLegalNotes = [...new Set(cmsServiceCombos.map((combo) => combo.catatanLegalitas).filter(Boolean))];
   return (
     <>
@@ -136,12 +136,14 @@ export default async function ServiceLandingPage({
          className="pt-5 sm:pt-6 lg:pt-8"
        />
 
-        <BenefitsSection serviceSlug={service.slug} eyebrow="Manfaat" items={service.manfaatItems} title={service.manfaatTitle} description={service.manfaatDescription} />
+        {service.manfaatItems?.length ? (
+          <BenefitsSection serviceSlug={service.slug} eyebrow="Manfaat" items={service.manfaatItems} title={service.manfaatTitle || `Manfaat ${service.title}`} description={service.manfaatDescription || `Keuntungan memilih layanan ${service.title}.`} />
+        ) : null}
 
         <PartnersCarousel partners={partners} />
-        <Testimonials items={cmsTestimonials} />
+        <Testimonials items={cmsTestimonials} sourceUrl={googleReviewsUrl} />
 
-      {preview ? (
+      {cmsFaqs.length ? (
          <FaqSection title={`FAQ ${service.title}`} faqs={cmsFaqs} />
       ) : null}
 

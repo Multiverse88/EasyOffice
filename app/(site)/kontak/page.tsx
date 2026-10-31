@@ -182,7 +182,7 @@ export default async function ContactPage() {
         </Container>
       </section>
 
-      <FaqSection faqs={generalFaqs} />
+      {generalFaqs.length ? <FaqSection faqs={generalFaqs} /> : null}
 
       <WhatsappCta
         title="Masih Ragu Memilih Layanan?"

@@ -85,6 +85,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .scroll-reveal-root section { animation: none !important; }
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .marquee-track > [aria-hidden="true"],
+  .marquee-track-reverse > [aria-hidden="true"] { display: none; }
+  .marquee-track > *,
+  .marquee-track-reverse > * {
+    width: min(380px, 100%);
+    margin-right: 0;
+  }
 }
 
 /* Keep the editor canvas visually independent from public-site body styles. */

@@ -24,6 +24,7 @@ function MarqueeRow({
       <div className={reverse ? "marquee-track-reverse" : "marquee-track"}>
         {[...items, ...items].map((t, i) => (
           <article
+            aria-hidden={i >= items.length}
             key={`${t.id ?? `${t.name}-${i % Math.max(items.length, 1)}`}-${i < items.length ? "a" : "b"}`}
             className="flex w-[380px] shrink-0 flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-navy/30 hover:shadow-card"
           >
@@ -60,19 +61,31 @@ export function Testimonials({
   description = "Cerita dari pengguna layanan ruang kerja profesional.",
   items = [],
   className = "pt-5 sm:pt-6 lg:pt-8",
+  sourceUrl,
 }: {
   title?: string;
   description?: string;
   items?: Testimonial[];
   className?: string;
+  sourceUrl?: string;
 }) {
   const testimonials = items ?? [];
+  const middle = Math.ceil(testimonials.length / 2);
+  const firstRow = testimonials.slice(0, middle);
+  const secondRow = testimonials.slice(middle);
   return (
     <Section eyebrow="Testimoni" title={title} description={description} tone="gray" className={className}>
       <div className="-mx-5 flex flex-col gap-4">
-        <MarqueeRow items={testimonials} />
-        <MarqueeRow items={testimonials} reverse />
+        {firstRow.length ? <MarqueeRow items={firstRow} /> : null}
+        {secondRow.length ? <MarqueeRow items={secondRow} reverse /> : null}
       </div>
+      {sourceUrl ? (
+        <p className="mt-5 text-center text-sm">
+          <a href={sourceUrl} target="_blank" rel="noreferrer" className="font-semibold text-navy underline underline-offset-4 hover:text-blue-700">
+            Lihat ulasan di Google Maps
+          </a>
+        </p>
+      ) : null}
     </Section>
   );
 }

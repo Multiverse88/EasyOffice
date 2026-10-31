@@ -7,7 +7,8 @@ const stats = [
   { value: "100%", label: "Legal & Resmi", icon: "shield" },
 ];
 
-export function StatsBand({ items = stats, variant = "default" }: { items?: Array<{ value: string; label: string; icon?: string }>; variant?: "default" | "previous" }) {
+export function StatsBand({ items, variant = "default" }: { items?: Array<{ value: string; label: string; icon?: string }>; variant?: "default" | "previous" }) {
+  const displayItems = items && items.length ? items : stats;
   const iconForStat = (label: string, index: number, configuredIcon?: string) => {
     const configured = { location: MapPin, users: Users, briefcase: BriefcaseBusiness, star: Star, shield: ShieldCheck, check: Check, message: MessageCircle, clock: Clock3, target: Target, building: Building2, award: Award, banknote: Banknote, calendar: CalendarDays, globe: Globe2, headset: Headphones, rocket: Rocket, shopping: ShoppingBag, trophy: Trophy, zap: Zap, handshake: Handshake, heart: Heart, wallet: WalletCards }[configuredIcon ?? ""];
     if (configuredIcon && configuredIcon !== "auto" && configured) return configured;
@@ -23,7 +24,7 @@ export function StatsBand({ items = stats, variant = "default" }: { items?: Arra
       <section className="bg-white py-8 sm:py-10">
         <div className="mx-auto w-full max-w-[1150px] px-6">
           <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-4 lg:gap-5">
-            {items.map((stat, index) => (
+            {displayItems.map((stat, index) => (
               <div key={stat.label} className="group relative flex items-center gap-3.5 rounded-2xl border border-neutral-200/80 bg-surface p-4 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-navy/30 hover:shadow-card sm:p-4.5">
                 <span className="absolute right-3 top-3 h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden />
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy text-white shadow-soft transition-transform duration-300 group-hover:scale-105">
@@ -44,7 +45,7 @@ export function StatsBand({ items = stats, variant = "default" }: { items?: Arra
       <section className="relative z-10 -mt-8 bg-gradient-to-b from-navy-950/5 via-white to-white pb-8 pt-0 sm:-mt-10 sm:pb-10">
         <div className="mx-auto w-full max-w-[1150px] px-6">
         <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/95 shadow-card backdrop-blur-sm lg:grid-cols-4">
-          {items.map((stat, index) => (
+          {displayItems.map((stat, index) => (
             <div
               key={stat.label}
               className="group relative flex items-center gap-3.5 border-b border-r border-neutral-200/80 p-4 transition-colors duration-300 hover:bg-navy/[0.025] sm:p-5 lg:border-b-0"
