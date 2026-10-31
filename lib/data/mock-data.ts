@@ -654,38 +654,37 @@ export const serviceLocations: ServiceLocation[] = [
     serviceSlug: "coworking-space",
     locationSlug: "bandung",
     tagline: "Ruang kerja fleksibel di jantung kota Bandung.",
-    startingPrice: "Rp 75 rb",
-    image:
-      "/images/unsplash/office-16.webp",
+    startingPrice: "Rp 75.000",
+    image: "/images/easyoffice/office-bandung.png",
     imageAlt: "Coworking space EasyOffice di Bandung",
     gallery: [
       {
-        src: "/images/unsplash/office-17.webp",
+        src: "/images/easyoffice/office-bandung.png",
         alt: "Area hot desk kerja bersama yang terang dan luas",
       },
       {
-        src: "/images/unsplash/office-18.webp",
+        src: "/images/easyoffice/office-workspace.png",
         alt: "Meja kerja dedicated dan fasilitas stopkontak individual",
       },
       {
-        src: "/images/unsplash/office-19.webp",
-        alt: "Fasilitas mesin cetak dan scanner dokumen cepat",
+        src: "/images/easyoffice/office-lounge.png",
+        alt: "Fasilitas lounge dan area santai EasyOffice Bandung",
       },
     ],
     pricing: [
-      plan("Harian", "Rp 75 rb", "/hari", [
+      plan("Harian", "Rp 75.000", "/hari", [
         "Hot desk",
         "WiFi cepat",
         "Air minum",
         "Akses lounge",
       ]),
-      plan("Bulanan", "Rp 850 rb", "/bulan", [
+      plan("Bulanan", "Rp 850.000", "/bulan", [
         "Hot desk fleksibel",
         "WiFi cepat",
         "2 jam meeting room / bulan",
         "Akses komunitas",
       ]),
-      plan("Dedicated", "Rp 1,5 jt", "/bulan", [
+      plan("Dedicated", "Rp 1.500.000", "/bulan", [
         "Meja khusus permanen",
         "Locker pribadi",
         "8 jam meeting room / bulan",
@@ -693,43 +692,53 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door", "clock", "car"),
+    offices: [
+      {
+        slug: "cihampelas",
+        name: "EasyOffice Cihampelas (Bandung)",
+        description: "Area kerja bersama yang nyaman dan fleksibel di kawasan Cihampelas Bandung, dilengkapi internet cepat dan fasilitas lengkap.",
+        address: "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "022 3209 9037",
+        whatsapp: "62818881425",
+      },
+    ],
   },
   {
     serviceSlug: "coworking-space",
     locationSlug: "jakarta",
     tagline: "Ruang kerja fleksibel di jantung bisnis Jakarta.",
-    startingPrice: "Rp 95 rb",
-    image:
-      "/images/unsplash/office-20.webp",
+    startingPrice: "Rp 95.000",
+    image: "/images/easyoffice/office-workspace.png",
     imageAlt: "Coworking space EasyOffice di Jakarta",
     gallery: [
       {
-        src: "/images/unsplash/office-21.webp",
+        src: "/images/easyoffice/office-workspace.png",
         alt: "Area hot desk modern dengan koneksi Wi-Fi super cepat",
       },
       {
-        src: "/images/unsplash/office-22.webp",
+        src: "/images/easyoffice/office-meeting.png",
         alt: "Sudut diskusi santai dan area kolaborasi terbuka",
       },
       {
-        src: "/images/unsplash/office-07.webp",
-        alt: "Pantry lengkap dengan mesin espresso dan air minum",
+        src: "/images/easyoffice/office-hero.jpg",
+        alt: "Pantry lengkap dengan fasilitas santai dan air minum",
       },
     ],
     pricing: [
-      plan("Harian", "Rp 95 rb", "/hari", [
+      plan("Harian", "Rp 95.000", "/hari", [
         "Hot desk",
         "WiFi cepat",
         "Air minum",
         "Akses lounge",
       ]),
-      plan("Bulanan", "Rp 1,1 jt", "/bulan", [
+      plan("Bulanan", "Rp 1.100.000", "/bulan", [
         "Hot desk fleksibel",
         "WiFi cepat",
         "2 jam meeting room / bulan",
         "Akses komunitas",
       ]),
-      plan("Dedicated", "Rp 1,9 jt", "/bulan", [
+      plan("Dedicated", "Rp 1.900.000", "/bulan", [
         "Meja khusus permanen",
         "Locker pribadi",
         "8 jam meeting room / bulan",
@@ -737,43 +746,53 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door", "clock", "car"),
+    offices: [
+      {
+        slug: "sovereign-plaza",
+        name: "EasyOffice Sovereign Plaza (Jakarta)",
+        description: "Coworking space modern dan representatif di Sovereign Plaza TB Simatupang, Cilandak, Jakarta Selatan untuk produktivitas maksimal.",
+        address: "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "021 2940 0153",
+        whatsapp: "62818881425",
+      },
+    ],
   },
   {
     serviceSlug: "coworking-space",
     locationSlug: "bekasi",
     tagline: "Ruang kerja hemat di kawasan penyangga Jakarta.",
-    startingPrice: "Rp 60 rb",
-    image:
-      "/images/unsplash/office-23.webp",
+    startingPrice: "Rp 60.000",
+    image: "/images/easyoffice/office-lounge.png",
     imageAlt: "Coworking space EasyOffice di Bekasi",
     gallery: [
       {
-        src: "/images/unsplash/office-24.webp",
+        src: "/images/easyoffice/office-lounge.png",
         alt: "Ruang kerja bersama yang ergonomis dan nyaman",
       },
       {
-        src: "/images/unsplash/office-25.webp",
+        src: "/images/easyoffice/office-workspace.png",
         alt: "Area diskusi tim dan pojok santai",
       },
       {
-        src: "/images/unsplash/office-09.webp",
+        src: "/images/easyoffice/office-meeting.png",
         alt: "Fasilitas loker pribadi dan area cetak dokumen",
       },
     ],
     pricing: [
-      plan("Harian", "Rp 60 rb", "/hari", [
+      plan("Harian", "Rp 60.000", "/hari", [
         "Hot desk",
         "WiFi cepat",
         "Air minum",
         "Akses lounge",
       ]),
-      plan("Bulanan", "Rp 700 rb", "/bulan", [
+      plan("Bulanan", "Rp 700.000", "/bulan", [
         "Hot desk fleksibel",
         "WiFi cepat",
         "2 jam meeting room / bulan",
         "Akses komunitas",
       ]),
-      plan("Dedicated", "Rp 1,2 jt", "/bulan", [
+      plan("Dedicated", "Rp 1.200.000", "/bulan", [
         "Meja khusus permanen",
         "Locker pribadi",
         "8 jam meeting room / bulan",
@@ -781,43 +800,53 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door"),
+    offices: [
+      {
+        slug: "summarecon",
+        name: "EasyOffice Summarecon Bekasi",
+        description: "Ruang kerja bersama fleksibel dan hemat di Emerald Commercial Summarecon Bekasi dengan suasana kerja profesional.",
+        address: "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "0818 881 425",
+        whatsapp: "62818881425",
+      },
+    ],
   },
   {
     serviceSlug: "meeting-room",
     locationSlug: "bandung",
     tagline: "Ruang meeting profesional dan lengkap di Bandung.",
-    startingPrice: "Rp 150 rb",
-    image:
-      "/images/unsplash/office-26.webp",
+    startingPrice: "Rp 150.000",
+    image: "/images/easyoffice/office-meeting.png",
     imageAlt: "Meeting room EasyOffice di Bandung",
     gallery: [
       {
-        src: "/images/unsplash/office-27.webp",
+        src: "/images/easyoffice/office-meeting.png",
         alt: "Ruang rapat dilengkapi layar proyektor dan white board",
       },
       {
-        src: "/images/unsplash/office-28.webp",
+        src: "/images/easyoffice/office-hero.jpg",
         alt: "Meja rapat besar dengan stopkontak di setiap kursi",
       },
       {
-        src: "/images/unsplash/office-29.webp",
+        src: "/images/easyoffice/office-lounge.png",
         alt: "Peralatan audio video konferensi online siap pakai",
       },
     ],
     pricing: [
-      plan("Small", "Rp 150 rb", "/jam", [
+      plan("Small", "Rp 150.000", "/jam", [
         "Kapasitas hingga 6 orang",
         "Whiteboard",
         "Air minum",
         "WiFi cepat",
       ]),
-      plan("Medium", "Rp 250 rb", "/jam", [
+      plan("Medium", "Rp 250.000", "/jam", [
         "Kapasitas hingga 12 orang",
         "Proyektor dan whiteboard",
         "Snack dan minuman",
         "Dukungan teknis",
       ]),
-      plan("Large", "Rp 450 rb", "/jam", [
+      plan("Large", "Rp 450.000", "/jam", [
         "Kapasitas hingga 20 orang",
         "Sistem audio-video",
         "Catering tersedia",
@@ -825,43 +854,53 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "printer", "car", "clock"),
+    offices: [
+      {
+        slug: "cihampelas",
+        name: "EasyOffice Cihampelas (Bandung)",
+        description: "Ruang meeting eksklusif di Cihampelas Bandung, dilengkapi LED Smart TV, whiteboard, dan koneksi internet cepat.",
+        address: "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "022 3209 9037",
+        whatsapp: "62818881425",
+      },
+    ],
   },
   {
     serviceSlug: "meeting-room",
     locationSlug: "jakarta",
     tagline: "Ruang meeting profesional dan lengkap di Jakarta.",
-    startingPrice: "Rp 200 rb",
-    image:
-      "/images/unsplash/office-30.webp",
+    startingPrice: "Rp 200.000",
+    image: "/images/easyoffice/office-meeting.png",
     imageAlt: "Meeting room EasyOffice di Jakarta",
     gallery: [
       {
-        src: "/images/unsplash/office-31.webp",
+        src: "/images/easyoffice/office-meeting.png",
         alt: "Ruang meeting berkapasitas besar dengan pencahayaan optimal",
       },
       {
-        src: "/images/unsplash/office-32.webp",
+        src: "/images/easyoffice/office-workspace.png",
         alt: "Fasilitas proyektor high-definition dan flipchart",
       },
       {
-        src: "/images/unsplash/office-33.webp",
+        src: "/images/easyoffice/office-hero.jpg",
         alt: "Layanan penyajian konsumsi dan snack rapat",
       },
     ],
     pricing: [
-      plan("Small", "Rp 200 rb", "/jam", [
+      plan("Small", "Rp 200.000", "/jam", [
         "Kapasitas hingga 6 orang",
         "Whiteboard",
         "Air minum",
         "WiFi cepat",
       ]),
-      plan("Medium", "Rp 350 rb", "/jam", [
+      plan("Medium", "Rp 350.000", "/jam", [
         "Kapasitas hingga 12 orang",
         "Proyektor dan whiteboard",
         "Snack dan minuman",
         "Dukungan teknis",
       ]),
-      plan("Large", "Rp 600 rb", "/jam", [
+      plan("Large", "Rp 600.000", "/jam", [
         "Kapasitas hingga 20 orang",
         "Sistem audio-video",
         "Catering tersedia",
@@ -869,43 +908,53 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "printer", "car", "clock"),
+    offices: [
+      {
+        slug: "sovereign-plaza",
+        name: "EasyOffice Sovereign Plaza (Jakarta)",
+        description: "Ruang meeting profesional di Sovereign Plaza TB Simatupang Jakarta Selatan dengan proyektor dan perlengkapan presentasi.",
+        address: "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "021 2940 0153",
+        whatsapp: "62818881425",
+      },
+    ],
   },
   {
     serviceSlug: "meeting-room",
     locationSlug: "bekasi",
     tagline: "Ruang meeting profesional dan lengkap di Bekasi.",
-    startingPrice: "Rp 120 rb",
-    image:
-      "/images/unsplash/office-34.webp",
+    startingPrice: "Rp 120.000",
+    image: "/images/easyoffice/office-meeting.png",
     imageAlt: "Meeting room EasyOffice di Bekasi",
     gallery: [
       {
-        src: "/images/unsplash/office-35.webp",
+        src: "/images/easyoffice/office-meeting.png",
         alt: "Ruang rapat eksekutif dengan peredam suara",
       },
       {
-        src: "/images/unsplash/office-36.webp",
+        src: "/images/easyoffice/office-workspace.png",
         alt: "Peralatan presentasi dan koneksi internet stabil",
       },
       {
-        src: "/images/unsplash/office-37.webp",
+        src: "/images/easyoffice/office-lounge.png",
         alt: "Area penyambutan tamu khusus ruang meeting",
       },
     ],
     pricing: [
-      plan("Small", "Rp 120 rb", "/jam", [
+      plan("Small", "Rp 120.000", "/jam", [
         "Kapasitas hingga 6 orang",
         "Whiteboard",
         "Air minum",
         "WiFi cepat",
       ]),
-      plan("Medium", "Rp 200 rb", "/jam", [
+      plan("Medium", "Rp 200.000", "/jam", [
         "Kapasitas hingga 12 orang",
         "Proyektor dan whiteboard",
         "Snack dan minuman",
         "Dukungan teknis",
       ]),
-      plan("Large", "Rp 350 rb", "/jam", [
+      plan("Large", "Rp 350.000", "/jam", [
         "Kapasitas hingga 20 orang",
         "Sistem audio-video",
         "Catering tersedia",
@@ -913,6 +962,17 @@ export const serviceLocations: ServiceLocation[] = [
       ]),
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "car"),
+    offices: [
+      {
+        slug: "summarecon",
+        name: "EasyOffice Summarecon Bekasi",
+        description: "Ruang meeting representatif di Emerald Commercial Summarecon Bekasi dengan fasilitas LED Smart TV dan Whiteboard.",
+        address: "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "0818 881 425",
+        whatsapp: "62818881425",
+      },
+    ],
   },
 ];
 

@@ -21,11 +21,11 @@ export function ServiceLocationGrid({
   const officeItems = items.flatMap(({ location, combo, office: fallbackOffice }) =>
     (combo.offices?.length
       ? combo.offices
-          : [fallbackOffice ?? {
+        : [fallbackOffice ?? {
            slug: location.slug,
-           name: `EasyOffice ${location.name}`,
-           description: "",
-           address: "",
+           name: `EasyOffice ${location.name.charAt(0).toUpperCase() + location.name.slice(1)}`,
+           description: location.shortDescription || combo.tagline || "",
+           address: location.address || "",
          }]
     ).map((office) => ({ location, combo, office })),
   );

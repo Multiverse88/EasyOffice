@@ -10,20 +10,33 @@ interface LocationCardProps {
   office: Office;
 }
 
-/**
- * Location picker card: shows a service's availability in one location
- * with its starting price, linking to the [service]/[location] detail.
- */
+function parsePrice(raw: string | number | undefined): number {
+  if (typeof raw === "number") return raw;
+  if (!raw) return 0;
+  const str = String(raw).toLowerCase().trim();
+  const isJt = /\b(jt|juta)\b/i.test(str);
+  const isRb = /\b(rb|ribu)\b/i.test(str);
+  const clean = str.replace(/rp|\s/g, "").replace(/\./g, "").replace(",", ".");
+  const parsed = Number.parseFloat(clean.replace(/[^0-9.]/g, ""));
+  if (!Number.isFinite(parsed)) return 0;
+  if (isJt) return Math.round(parsed * 1_000_000);
+  if (isRb) return Math.round(parsed * 1_000);
+  return Math.round(parsed);
+}
+
 export function LocationCard({ location, service, combo, office }: LocationCardProps) {
-  const officeName = office.name;
+  const locTitle = location.name.charAt(0).toUpperCase() + location.name.slice(1);
+  const officeName = office.name || `EasyOffice ${locTitle}`;
+  const officeDesc = office.description || location.shortDescription || combo.tagline;
+  const officeAddr = office.address || location.address;
   const firstPlan = combo.pricing[0];
-  const firstRegular = firstPlan ? Number(firstPlan.price.replace(/[^0-9]/g, "")) : 0;
+  const firstRegular = firstPlan ? parsePrice(firstPlan.price) : parsePrice(combo.startingPrice);
   const firstSale = firstPlan?.discountedPrice
-    ? Number(firstPlan.discountedPrice.replace(/[^0-9]/g, ""))
+    ? parsePrice(firstPlan.discountedPrice)
     : firstPlan?.discountPercent
       ? Math.round(firstRegular * (1 - firstPlan.discountPercent / 100))
       : firstRegular;
-
+  const finalPrice = firstSale || firstRegular || parsePrice(combo.startingPrice);
   return (
     <div className="flex h-full min-h-[510px] flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card">
       <div className="relative h-44 w-full">
@@ -38,17 +51,21 @@ export function LocationCard({ location, service, combo, office }: LocationCardP
           {officeName}
         </h3>
         <p className="mt-3 min-h-[4.5rem] text-sm leading-relaxed text-neutral-600 line-clamp-3">
-           {office.description}
+          {officeDesc}
         </p>
-        <p className="mt-3 flex min-h-[2.5rem] items-start gap-2 text-xs leading-relaxed text-neutral-500 line-clamp-2">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-navy" aria-hidden />
-           <span>{office.address}</span>
-        </p>
+        {officeAddr ? (
+          <p className="mt-3 flex min-h-[2.5rem] items-start gap-2 text-xs leading-relaxed text-neutral-500 line-clamp-2">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-navy" aria-hidden />
+            <span>{officeAddr}</span>
+          </p>
+        ) : (
+          <div className="mt-3 min-h-[2.5rem]" />
+        )}
         <p className="mt-4 text-sm text-neutral-500">
           Mulai dari{" "}
-           <span className="font-display text-lg font-bold text-navy">
-             {`Rp ${(firstPlan ? firstSale : Number(String(combo.startingPrice).replace(/[^0-9]/g, ""))).toLocaleString("id-ID")}`} {firstPlan?.period ?? "/bulan"}
-           </span>
+          <span className="font-display text-lg font-bold text-navy">
+            {`Rp ${finalPrice.toLocaleString("id-ID")}`} {firstPlan?.period ?? "/bulan"}
+          </span>
         </p>
         <div className="mt-auto pt-5">
           <Button href={`/layanan/${service.slug}/${office.slug}`} fullWidth>
