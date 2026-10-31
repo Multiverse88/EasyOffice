@@ -27,9 +27,9 @@ function mediaUrl(value: unknown): string | undefined {
   return undefined;
 }
 const serviceImages: Record<string, string> = {
-  "virtual-office": "/images/unsplash/office-01.webp",
-  "coworking-space": "/images/unsplash/office-02.webp",
-  "meeting-room": "/images/unsplash/office-03.webp",
+  "virtual-office": "/images/easyoffice/office-bandung.png",
+  "coworking-space": "/images/easyoffice/office-workspace.png",
+  "meeting-room": "/images/easyoffice/office-meeting.png",
 };
 
 export type HomepageLayoutData = { content?: Array<{ type?: string; props?: Record<string, unknown> }>; root?: Record<string, unknown> };
@@ -215,6 +215,7 @@ export const getCmsSite = cache(async function getCmsSite() {
     homepageHeroEyebrow: "EasyOffice",
     homepageHeroTitle: "Miliki Alamat Kantor Premium di Kota Besar Indonesia",
     homepageHeroDescription: "Virtual Office (VO) sudah disetujui pemerintah dan dapat digunakan untuk keperluan legal, seperti pendirian PT, CV, dan pendaftaran PKP. VO memudahkan Anda mengurus dokumen bisnis secara praktis dan efisien.",
+    homepageHeroImage: "/images/easyoffice/office-hero.jpg",
     homepageHeroImageLabel: "Virtual Office • Coworking Space • Meeting Room • Private Office",
     homepageHeroPrimaryCtaLabel: "Hubungi Kami",
     homepageHeroPrimaryCtaMessage: "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.",
@@ -263,7 +264,7 @@ export const getCmsSite = cache(async function getCmsSite() {
     { value: "100%", label: "Legal & Resmi", icon: "shield" },
   ];
   const statsBanner = Array.isArray(data.statsBanner) && data.statsBanner.length ? data.statsBanner : defaultStats;
-  return { ...data, phoneDisplay: data.phone ?? "", logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage), homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner, socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) };
+  return { ...data, phoneDisplay: data.phone ?? "", logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage) || "/images/easyoffice/office-hero.jpg", homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner, socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) };
 });
 
 export const getCmsAbout = cache(async function getCmsAbout() {
@@ -277,8 +278,8 @@ export const getCmsAbout = cache(async function getCmsAbout() {
       heroDescription: data.heroDescription || "EasyOffice hadir sebagai solusi virtual office dengan layanan profesional, terpercaya, dan harga terjangkau di Bandung, Jakarta, dan Bekasi.",
       storyTitle: data.storyTitle || "Tentang EasyOffice",
       storyDescription: data.storyDescription || "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
-      heroImage: mediaUrl(data.heroImage) ?? "",
-      storyImage: mediaUrl(data.storyImage) ?? "",
+      heroImage: mediaUrl(data.heroImage) || "/images/easyoffice/office-hero.jpg",
+      storyImage: mediaUrl(data.storyImage) || "/images/easyoffice/office-bandung.png",
       heroHighlights: Array.isArray(data.heroHighlights) ? data.heroHighlights.map((item: { value?: string }) => item.value ?? "") : [],
       storyHighlights: Array.isArray(data.storyHighlights) && data.storyHighlights.length ? data.storyHighlights.map((item: { value?: string }) => item.value ?? "") : [
         "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",
@@ -299,8 +300,8 @@ export const getCmsAbout = cache(async function getCmsAbout() {
       heroDescription: "EasyOffice hadir sebagai solusi virtual office dengan layanan profesional, terpercaya, dan harga terjangkau di Bandung, Jakarta, dan Bekasi.",
       storyTitle: "Tentang EasyOffice",
       storyDescription: "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
-      heroImage: "",
-      storyImage: "",
+      heroImage: "/images/easyoffice/office-hero.jpg",
+      storyImage: "/images/easyoffice/office-bandung.png",
       heroHighlights: [],
       storyHighlights: [
         "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",

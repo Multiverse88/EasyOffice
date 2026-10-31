@@ -80,26 +80,44 @@ export const services: Service[] = [
     title: "Virtual Office",
     shortTitle: "Virtual Office",
     description:
-      "Alamat bisnis profesional, layanan surat, dan resepsionis tanpa perlu sewa kantor fisik.",
+      "Alamat bisnis profesional, layanan surat, dan resepsionis tanpa perlu sewa kantor fisik. Bisa untuk pengurusan legalitas PT, CV, dan pendaftaran PKP.",
     intro:
-      "Virtual Office cocok untuk startup, freelancer, dan perusahaan yang membutuhkan kehadiran bisnis resmi dengan biaya efisien.",
+      "Virtual Office sudah disetujui pemerintah dan dapat digunakan untuk keperluan legalitas seperti pendirian PT, CV, dan pendaftaran PKP praktis dan efisien.",
     benefits: [
-      "Alamat Prestisius — tingkatkan citra dan kepercayaan klien dengan alamat bisnis profesional.",
-      "Hemat Biaya — nikmati fasilitas kantor tanpa biaya sewa dan operasional ruang fisik.",
-      "Layanan Resepsionis — tim profesional menyambut tamu dan menangani telepon atas nama perusahaan Anda.",
-      "Fleksibel — paket bulanan yang dapat ditingkatkan seiring pertumbuhan bisnis Anda.",
+      "Alamat Prestisius — tingkatkan citra dan kepercayaan klien dengan alamat bisnis komersial di lokasi strategis.",
+      "Hemat Biaya — nikmati fasilitas kantor tanpa biaya sewa ruang fisik dan operasional gedung.",
+      "Layanan Resepsionis — tim profesional menyambut tamu dan mengelola surat dokumen atas nama perusahaan Anda.",
+      "Bisa PKP — berlokasi di gedung komersial resmi dengan IMB dan PBB yang sah untuk pendaftaran PKP.",
     ],
+    keunggulanItems: [
+      { icon: "map-pin", title: "Lokasi Prestisius", description: "Tingkatkan citra profesional bisnis Anda dengan lokasi strategis di area bergengsi kota besar." },
+      { icon: "wallet", title: "Transaksi Aman", description: "Kami memastikan setiap transaksi aman dan terpercaya melalui marketplace resmi Shopee." },
+      { icon: "wifi", title: "Fasilitas Lengkap", description: "Internet cepat, LED Smart TV/proyektor, dan ruang kerja nyaman untuk produktivitas maksimal." },
+      { icon: "building", title: "Harga Terjangkau", description: "Dapatkan pengalaman bekerja yang nyaman dan legalitas resmi tanpa menguras kantong." },
+      { icon: "presentation", title: "Meeting Room", description: "Ruang rapat yang nyaman dan profesional dilengkapi fasilitas presentasi lengkap." },
+      { icon: "headset", title: "Layanan Surat Menyurat", description: "Kemudahan kelola dokumen bisnis lewat layanan penerimaan surat dan notifikasi resepsionis." },
+    ],
+    manfaatItems: [
+      { icon: "wallet", title: "Hemat Biaya", description: "Menghemat biaya signifikan karena tidak perlu menyewa kantor fisik atau membayar utilitas dan pemeliharaan." },
+      { icon: "laptop", title: "Fleksibilitas Kerja", description: "Virtual office memungkinkan Anda dan tim bekerja dari mana saja dengan fleksibilitas tinggi." },
+      { icon: "building", title: "Naikkan Citra Perusahaan", description: "EasyOffice memberikan alamat di lokasi strategis yang meningkatkan citra profesional perusahaan Anda." },
+      { icon: "headset", title: "Layanan Pendukung Bisnis", description: "Menyediakan layanan pengelolaan surat, panggilan telepon, dan resepsionis profesional untuk efisiensi operasional." },
+      { icon: "presentation", title: "Fasilitas Meeting Room", description: "Akses fasilitas meeting room modern untuk pertemuan dengan klien atau sesi brainstorming dengan tim." },
+      { icon: "briefcase", title: "Bisa Untuk PKP", description: "Memudahkan proses pendaftaran legalitas bisnis, termasuk pengajuan status Pengusaha Kena Pajak (PKP)." },
+    ],
+    manfaatTitle: "Manfaat Virtual Office Untuk Bisnis Anda",
+    manfaatDescription: "Pahami lebih lanjut tentang pentingnya virtual office untuk keperluan operasional dan legalitas bisnis Anda.",
     features: [
-      "Alamat bisnis prestisius",
-      "Penanganan surat dan paket",
-      "Layanan resepsionis",
-      "Akses ruang meeting",
+      "Alamat bisnis komersial prestisius",
+      "Dapat digunakan untuk PKP & legalitas PT/CV",
+      "Penanganan surat dan paket dokumen",
+      "Layanan resepsionis profesional",
+      "Akses ruang meeting hingga 70 jam/tahun",
     ],
     icon: "briefcase",
     href: "/layanan/virtual-office",
-    image:
-      "/images/unsplash/office-01.webp",
-    imageAlt: "Ruang kantor profesional untuk layanan virtual office",
+    image: "/images/easyoffice/office-bandung.png",
+    imageAlt: "Gedung dan kantor EasyOffice di Bandung",
   },
   {
     slug: "coworking-space",
@@ -125,9 +143,8 @@ export const services: Service[] = [
     ],
     icon: "users",
     href: "/layanan/coworking-space",
-    image:
-      "/images/unsplash/office-02.webp",
-    imageAlt: "Area coworking space yang nyaman dan produktif",
+    image: "/images/easyoffice/office-workspace.png",
+    imageAlt: "Area coworking space EasyOffice yang nyaman dan produktif",
   },
   {
     slug: "meeting-room",
@@ -153,9 +170,8 @@ export const services: Service[] = [
     ],
     icon: "door",
     href: "/layanan/meeting-room",
-    image:
-      "/images/unsplash/office-03.webp",
-    imageAlt: "Ruang meeting profesional dengan meja dan kursi rapat",
+    image: "/images/easyoffice/office-meeting.png",
+    imageAlt: "Ruang meeting profesional EasyOffice dengan fasilitas presentasi lengkap",
   },
 ];
 
@@ -348,21 +364,20 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bandung",
     tagline: "Kehadiran bisnis kredibel di pusat kota Bandung.",
     startingPrice: "Rp 350 rb",
-    image:
-      "/images/unsplash/office-04.webp",
-    imageAlt: "Kantor virtual office EasyOffice di Bandung",
+    image: "/images/easyoffice/office-bandung.png",
+    imageAlt: "Kantor virtual office EasyOffice Cihampelas di Bandung",
     gallery: [
       {
-        src: "/images/unsplash/office-05.webp",
-        alt: "Area resepsionis profesional dan meja tamu",
+        src: "/images/easyoffice/office-bandung.png",
+        alt: "Gedung dan kantor EasyOffice Cihampelas Bandung",
       },
       {
-        src: "/images/unsplash/office-06.webp",
-        alt: "Suasana ruang kerja kantor modern yang produktif",
+        src: "/images/easyoffice/office-hero.jpg",
+        alt: "Area resepsionis profesional EasyOffice Cihampelas",
       },
       {
-        src: "/images/unsplash/office-07.webp",
-        alt: "Bilik meja kerja profesional dan komputer kantor",
+        src: "/images/easyoffice/office-meeting.png",
+        alt: "Ruang meeting eksklusif EasyOffice Bandung",
       },
     ],
     pricing: [
@@ -408,21 +423,20 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "jakarta",
     tagline: "Alamat prestisius ibu kota untuk jangkauan bisnis nasional.",
     startingPrice: "Rp 450 rb",
-    image:
-      "/images/unsplash/office-08.webp",
-    imageAlt: "Kantor virtual office EasyOffice di Jakarta",
+    image: "/images/easyoffice/office-meeting.png",
+    imageAlt: "Kantor virtual office EasyOffice di Sovereign Plaza Jakarta",
     gallery: [
       {
-        src: "/images/unsplash/office-09.webp",
+        src: "/images/easyoffice/office-meeting.png",
+        alt: "Meeting room proyektor Sovereign Plaza Jakarta",
+      },
+      {
+        src: "/images/easyoffice/office-workspace.png",
+        alt: "Ruang kerja dan kantor modern Dewata Office",
+      },
+      {
+        src: "/images/easyoffice/office-hero.jpg",
         alt: "Area resepsionis dan front office representatif",
-      },
-      {
-        src: "/images/unsplash/office-10.webp",
-        alt: "Sudut fasilitas cetak dan mesin fotokopi kantor",
-      },
-      {
-        src: "/images/unsplash/office-11.webp",
-        alt: "Area lounge santai untuk istirahat dan diskusi",
       },
     ],
     pricing: [
@@ -464,21 +478,20 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bekasi",
     tagline: "Solusi hemat di kawasan penyangga Jakarta.",
     startingPrice: "Rp 300 rb",
-    image:
-      "/images/unsplash/office-12.webp",
-    imageAlt: "Kantor virtual office EasyOffice di Bekasi",
+    image: "/images/easyoffice/office-lounge.png",
+    imageAlt: "Kantor virtual office EasyOffice di Summarecon Bekasi",
     gallery: [
       {
-        src: "/images/unsplash/office-13.webp",
-        alt: "Meja resepsionis dan penyambutan tamu profesional",
+        src: "/images/easyoffice/office-lounge.png",
+        alt: "Lounge dan resepsionis EasyOffice Summarecon Bekasi",
       },
       {
-        src: "/images/unsplash/office-14.webp",
-        alt: "Fasilitas loker surat dan penanganan paket",
+        src: "/images/easyoffice/office-workspace.png",
+        alt: "Ruang kerja dan fasilitas kantor Summarecon Bekasi",
       },
       {
-        src: "/images/unsplash/office-15.webp",
-        alt: "Area pantry dengan perlengkapan kopi dan teh",
+        src: "/images/easyoffice/office-meeting.png",
+        alt: "Fasilitas Smart TV dan ruang rapat EasyOffice Bekasi",
       },
     ],
     pricing: [
