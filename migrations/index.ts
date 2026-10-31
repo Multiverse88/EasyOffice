@@ -9,7 +9,7 @@ import * as migration_20261028_000007_comparison_neutral_status from './20261028
 import * as migration_20261028_000008_rename_page_layout_collection from './20261028_000008_rename_page_layout_collection';
 import * as migration_20261029_000009_add_media_storage_fields from './20261029_000009_add_media_storage_fields';
 import * as migration_20261030_000010_add_partners from './20261030_000010_add_partners';
-import * as migration_20261030_000011_add_homepage_hero_fields from './20261030_000011_add_homepage_hero_fields';
+import * as migration_20261030_000011_add_missing_content_fields from './20261030_000011_add_missing_content_fields';
 
 export const migrations = [
   {
@@ -68,8 +68,8 @@ export const migrations = [
     name: '20261030_000010_add_partners'
   },
   {
-    up: migration_20261030_000011_add_homepage_hero_fields.up,
-    down: migration_20261030_000011_add_homepage_hero_fields.down,
-    name: '20261030_000011_add_homepage_hero_fields'
+    up: migration_20261030_000011_add_missing_content_fields.up,
+    down: migration_20261030_000011_add_missing_content_fields.down,
+    name: '20261030_000011_add_missing_content_fields'
   },
 ];
