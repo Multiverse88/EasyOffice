@@ -213,8 +213,8 @@ export const getCmsSite = cache(async function getCmsSite() {
     siteName: "EasyOffice",
     headerCtaLabel: "Hubungi Kami",
     homepageHeroEyebrow: "EasyOffice",
-    homepageHeroTitle: "Solusi Ruang Kerja Profesional untuk Bisnis Anda",
-    homepageHeroDescription: "Virtual Office, Coworking Space, dan Meeting Room untuk mendukung kebutuhan bisnis Anda — dengan alamat prestisius dan layanan profesional.",
+    homepageHeroTitle: "Miliki Alamat Kantor Premium di Kota Besar Indonesia",
+    homepageHeroDescription: "Virtual Office (VO) sudah disetujui pemerintah dan dapat digunakan untuk keperluan legal, seperti pendirian PT, CV, dan pendaftaran PKP. VO memudahkan Anda mengurus dokumen bisnis secara praktis dan efisien.",
     homepageHeroImageLabel: "Virtual Office • Coworking Space • Meeting Room • Private Office",
     homepageHeroPrimaryCtaLabel: "Hubungi Kami",
     homepageHeroPrimaryCtaMessage: "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.",
@@ -222,8 +222,8 @@ export const getCmsSite = cache(async function getCmsSite() {
     homepageHeroSecondaryCtaHref: "/layanan/virtual-office",
     homepageServicesTitle: "Layanan EasyOffice",
     homepageServicesDescription: "Berbagai layanan untuk mendukung operasional dan citra profesional bisnis Anda.",
-    homepageFacilitiesTitle: "Mengapa Pilih EasyOffice?",
-    homepageFacilitiesDescription: "Fasilitas lengkap untuk mendukung produktivitas dan citra profesional bisnis Anda.",
+    homepageFacilitiesTitle: "Keuntungan Sewa Virtual Office di Kami",
+    homepageFacilitiesDescription: "Dapatkan alamat bisnis prestisius dengan biaya terjangkau! Virtual office kami menawarkan fasilitas lengkap, layanan profesional, serta fleksibilitas tinggi.",
     homepageComparisonTitle: "Perbandingan dengan Office Lain",
     homepageComparisonDescription: "Perbandingan fasilitas yang Anda dapatkan bersama EasyOffice.",
     homepagePromoTitle: "Penawaran Spesial untuk Anda",
@@ -234,10 +234,20 @@ export const getCmsSite = cache(async function getCmsSite() {
     homepageCtaDescription: "Hubungi EasyOffice melalui WhatsApp — tim kami siap membantu memilih layanan dan lokasi yang sesuai dengan kebutuhan bisnis Anda.",
     homepageCtaButtonLabel: "Hubungi via WhatsApp",
     homepageCtaSecondaryButtonLabel: "Lihat Info Kontak",
-    footerDescription: "Solusi Ruang Kerja Profesional. Virtual Office, Coworking Space, dan Meeting Room di Bandung, Jakarta, dan Bekasi.",
-    copyrightText: `© ${new Date().getFullYear()} EasyOffice. Seluruh hak cipta dilindungi.`,
-    defaultSeoTitle: "EasyOffice — Virtual Office, Coworking Space & Meeting Room",
-    defaultSeoDescription: "EasyOffice menyediakan Virtual Office, Coworking Space, dan Meeting Room profesional di Bandung, Jakarta, dan Bekasi.",
+    footerDescription: "EasyOffice adalah penyedia layanan kantor virtual di Bandung, Jakarta, dan Bekasi yang menawarkan alamat bisnis prestisius, ruang meeting eksklusif, layanan pengelolaan surat, dan resepsionis profesional. Member of EASY CORP.",
+    copyrightText: `© ${new Date().getFullYear()} EasyOffice. Member of EASY CORP.`,
+    defaultSeoTitle: "EasyOffice: Virtual Office Bisa PKP Murah dan Profesional",
+    defaultSeoDescription: "Cari virtual office murah untuk bisnis Anda? EasyOffice menyediakan layanan sewa kantor virtual, Bisa PKP di Bandung, Jakarta, dan Bekasi. Konsultasi Gratis!",
+    email: "id.easyoffice@gmail.com",
+    phone: "0818 881 425",
+    primaryWhatsapp: "62818881425",
+    homepageHeroTrustItems: [
+      { text: "Bisa PKP", sortOrder: 1 },
+      { text: "Alamat Domisili Gedung Komersial", sortOrder: 2 },
+      { text: "Free Meeting Room hingga 70 Jam/Tahun", sortOrder: 3 },
+      { text: "Proses Cepat & Tanpa Ribet", sortOrder: 4 },
+      { text: "Legalitas Lengkap (IMB & PBB)", sortOrder: 5 },
+    ],
   };
   for (const [key, fallback] of Object.entries(siteDefaults)) {
     if (data[key] == null || data[key] === "") data[key] = fallback;
@@ -257,18 +267,55 @@ export const getCmsSite = cache(async function getCmsSite() {
 });
 
 export const getCmsAbout = cache(async function getCmsAbout() {
-  const response = await fetch(`${apiBase}/api/globals/about-page?depth=1`, cmsCache);
-  if (!response.ok) throw new Error(`CMS request failed: about-page (${response.status})`);
-  const data = await response.json();
-  return {
-    ...data,
-    heroImage: mediaUrl(data.heroImage) ?? "",
-    storyImage: mediaUrl(data.storyImage) ?? "",
-    heroHighlights: Array.isArray(data.heroHighlights) ? data.heroHighlights.map((item: { value?: string }) => item.value ?? "") : [],
-    storyHighlights: Array.isArray(data.storyHighlights) ? data.storyHighlights.map((item: { value?: string }) => item.value ?? "") : [],
-    stats: Array.isArray(data.stats) ? data.stats.map((item: { value?: string; label?: string }) => ({ value: item.value ?? "", label: item.label ?? "" })) : [],
-    values: Array.isArray(data.values) ? data.values.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "award", title: item.title ?? "", description: item.description ?? "" })) : [],
-  };
+  try {
+    const response = await fetch(`${apiBase}/api/globals/about-page?depth=1`, cmsCache);
+    if (!response.ok) throw new Error();
+    const data = await response.json();
+    return {
+      ...data,
+      heroTitle: data.heroTitle || "Buat Bisnismu Terlihat Profesional & Terpercaya",
+      heroDescription: data.heroDescription || "EasyOffice hadir sebagai solusi virtual office dengan layanan profesional, terpercaya, dan harga terjangkau di Bandung, Jakarta, dan Bekasi.",
+      storyTitle: data.storyTitle || "Tentang EasyOffice",
+      storyDescription: data.storyDescription || "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
+      heroImage: mediaUrl(data.heroImage) ?? "",
+      storyImage: mediaUrl(data.storyImage) ?? "",
+      heroHighlights: Array.isArray(data.heroHighlights) ? data.heroHighlights.map((item: { value?: string }) => item.value ?? "") : [],
+      storyHighlights: Array.isArray(data.storyHighlights) && data.storyHighlights.length ? data.storyHighlights.map((item: { value?: string }) => item.value ?? "") : [
+        "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",
+        "Alamat zonasi komersial gedung perkantoran resmi dan dapat digunakan untuk pendaftaran PKP",
+        "Free pemakaian Meeting Room eksklusif hingga 70 jam/tahun",
+      ],
+      stats: Array.isArray(data.stats) && data.stats.length ? data.stats.map((item: { value?: string; label?: string }) => ({ value: item.value ?? "", label: item.label ?? "" })) : [
+        { value: "13.000+", label: "Bisnis Terlayani" },
+        { value: "5 Menit", label: "Respon WhatsApp" },
+        { value: "4.9 ★", label: "Rating Google" },
+        { value: "100%", label: "Legal & Resmi" },
+      ],
+      values: Array.isArray(data.values) && data.values.length ? data.values.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "award", title: item.title ?? "", description: item.description ?? "" })) : [],
+    };
+  } catch {
+    return {
+      heroTitle: "Buat Bisnismu Terlihat Profesional & Terpercaya",
+      heroDescription: "EasyOffice hadir sebagai solusi virtual office dengan layanan profesional, terpercaya, dan harga terjangkau di Bandung, Jakarta, dan Bekasi.",
+      storyTitle: "Tentang EasyOffice",
+      storyDescription: "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
+      heroImage: "",
+      storyImage: "",
+      heroHighlights: [],
+      storyHighlights: [
+        "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",
+        "Alamat zonasi komersial gedung perkantoran resmi dan dapat digunakan untuk pendaftaran PKP",
+        "Free pemakaian Meeting Room eksklusif hingga 70 jam/tahun",
+      ],
+      stats: [
+        { value: "13.000+", label: "Bisnis Terlayani" },
+        { value: "5 Menit", label: "Respon WhatsApp" },
+        { value: "4.9 ★", label: "Rating Google" },
+        { value: "100%", label: "Legal & Resmi" },
+      ],
+      values: [],
+    };
+  }
 });
 
 export const getCmsFaqs = cache(async function getCmsFaqs(serviceSlug?: string) {

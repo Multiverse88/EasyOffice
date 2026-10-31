@@ -17,9 +17,10 @@ import { locationWhatsappNumber } from "@/lib/whatsapp";
 
 export const site = {
   name: "EasyOffice",
-  tagline: "Solusi Ruang Kerja Profesional untuk Bisnis Anda",
-  email: "halo@easyoffice.id",
-  phoneDisplay: "+62 812 3456 7890",
+  tagline: "Miliki Alamat Kantor Premium di Kota Besar Indonesia",
+  email: "id.easyoffice@gmail.com",
+  phoneDisplay: "0818 881 425",
+  whatsapp: "62818881425",
 };
 
 /* ------------------------------------------------------------------ */
@@ -31,34 +32,37 @@ export const locations: Location[] = [
     slug: "bandung",
     name: "Bandung",
     shortDescription:
-      "Lokasi utama EasyOffice dengan akses mudah ke pusat bisnis kota Bandung.",
-    address: "Jl. Ir. H. Juanda No. 88, Dago, Bandung 40135",
+      "Lokasi utama EasyOffice di Cihampelas Bandung — alamat bisnis komersial prestisius, legalitas lengkap, dan bisa PKP.",
+    address:
+      "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
     operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
-    email: "bandung@easyoffice.id",
-    phoneDisplay: "+62 812 3456 7890",
-    whatsapp: "6281234567890",
+    email: "id.easyoffice@gmail.com",
+    phoneDisplay: "022 3209 9037",
+    whatsapp: "62818881425",
   },
   {
     slug: "jakarta",
     name: "Jakarta",
     shortDescription:
-      "Kantor representatif di ibu kota untuk menjangkau klien dan mitra bisnis.",
-    address: "Jl. Jend. Sudirman Kav. 52, Setiabudi, Jakarta Selatan 12190",
+      "Kantor representatif di Sovereign Plaza TB Simatupang Jakarta Selatan untuk meningkatkan kredibilitas bisnis Anda.",
+    address:
+      "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
     operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
-    email: "jakarta@easyoffice.id",
-    phoneDisplay: "+62 812 3456 7891",
-    whatsapp: "6281234567891",
+    email: "id.easyoffice@gmail.com",
+    phoneDisplay: "021 2940 0153",
+    whatsapp: "62818881425",
   },
   {
     slug: "bekasi",
     name: "Bekasi",
     shortDescription:
-      "Alternatif strategis dengan biaya efisien di kawasan penyangga Jakarta.",
-    address: "Jl. Ahmad Yani No. 67, Bekasi Selatan, Bekasi 17141",
+      "Alternatif strategis dan hemat di Emerald Commercial Summarecon Bekasi dengan legalitas gedung lengkap dan siap PKP.",
+    address:
+      "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
     operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
-    email: "bekasi@easyoffice.id",
-    phoneDisplay: "+62 812 3456 7892",
-    whatsapp: "6281234567892",
+    email: "id.easyoffice@gmail.com",
+    phoneDisplay: "0818 881 425",
+    whatsapp: "62818881425",
   },
 ];
 
@@ -220,50 +224,50 @@ export const generalFaqs: Faq[] = [
   {
     question: "Apa itu Virtual Office?",
     answer:
-      "Virtual Office adalah layanan alamat bisnis profesional beserta penanganan surat dan layanan resepsionis, tanpa Anda perlu menyewa ruang kantor fisik.",
+      "Virtual Office adalah layanan kantor tanpa ruang fisik yang memberikan alamat bisnis prestisius, layanan penerimaan surat, dan fasilitas lainnya untuk mendukung operasional bisnis Anda.",
   },
   {
-    question: "Apa saja layanan yang tersedia di EasyOffice?",
+    question: "Apa saja keuntungan menggunakan Virtual Office?",
     answer:
-      "Kami menyediakan Virtual Office, Coworking Space, dan Meeting Room di Bandung, Jakarta, dan Bekasi.",
+      "Alamat bisnis profesional untuk meningkatkan kredibilitas usaha, biaya lebih hemat dibandingkan kantor fisik, fleksibilitas kerja dari mana saja tanpa perlu menyewa ruang kantor, dan layanan tambahan seperti penerimaan surat, nomor telepon bisnis, serta meeting room.",
   },
   {
-    question: "Di mana lokasi EasyOffice?",
+    question: "Siapa yang cocok menggunakan Virtual Office?",
     answer:
-      "EasyOffice hadir di Bandung, Jakarta, dan Bekasi. Detail alamat tiap lokasi tersedia di halaman Kontak.",
+      "Startup dan bisnis kecil yang ingin mengurangi biaya operasional, freelancer dan pekerja remote yang membutuhkan alamat bisnis profesional, serta perusahaan yang ingin memperluas jangkauan bisnis tanpa membuka kantor fisik baru.",
   },
   {
-    question: "Apakah tersedia Meeting Room?",
+    question: "Apakah alamat Virtual Office EasyOffice bisa untuk PKP dan legalitas?",
     answer:
-      "Ya. Meeting Room tersedia dengan berbagai kapasitas dan dapat dipesan per jam melalui WhatsApp.",
+      "Ya, Virtual Office EasyOffice sudah disetujui pemerintah dan berlokasi di gedung komersial dengan legalitas lengkap (IMB, PBB, Perjanjian Sewa) sehingga dapat digunakan untuk pendaftaran PKP serta pendirian PT atau CV.",
   },
   {
-    question: "Bagaimana cara menghubungi EasyOffice?",
+    question: "Bagaimana cara konsultasi dan pemesanan layanan?",
     answer:
-      "Klik tombol WhatsApp di situs ini — Anda akan diarahkan ke chat WhatsApp tim kami untuk info dan pemesanan.",
+      "Klik tombol WhatsApp di situs ini — tim Customer Care kami siap membantu konsultasi gratis pemilihan lokasi dan paket yang paling sesuai dengan kebutuhan usaha Anda.",
   },
 ];
 
 export const virtualOfficeFaqs: Faq[] = [
   {
-    question: "Apakah alamat Virtual Office bisa untuk legalitas usaha?",
+    question: "Apakah alamat Virtual Office bisa untuk legalitas usaha dan PKP?",
     answer:
-      "Alamat Virtual Office umumnya dapat digunakan untuk kebutuhan administrasi bisnis. Untuk kepastian legalitas spesifik usaha Anda, konsultasikan dengan tim kami via WhatsApp.",
+      "Bisa. Alamat Virtual Office EasyOffice berada di zonasi komersial gedung perkantoran resmi dengan dokumen IMB dan PBB yang sah, sehingga memenuhi syarat untuk domisili legalitas PT, CV, serta pendaftaran PKP.",
   },
   {
     question: "Bagaimana sistem penerimaan surat dan paket?",
     answer:
-      "Setiap surat atau paket yang tiba akan dicatat dan Anda menerima pemberitahuan untuk pengambilan atau penerusan.",
+      "Resepsionis kami akan menerima, mencatat, dan mengamankan setiap surat atau paket masuk atas nama perusahaan Anda, kemudian memberikan notifikasi langsung melalui WhatsApp.",
   },
   {
     question: "Apakah saya bisa menggunakan meeting room?",
     answer:
-      "Ya. Setiap paket Virtual Office memiliki jatah jam meeting room per bulan yang dapat ditambah sesuai kebutuhan.",
+      "Ya. Setiap paket Virtual Office dilengkapi akses meeting room eksklusif (hingga 70 jam/tahun pada paket tertentu) yang dilengkapi LED Smart TV, proyektor, dan koneksi internet cepat.",
   },
   {
     question: "Berapa lama minimal berlangganan?",
     answer:
-      "Paket tersedia bulanan dengan opsi perpanjangan tahunan yang lebih hemat. Hubungi kami untuk penawaran resmi.",
+      "Paket sewa tersedia dengan komitmen fleksibel mulai dari bulanan hingga tahunan, dengan penawaran khusus hemat hingga gratis sewa 3 bulan untuk paket tahunan.",
   },
 ];
 
@@ -387,22 +391,127 @@ export const serviceLocations: ServiceLocation[] = [
     facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door", "coffee"),
     offices: [
       {
-        slug: "asia-afrika",
-        name: "EasyOffice Asia Afrika",
-        description: "Kantor virtual di kawasan Asia Afrika, Bandung, dengan alamat bisnis strategis dan layanan surat untuk mendukung citra profesional perusahaan Anda.",
-        address: "Jl. Asia Afrika No. 123, Sumur Bandung, Bandung 40113",
+        slug: "cihampelas",
+        name: "EasyOffice Cihampelas",
+        description:
+          "Kantor virtual di kawasan Cihampelas, Bandung, dengan alamat bisnis komersial strategis, legalitas gedung lengkap (IMB, PBB), LED Smart TV, dan siap PKP.",
+        address:
+          "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
-        phoneDisplay: "+62 812 3456 7890",
-        whatsapp: "6281234567890",
+        phoneDisplay: "022 3209 9037",
+        whatsapp: "62818881425",
+      },
+    ],
+  },
+  {
+    serviceSlug: "virtual-office",
+    locationSlug: "jakarta",
+    tagline: "Alamat prestisius ibu kota untuk jangkauan bisnis nasional.",
+    startingPrice: "Rp 450 rb",
+    image:
+      "/images/unsplash/office-08.webp",
+    imageAlt: "Kantor virtual office EasyOffice di Jakarta",
+    gallery: [
+      {
+        src: "/images/unsplash/office-09.webp",
+        alt: "Area resepsionis dan front office representatif",
       },
       {
-        slug: "dago",
-        name: "EasyOffice Dago",
-        description: "Kantor virtual di kawasan Dago, Bandung, dengan alamat bisnis representatif dan layanan kantor yang mendukung aktivitas bisnis Anda.",
-        address: "Jl. Ir. H. Juanda No. 88, Dago, Bandung 40135",
+        src: "/images/unsplash/office-10.webp",
+        alt: "Sudut fasilitas cetak dan mesin fotokopi kantor",
+      },
+      {
+        src: "/images/unsplash/office-11.webp",
+        alt: "Area lounge santai untuk istirahat dan diskusi",
+      },
+    ],
+    pricing: [
+      plan("Basic", "Rp 450 rb", "/bulan", [
+        "Alamat bisnis Jakarta Selatan",
+        "Penanganan surat",
+        "Pemberitahuan via email",
+      ]),
+      plan("Business", "Rp 850 rb", "/bulan", [
+        "Semua fitur Basic",
+        "Layanan resepsionis",
+        "4 jam meeting room / bulan",
+        "Nomor telepon khusus",
+      ]),
+      plan("Premium", "Rp 1,6 jt", "/bulan", [
+        "Semua fitur Business",
+        "12 jam meeting room / bulan",
+        "Akses coworking 8 hari / bulan",
+        "Prioritas dukungan",
+      ]),
+    ],
+    facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door", "coffee", "car", "clock"),
+    offices: [
+      {
+        slug: "sovereign-plaza",
+        name: "EasyOffice Sovereign Plaza",
+        description:
+          "Kantor virtual di Sovereign Plaza TB Simatupang, Jakarta Selatan. Alamat bisnis komersial prestisius, fasilitas meeting room proyektor, dan bisa PKP.",
+        address:
+          "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
-        phoneDisplay: "+62 812 3456 7893",
-        whatsapp: "6281234567893",
+        phoneDisplay: "021 2940 0153",
+        whatsapp: "62818881425",
+      },
+    ],
+  },
+  {
+    serviceSlug: "virtual-office",
+    locationSlug: "bekasi",
+    tagline: "Solusi hemat di kawasan penyangga Jakarta.",
+    startingPrice: "Rp 300 rb",
+    image:
+      "/images/unsplash/office-12.webp",
+    imageAlt: "Kantor virtual office EasyOffice di Bekasi",
+    gallery: [
+      {
+        src: "/images/unsplash/office-13.webp",
+        alt: "Meja resepsionis dan penyambutan tamu profesional",
+      },
+      {
+        src: "/images/unsplash/office-14.webp",
+        alt: "Fasilitas loker surat dan penanganan paket",
+      },
+      {
+        src: "/images/unsplash/office-15.webp",
+        alt: "Area pantry dengan perlengkapan kopi dan teh",
+      },
+    ],
+    pricing: [
+      plan("Basic", "Rp 300 rb", "/bulan", [
+        "Alamat bisnis",
+        "Penanganan surat",
+        "Pemberitahuan via email",
+      ]),
+      plan("Business", "Rp 550 rb", "/bulan", [
+        "Semua fitur Basic",
+        "Layanan resepsionis",
+        "2 jam meeting room / bulan",
+        "Nomor telepon khusus",
+      ]),
+      plan("Premium", "Rp 1 jt", "/bulan", [
+        "Semua fitur Business",
+        "6 jam meeting room / bulan",
+        "Akses coworking 4 hari / bulan",
+        "Prioritas dukungan",
+      ]),
+    ],
+    facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door"),
+    offices: [
+      {
+        slug: "summarecon",
+        name: "EasyOffice Summarecon Bekasi",
+        description:
+          "Kantor virtual di Emerald Commercial Summarecon Bekasi. Alamat komersial strategis, fasilitas Smart TV, Whiteboard, dan bisa PKP.",
+        address:
+          "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
+        operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
+        phoneDisplay: "0818 881 425",
+        whatsapp: "62818881425",
       },
     ],
   },
@@ -831,25 +940,25 @@ export const testimonials: Testimonial[] = [
 
 export const promotions: Promotion[] = [
   {
-    badge: "Terbatas",
-    title: "Diskon 20% Paket Virtual Office Tahunan",
+    badge: "Promo",
+    title: "Gratis 3 Bulan Sewa Virtual Office",
     description:
-      "Hemat 20% untuk komitmen 12 bulan di seluruh lokasi EasyOffice.",
-    period: "Berlaku s.d. 31 Des",
+      "Nikmati keuntungan sewa Virtual Office di EasyOffice dengan gratis sewa selama 3 bulan untuk komitmen tahunan. Hemat operasional perusahaanmu!",
+    period: "Penawaran Terbatas",
   },
   {
-    badge: "Terbatas",
-    title: "Gratis 2 Jam Meeting Room",
+    badge: "Promo",
+    title: "Free Room Meeting hingga 70 Jam/Tahun",
     description:
-      "Dapatkan tambahan 2 jam meeting room setelah aktivasi paket Business.",
-    period: "Selama kuota tersedia",
+      "Dapatkan akses gratis pemakaian ruang meeting eksklusif hingga 70 jam per tahun untuk pertemuan bisnis Anda.",
+    period: "Termasuk di Paket Tertentu",
   },
   {
-    badge: "Trial",
-    title: "Coba Coworking 1 Hari Gratis",
+    badge: "Diskon",
+    title: "Diskon Paket Pendirian PT + Virtual Office",
     description:
-      "Nikmati hot desk gratis satu hari kerja sebelum memilih paket bulanan.",
-    period: "Senin–Jumat",
+      "Miliki legalitas badan usaha PT atau CV lengkap sekaligus domisili kantor virtual komersial resmi siap pakai.",
+    period: "Selama Kuota Tersedia",
   },
 ];
 
