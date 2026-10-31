@@ -46,17 +46,19 @@ export function HowItWorks({ items = steps }: { items?: Array<{ title: string; d
           {items.map((s, index) => (
             <div
               key={s.title}
-              className="relative rounded-3xl border border-neutral-200 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
+              className="group relative flex flex-col justify-between rounded-3xl border border-neutral-200/80 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-navy/30 hover:shadow-card"
             >
-              <span className="font-display text-4xl font-bold text-navy/15">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-display mt-4 text-lg font-bold text-navy">
-                {s.title}
-              </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-neutral-600">
-                {s.description}
-              </p>
+              <div>
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-navy/5 font-display text-sm font-bold text-navy group-hover:bg-navy group-hover:text-white transition-colors duration-300">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display mt-5 text-lg font-bold text-navy">
+                  {s.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-neutral-600">
+                  {s.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

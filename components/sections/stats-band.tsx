@@ -48,7 +48,7 @@ export function StatsBand({ items, variant = "default" }: { items?: Array<{ valu
           {displayItems.map((stat, index) => (
             <div
               key={stat.label}
-              className="group relative flex items-center gap-3.5 border-b border-r border-neutral-200/80 p-4 transition-colors duration-300 hover:bg-navy/[0.025] sm:p-5 lg:border-b-0"
+              className="group relative flex items-center gap-3.5 border-b border-r border-neutral-200/80 p-4 transition-colors duration-300 hover:bg-navy/[0.025] sm:p-5 [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:last:border-r-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 lg:border-b-0"
             >
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy/5 text-navy transition-colors duration-300 group-hover:bg-navy group-hover:text-white">
                  {(() => { const Icon = iconForStat(stat.label, index, stat.icon); return <Icon className="h-5 w-5" aria-hidden />; })()}

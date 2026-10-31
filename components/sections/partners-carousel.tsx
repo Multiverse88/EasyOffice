@@ -13,11 +13,11 @@ function PartnerSet({ partners, copy }: { partners: CmsPartner[]; copy: number }
         width={220}
         height={88}
         loading="lazy"
-        className="max-h-full max-w-full object-contain"
+        className="max-h-full max-w-full object-contain filter grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
       />
     );
     return (
-      <div key={key} className="flex h-[76px] w-36 shrink-0 items-center justify-center rounded-2xl border border-neutral-100 bg-white px-5 py-3 shadow-sm sm:h-[88px] sm:w-44 sm:px-7">
+      <div key={key} className="flex h-[72px] w-40 shrink-0 items-center justify-center rounded-2xl border border-neutral-200/60 bg-white px-6 py-3 shadow-xs transition-all duration-300 hover:border-navy/30 hover:shadow-soft sm:h-[84px] sm:w-48 sm:px-7">
         {copy === 0 && partner.href ? <a href={partner.href} target="_blank" rel="noopener noreferrer" aria-label={`Kunjungi ${partner.name}`}>{image}</a> : image}
       </div>
     );
@@ -30,7 +30,7 @@ export function PartnersCarousel({ partners = [] }: { partners?: CmsPartner[] })
   return (
     <section aria-label="Mitra EasyOffice" className="overflow-hidden bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="mb-7 text-center text-xs font-bold uppercase tracking-[0.2em] text-neutral-500 sm:mb-9">Dipercaya oleh berbagai bisnis</p>
+        <p className="mb-7 text-center text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 sm:mb-9">Dipercaya oleh berbagai bisnis di Indonesia</p>
         <div className="partners-marquee group relative" aria-label="Logo mitra EasyOffice">
           <div className="partners-marquee-track group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
             <PartnerSet partners={items} copy={0} />

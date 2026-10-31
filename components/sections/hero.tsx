@@ -81,14 +81,14 @@ export function Hero({
               </Button>
             ) : null}
           </div>
-          <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
             {(trustItems?.length ? trustItems : defaultTrustItems).map((item) => (
               <li
                 key={item}
-                className="inline-flex items-center gap-2.5 text-sm font-semibold text-white/85"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-xs"
               >
-                <CheckCircle2 className="h-5 w-5 text-yellow-400" aria-hidden />
-                {item}
+                <CheckCircle2 className="h-4 w-4 text-yellow-400 shrink-0" aria-hidden />
+                <span>{item}</span>
               </li>
             ))}
           </ul>

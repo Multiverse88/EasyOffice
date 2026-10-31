@@ -36,20 +36,28 @@ export function ComparisonTable({
                 <td className="px-5 py-3.5 font-medium text-neutral-800">{row.feature}</td>
                 <td className="px-5 py-3.5 text-center">
                   {row.easyoffice === "true" || row.easyoffice === true ? (
-                    <Check className="mx-auto h-5 w-5 text-navy" aria-label="Tersedia" />
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 text-emerald-600" aria-label="Tersedia">
+                      <Check className="h-4 w-4 stroke-[2.5]" />
+                    </span>
                   ) : row.easyoffice === "false" || row.easyoffice === false ? (
-                    <X className="mx-auto h-5 w-5 text-red-500" aria-label="Tidak tersedia" />
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-red-500" aria-label="Tidak tersedia">
+                      <X className="h-4 w-4 stroke-[2.5]" />
+                    </span>
                   ) : (
-                    <span className="text-xs font-medium text-neutral-500">Belum tentu tersedia</span>
+                    <span className="text-xs font-medium text-neutral-500">Belum tentu</span>
                   )}
                 </td>
                 <td className="px-5 py-3.5 text-center">
                   {row.typical === "true" || row.typical === true ? (
-                    <Check className="mx-auto h-5 w-5 text-neutral-400" aria-label="Tersedia" />
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-100 text-neutral-500" aria-label="Tersedia">
+                      <Check className="h-4 w-4 stroke-[2]" />
+                    </span>
                   ) : row.typical === "false" || row.typical === false ? (
-                    <X className="mx-auto h-5 w-5 text-red-400" aria-label="Tidak tersedia" />
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-50/60 text-red-400" aria-label="Tidak tersedia">
+                      <X className="h-4 w-4 stroke-[2]" />
+                    </span>
                   ) : (
-                    <span className="text-xs font-medium text-neutral-500">Belum tentu tersedia</span>
+                    <span className="text-xs font-medium text-neutral-500">Belum tentu</span>
                   )}
                 </td>
               </tr>
