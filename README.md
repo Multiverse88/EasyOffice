@@ -66,4 +66,5 @@ Public pages read content from Payload through `lib/data/cms-data.ts`; optional 
 - Fixed empty CMS collections, missing service/partner images, contact submission status, and fallback contact links.
 - Refined public spacing, service cards, hero styling, and section reveal motion.
 - Updated the Shopee marketplace section with an EasyLegal-style responsive layout, local illustration fallback, and Shopee logo.
+- Added a homepage Virtual Office location-card section without redundant city-filter tabs.
 

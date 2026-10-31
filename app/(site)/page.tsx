@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { ComparisonTable } from "@/components/sections/comparison-table";
 import { FacilitiesGrid } from "@/components/sections/facilities-grid";
-import { getCmsComparisonRows, getCmsHomepageFacilities, getCmsPartners, getCmsPromotions, getCmsServices, getCmsSite, getCmsTestimonials } from "@/lib/data/cms-data";
+import { getCmsComparisonRows, getCmsHomepageFacilities, getCmsLocations, getCmsPartners, getCmsPromotions, getCmsServices, getCmsServiceLocations, getCmsSite, getCmsTestimonials } from "@/lib/data/cms-data";
 import { Hero } from "@/components/sections/hero";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { PromoSection } from "@/components/sections/promo-section";
 import { PartnersCarousel } from "@/components/sections/partners-carousel";
 import { ShopeeSection } from "@/components/sections/shopee-section";
 import { ServicesOverview } from "@/components/sections/services-overview";
+import { ServiceLocationGrid } from "@/components/sections/service-location-grid";
+import { Section } from "@/components/ui/section";
 import { StatsBand } from "@/components/sections/stats-band";
 import { Testimonials } from "@/components/sections/testimonials";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
@@ -22,7 +24,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [cmsServices, cmsTestimonials, cmsPromotions, cmsComparisonRows, homepageFacilities, partners, site] = await Promise.all([
+  const [
+    cmsServices,
+    cmsTestimonials,
+    cmsPromotions,
+    cmsComparisonRows,
+    homepageFacilities,
+    partners,
+    site,
+    cmsLocations,
+    cmsServiceLocations,
+  ] = await Promise.all([
     getCmsServices(),
     getCmsTestimonials(),
     getCmsPromotions(),
@@ -30,7 +42,22 @@ export default async function Home() {
     getCmsHomepageFacilities(),
     getCmsPartners(),
     getCmsSite(),
+    getCmsLocations().catch(() => []),
+    getCmsServiceLocations().catch(() => []),
   ]);
+  const virtualOfficeService = cmsServices.find((service) => service.slug === "virtual-office");
+  const virtualOfficeItems = virtualOfficeService
+    ? cmsServiceLocations
+        .filter((item) => item.serviceSlug === virtualOfficeService.slug)
+        .map((combo) => ({
+          location: cmsLocations.find((location) => location.slug === combo.locationSlug) ?? {
+            slug: combo.locationSlug,
+            name: combo.locationSlug,
+          },
+          combo,
+          office: combo.offices?.[0],
+        }))
+    : [];
   return (
     <>
         <Hero
@@ -71,6 +98,16 @@ export default async function Home() {
         title={site.homepageServicesTitle ?? "Layanan EasyOffice"}
         description={site.homepageServicesDescription ?? "Berbagai layanan untuk mendukung operasional dan citra profesional bisnis Anda."}
       />
+      {virtualOfficeService && virtualOfficeItems.length > 0 ? (
+        <Section
+          eyebrow="Lokasi"
+          title="Lokasi Virtual Office"
+          description="Pilih lokasi Virtual Office yang paling sesuai dengan kebutuhan bisnis Anda."
+          tone="gray"
+        >
+          <ServiceLocationGrid service={virtualOfficeService} items={virtualOfficeItems} />
+        </Section>
+      ) : null}
       <HowItWorks items={Array.isArray(site.howItWorks) && site.howItWorks.length ? site.howItWorks : undefined} />
       <ComparisonTable
         rows={cmsComparisonRows}
