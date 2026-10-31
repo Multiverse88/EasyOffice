@@ -65,3 +65,5 @@ Public pages read content from Payload through `lib/data/cms-data.ts`; optional 
 - Added the office SEO slug migration; apply Payload migrations before deploying this code.
 - Fixed empty CMS collections, missing service/partner images, contact submission status, and fallback contact links.
 - Refined public spacing, service cards, hero styling, and section reveal motion.
+- Updated the Shopee marketplace section with an EasyLegal-style responsive layout, local illustration fallback, and Shopee logo.
+
