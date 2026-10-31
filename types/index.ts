@@ -43,6 +43,8 @@ export interface Benefit {
   icon: string;
   title: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface SeoMetadata {
@@ -69,6 +71,8 @@ export interface Facility {
   icon: string;
   title: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface Testimonial {

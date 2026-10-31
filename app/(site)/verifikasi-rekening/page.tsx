@@ -44,9 +44,14 @@ export default function VerificationPage() {
 
           {/* Rekening Card */}
           <div className="rounded-2xl border-2 border-navy/20 bg-gradient-to-br from-navy/5 via-white to-blue-50/40 p-6 sm:p-8">
-            <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-              Rekening Resmi Pembayaran
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                Rekening Resmi Pembayaran
+              </p>
+              <div className="relative h-6 w-24">
+                <Image src="/images/easyoffice/bsi-logo.png" alt="Bank Syariah Indonesia" fill sizes="96px" className="object-contain" />
+              </div>
+            </div>
             <div className="mt-4 flex flex-wrap items-baseline justify-between gap-4">
               <div>
                 <strong className="block font-display text-sm font-bold text-navy uppercase tracking-wide">

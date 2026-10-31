@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
 import { PromoFilters } from "@/components/sections/promo-filters";
@@ -22,7 +23,19 @@ export default async function PromoPage() {
             <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy sm:text-4xl">Penawaran Spesial untuk Anda</h1>
             <p className="mt-3 text-sm leading-relaxed text-neutral-600 sm:text-base">Temukan promo EasyOffice untuk layanan Virtual Office, Meeting Room, dan Coworking Space.</p>
           </div>
-           <PromoFilters promotions={promotions} services={promoServices} offices={offices} serviceLocations={serviceLocations} whatsappNumber={site.whatsappNumber} />
+          <div className="mb-10 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-soft">
+            <div className="relative aspect-[21/9] w-full sm:aspect-[24/9]">
+              <Image
+                src="/images/easyoffice/promo-banner.png"
+                alt="Promo Spesial EasyOffice"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 1152px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <PromoFilters promotions={promotions} services={promoServices} offices={offices} serviceLocations={serviceLocations} whatsappNumber={site.whatsappNumber} />
         </Container>
       </section>
 

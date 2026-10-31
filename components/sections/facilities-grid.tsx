@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Bell,
   Car,
@@ -48,9 +49,15 @@ export function FacilitiesGrid({
               key={f.title}
               className={`rounded-3xl border border-neutral-200 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-navy/30 hover:shadow-card ${items.length !== 4 ? "lg:col-span-2" : ""} ${items.length === 5 && index === 3 ? "lg:col-start-2" : ""} ${items.length === 5 && index === 4 ? "lg:col-start-4" : ""}`}
             >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-navy text-white shadow-soft">
-                <Icon className="h-5 w-5" aria-hidden />
-              </span>
+              {f.image ? (
+                <div className="relative mb-3 h-14 w-14 overflow-hidden">
+                  <Image src={f.image} alt={f.title} fill sizes="56px" className="object-contain" />
+                </div>
+              ) : (
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-navy text-white shadow-soft">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+              )}
               <h3 className="mt-4 font-display text-sm font-bold text-navy">{f.title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">
                 {f.description}
