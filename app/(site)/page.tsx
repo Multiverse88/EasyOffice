@@ -16,6 +16,7 @@ import { StatsBand } from "@/components/sections/stats-band";
 import { Testimonials } from "@/components/sections/testimonials";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
 import { whatsappUrl } from "@/lib/whatsapp";
+import { BlogPreviewSection } from "@/components/sections/blog-preview";
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getCmsSite();
@@ -121,7 +122,8 @@ export default async function Home() {
       />
       <PartnersCarousel partners={partners} />
       <Testimonials items={homepageTestimonials} sourceUrl={homepageTestimonialsSourceUrl} />
-        <WhatsappCta whatsappNumber={site.whatsappNumber} title={site.homepageCtaTitle} description={site.homepageCtaDescription} />
+      <BlogPreviewSection />
+      <WhatsappCta whatsappNumber={site.whatsappNumber} title={site.homepageCtaTitle} description={site.homepageCtaDescription} />
     </>
   );
 }

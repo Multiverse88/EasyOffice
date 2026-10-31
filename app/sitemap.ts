@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCmsServiceLocations, getCmsServices } from "@/lib/data/cms-data";
+import { blogPosts } from "@/lib/data/blog-data";
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -32,6 +33,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/verifikasi-rekening`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/kebijakan-privasi`,
@@ -87,5 +100,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...staticRoutes, ...serviceRoutes, ...locationRoutes];
+  // Dynamic blog post routes
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date || now),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...locationRoutes, ...blogRoutes];
 }

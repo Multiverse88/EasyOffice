@@ -203,11 +203,68 @@ export const getCmsServiceLocations = cache(async function getCmsServiceLocation
   }
 });
 
-export const getCmsSite = cache(async function getCmsSite() {
-  const response = await fetch(`${apiBase}/api/globals/site-settings?depth=1`, cmsCache);
-  if (!response.ok) throw new Error(`CMS request failed: site-settings (${response.status})`);
-  const data = await response.json();
-  // Keep the public site and the Site Settings form aligned for legacy globals
+export type CmsSiteData = {
+  siteName: string;
+  headerCtaLabel: string;
+  headerCtaMessage: string;
+  homepageHeroEyebrow: string;
+  homepageHeroTitle: string;
+  homepageHeroDescription: string;
+  homepageHeroImage: string;
+  homepageHeroImageLabel: string;
+  homepageHeroPrimaryCtaLabel: string;
+  homepageHeroPrimaryCtaMessage: string;
+  homepageHeroSecondaryCtaLabel: string;
+  homepageHeroSecondaryCtaHref: string;
+  homepageHeroTrustItems?: Array<{ text?: string; sortOrder?: number }>;
+  homepageServicesTitle: string;
+  homepageServicesDescription: string;
+  homepageFacilitiesTitle: string;
+  homepageFacilitiesDescription: string;
+  homepageComparisonTitle: string;
+  homepageComparisonDescription: string;
+  homepagePromoTitle: string;
+  homepagePromoDescription: string;
+  homepageShopeeTitle: string;
+  homepageShopeeDescription: string;
+  homepageShopeeImage?: string;
+  homepageShopeeImageAlt?: string;
+  homepageCtaTitle: string;
+  homepageCtaDescription: string;
+  homepageCtaButtonLabel: string;
+  homepageCtaSecondaryButtonLabel: string;
+  footerDescription: string;
+  footerServicesTitle?: string;
+  footerCompanyTitle?: string;
+  footerContactTitle?: string;
+  copyrightText: string;
+  defaultSeoTitle: string;
+  defaultSeoDescription: string;
+  email: string;
+  phone: string;
+  phoneDisplay: string;
+  primaryWhatsapp: string;
+  whatsappNumbers?: Office["whatsappNumbers"];
+  whatsappNumber?: string;
+  navigation?: Array<{ label: string; href?: string; children?: Array<{ label: string; href: string; description?: string }> }>;
+  howItWorks?: Array<{ title: string; description: string }>;
+  gtmContainerId?: string;
+  logoUrl?: string;
+  statsBanner: Array<{ value: string; label: string; icon?: string }>;
+  socialLinks: unknown[];
+};
+
+export const getCmsSite = cache(async function getCmsSite(): Promise<CmsSiteData> {
+  const data: Record<string, unknown> = {};
+  try {
+    const response = await fetch(`${apiBase}/api/globals/site-settings?depth=1`, cmsCache);
+    if (response.ok) {
+      const json = await response.json();
+      if (json && typeof json === "object") Object.assign(data, json);
+    }
+  } catch {
+    // Safe fallback to siteDefaults
+  }
   // whose stored fields are null. These are content defaults, not guessed data.
   const siteDefaults = {
     siteName: "EasyOffice",
@@ -242,6 +299,11 @@ export const getCmsSite = cache(async function getCmsSite() {
     email: "id.easyoffice@gmail.com",
     phone: "0818 881 425",
     primaryWhatsapp: "62818881425",
+    headerCtaMessage: "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.",
+    homepageShopeeImageAlt: "Transaksi aman via marketplace Shopee",
+    navigation: undefined as CmsSiteData["navigation"],
+    gtmContainerId: undefined as string | undefined,
+    howItWorks: undefined as CmsSiteData["howItWorks"],
     homepageHeroTrustItems: [
       { text: "Bisa PKP", sortOrder: 1 },
       { text: "Alamat Domisili Gedung Komersial", sortOrder: 2 },
@@ -264,7 +326,7 @@ export const getCmsSite = cache(async function getCmsSite() {
     { value: "100%", label: "Legal & Resmi", icon: "shield" },
   ];
   const statsBanner = Array.isArray(data.statsBanner) && data.statsBanner.length ? data.statsBanner : defaultStats;
-  return { ...data, phoneDisplay: data.phone ?? "", logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage) || "/images/easyoffice/office-hero.jpg", homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner, socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) };
+  return { ...siteDefaults, ...data, phoneDisplay: String(data.phone ?? data.phoneDisplay ?? "0818 881 425"), logoUrl: mediaUrl(data.logo), homepageHeroImage: mediaUrl(data.homepageHeroImage) || "/images/easyoffice/office-hero.jpg", homepageShopeeImage: mediaUrl(data.homepageShopeeImage), statsBanner, socialLinks: Array.isArray(data.socialLinks) ? data.socialLinks : [], primaryWhatsapp, whatsappNumbers, whatsappNumber: routedWhatsappNumber(whatsappNumbers, primaryWhatsapp) } as CmsSiteData;
 });
 
 export const getCmsAbout = cache(async function getCmsAbout() {

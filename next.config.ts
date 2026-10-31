@@ -83,6 +83,21 @@ const nextConfig: NextConfig = {
         destination: "/layanan/meeting-room/jakarta",
         permanent: true,
       },
+      {
+        source: "/cv-easyoffice-kantor-bersama",
+        destination: "/verifikasi-rekening",
+        permanent: true,
+      },
+      {
+        source: "/promo-easyoffice",
+        destination: "/promo",
+        permanent: true,
+      },
+      {
+        source: "/kontak-kami",
+        destination: "/kontak",
+        permanent: true,
+      },
     ];
   },
 };

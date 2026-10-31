@@ -88,7 +88,11 @@ export function Footer({ site, services, navItems }: { site: { name?: string; ta
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>{site.copyrightText ?? `© ${new Date().getFullYear()} ${site.name ?? "EasyOffice"}. Seluruh hak cipta dilindungi.`}</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <Link href="/verifikasi-rekening" className="transition-colors hover:text-white">
+              Verifikasi Rekening
+            </Link>
+            <span>•</span>
             <Link href="/kebijakan-privasi" className="transition-colors hover:text-white">
               Kebijakan Privasi
             </Link>
