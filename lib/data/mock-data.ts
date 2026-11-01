@@ -43,6 +43,12 @@ export const locations: Location[] = [
   {
     slug: "jakarta",
     name: "Jakarta",
+    card: {
+      title: "EasyOffice Sovereign Plaza (Jakarta)",
+      description: "Kantor representatif di Sovereign Plaza TB Simatupang Jakarta Selatan untuk meningkatkan kredibilitas bisnis Anda.",
+      image: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+      imageAlt: "Kantor representatif EasyOffice di Sovereign Plaza Jakarta",
+    },
     shortDescription:
       "Kantor representatif di Sovereign Plaza TB Simatupang Jakarta Selatan untuk meningkatkan kredibilitas bisnis Anda.",
     address:
@@ -459,20 +465,24 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "jakarta",
     tagline: "Alamat prestisius ibu kota untuk jangkauan bisnis nasional.",
     startingPrice: "Rp 450 rb",
-    image: "/images/easyoffice/office-meeting.png",
-    imageAlt: "Kantor virtual office EasyOffice di Sovereign Plaza Jakarta",
+    image: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+    imageAlt: "Ruang meeting dan kantor virtual EasyOffice di Sovereign Plaza Jakarta",
     gallery: [
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Meeting room proyektor Sovereign Plaza Jakarta",
+        src: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+        alt: "Ruang rapat boardroom representatif dilengkapi layar proyektor Sovereign Plaza",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Ruang kerja dan kantor modern Dewata Office",
+        src: "/images/offices/jakarta/sovereign-executive-room.png",
+        alt: "Ruang meeting eksekutif berkapasitas besar dengan pencahayaan modern",
       },
       {
-        src: "/images/easyoffice/office-hero.jpg",
-        alt: "Area resepsionis dan front office representatif",
+        src: "/images/offices/jakarta/sovereign-meeting-room.png",
+        alt: "Fasilitas meeting room representatif meja konferensi dan whiteboard wall",
+      },
+      {
+        src: "/images/offices/jakarta/sovereign-discussion-room.png",
+        alt: "Ruang diskusi privat meja bundar untuk pertemuan dan konsultasi",
       },
     ],
     pricing: [
@@ -713,16 +723,16 @@ export const serviceLocations: ServiceLocation[] = [
     imageAlt: "Coworking space EasyOffice di Jakarta",
     gallery: [
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Area hot desk modern dengan koneksi Wi-Fi super cepat",
+        src: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+        alt: "Fasilitas boardroom representatif di Sovereign Plaza Jakarta",
       },
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Sudut diskusi santai dan area kolaborasi terbuka",
+        src: "/images/offices/jakarta/sovereign-meeting-room.png",
+        alt: "Ruang rapat meja konferensi dan whiteboard",
       },
       {
-        src: "/images/easyoffice/office-hero.jpg",
-        alt: "Pantry lengkap dengan fasilitas santai dan air minum",
+        src: "/images/offices/jakarta/sovereign-discussion-room.png",
+        alt: "Area diskusi santai meja bundar",
       },
     ],
     pricing: [
@@ -871,20 +881,24 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "jakarta",
     tagline: "Ruang meeting profesional dan lengkap di Jakarta.",
     startingPrice: "Rp 200.000",
-    image: "/images/easyoffice/office-meeting.png",
-    imageAlt: "Meeting room EasyOffice di Jakarta",
+    image: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+    imageAlt: "Meeting room representatif EasyOffice di Sovereign Plaza Jakarta",
     gallery: [
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Ruang meeting berkapasitas besar dengan pencahayaan optimal",
+        src: "/images/offices/jakarta/sovereign-boardroom-wide.png",
+        alt: "Ruang rapat boardroom representatif dilengkapi layar proyektor Sovereign Plaza",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Fasilitas proyektor high-definition dan flipchart",
+        src: "/images/offices/jakarta/sovereign-executive-room.png",
+        alt: "Ruang meeting eksekutif berkapasitas besar dengan pencahayaan modern",
       },
       {
-        src: "/images/easyoffice/office-hero.jpg",
-        alt: "Layanan penyajian konsumsi dan snack rapat",
+        src: "/images/offices/jakarta/sovereign-meeting-room.png",
+        alt: "Fasilitas meeting room representatif meja konferensi dan whiteboard wall",
+      },
+      {
+        src: "/images/offices/jakarta/sovereign-discussion-room.png",
+        alt: "Ruang diskusi privat meja bundar untuk pertemuan dan konsultasi",
       },
     ],
     pricing: [
