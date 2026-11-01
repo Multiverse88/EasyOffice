@@ -134,8 +134,8 @@ export const services: Service[] = [
     ],
     icon: "briefcase",
     href: "/layanan/virtual-office",
-    image: "/images/easyoffice/office-bandung.png",
-    imageAlt: "Gedung dan kantor EasyOffice di Bandung",
+    image: "/images/easyoffice/kantor-bandung.jpg",
+    imageAlt: "Gedung kantor EasyOffice di Bandung",
   },
   {
     slug: "coworking-space",
@@ -161,8 +161,8 @@ export const services: Service[] = [
     ],
     icon: "users",
     href: "/layanan/coworking-space",
-    image: "/images/easyoffice/office-workspace.png",
-    imageAlt: "Area coworking space EasyOffice yang nyaman dan produktif",
+    image: "/images/offices/jakarta/sovereign-meeting-room.png",
+    imageAlt: "Ruang rapat dan coworking space EasyOffice yang nyaman",
   },
   {
     slug: "meeting-room",
@@ -188,7 +188,7 @@ export const services: Service[] = [
     ],
     icon: "door",
     href: "/layanan/meeting-room",
-    image: "/images/easyoffice/office-meeting.png",
+    image: "/images/offices/jakarta/sovereign-boardroom-wide.png",
     imageAlt: "Ruang meeting profesional EasyOffice dengan fasilitas presentasi lengkap",
   },
 ];
@@ -661,8 +661,8 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "jakarta",
     tagline: "Ruang kerja fleksibel di jantung bisnis Jakarta.",
     startingPrice: "Rp 95.000",
-    image: "/images/easyoffice/office-workspace.png",
-    imageAlt: "Coworking space EasyOffice di Jakarta",
+    image: "/images/offices/jakarta/sovereign-meeting-room.png",
+    imageAlt: "Ruang kerja dan coworking space EasyOffice di Jakarta",
     gallery: [
       {
         src: "/images/offices/jakarta/sovereign-boardroom-wide.png",

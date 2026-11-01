@@ -28,9 +28,9 @@ function mediaUrl(value: unknown): string | undefined {
   return undefined;
 }
 const serviceImages: Record<string, string> = {
-  "virtual-office": "/images/easyoffice/office-bandung.png",
-  "coworking-space": "/images/easyoffice/office-workspace.png",
-  "meeting-room": "/images/easyoffice/office-meeting.png",
+  "virtual-office": "/images/easyoffice/kantor-bandung.jpg",
+  "coworking-space": "/images/offices/jakarta/sovereign-meeting-room.png",
+  "meeting-room": "/images/offices/jakarta/sovereign-boardroom-wide.png",
 };
 
 export type HomepageLayoutData = { content?: Array<{ type?: string; props?: Record<string, unknown> }>; root?: Record<string, unknown> };
@@ -349,7 +349,7 @@ export const getCmsAbout = cache(async function getCmsAbout() {
       storyTitle: data.storyTitle || "Tentang EasyOffice",
       storyDescription: data.storyDescription || "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
       heroImage: mediaUrl(data.heroImage) || "/images/easyoffice/office-hero.jpg",
-      storyImage: mediaUrl(data.storyImage) || "/images/easyoffice/office-bandung.png",
+      storyImage: mediaUrl(data.storyImage) || "/images/easyoffice/kantor-bandung.jpg",
       heroHighlights: Array.isArray(data.heroHighlights) ? data.heroHighlights.map((item: { value?: string }) => item.value ?? "") : [],
       storyHighlights: Array.isArray(data.storyHighlights) && data.storyHighlights.length ? data.storyHighlights.map((item: { value?: string }) => item.value ?? "") : [
         "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",
@@ -371,7 +371,7 @@ export const getCmsAbout = cache(async function getCmsAbout() {
       storyTitle: "Tentang EasyOffice",
       storyDescription: "EasyOffice adalah penyedia layanan virtual office di Bekasi, Jakarta, dan Bandung yang menyediakan alamat bisnis profesional, ruang meeting, layanan resepsionis, serta pengelolaan surat untuk mendukung pertumbuhan bisnis dengan biaya yang lebih hemat dan terjangkau.",
       heroImage: "/images/easyoffice/office-hero.jpg",
-      storyImage: "/images/easyoffice/office-bandung.png",
+      storyImage: "/images/easyoffice/kantor-bandung.jpg",
       heroHighlights: [],
       storyHighlights: [
         "Terdaftar resmi di Kemenkumham RI: CV EASYOFFICE KANTOR BERSAMA (AHU-0094982-AH.01.14 Tahun 2025)",
