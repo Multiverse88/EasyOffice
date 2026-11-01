@@ -13,11 +13,11 @@ function PartnerSet({ partners, copy }: { partners: CmsPartner[]; copy: number }
         width={220}
         height={88}
         loading="lazy"
-        className="max-h-full max-w-full object-contain filter grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+        className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105"
       />
     );
     return (
-      <div key={key} className="flex h-[72px] w-40 shrink-0 items-center justify-center rounded-2xl border border-neutral-200/60 bg-white px-6 py-3 shadow-xs transition-all duration-300 hover:border-navy/30 hover:shadow-soft sm:h-[84px] sm:w-48 sm:px-7">
+      <div key={key} className="group/logo flex h-[72px] w-40 shrink-0 items-center justify-center rounded-2xl border border-neutral-200/80 bg-white p-3 shadow-xs transition-all duration-300 hover:border-navy/30 hover:shadow-soft sm:h-[84px] sm:w-48 sm:p-4">
         {copy === 0 && partner.href ? <a href={partner.href} target="_blank" rel="noopener noreferrer" aria-label={`Kunjungi ${partner.name}`}>{image}</a> : image}
       </div>
     );
