@@ -40,7 +40,7 @@ export function PartnersCarousel({ partners = [] }: { partners?: CmsPartner[] })
       </div>
       <style>{`
         .partners-marquee { mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
-        .partners-marquee-track { display: flex; width: max-content; gap: 1rem; animation: partners-scroll 62s linear infinite; }
+        .partners-marquee-track { display: flex; width: max-content; gap: 1rem; animation: partners-scroll ${Math.max(60, items.length * 3.5)}s linear infinite; }
         @media (prefers-reduced-motion: reduce) {
           .partners-marquee { overflow-x: auto; mask-image: none; }
           .partners-marquee-track { animation: none; }

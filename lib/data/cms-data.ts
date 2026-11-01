@@ -16,6 +16,7 @@ import {
   virtualOfficeFaqs,
 } from "./mock-data";
 import { googleReviews } from "./google-reviews";
+import { clientLogos } from "./client-logos";
 
 type PayloadList<T> = { docs?: T[] };
 
@@ -141,15 +142,7 @@ export const getCmsTestimonials = cache(async function getCmsTestimonials(): Pro
 
 export type CmsPartner = { id?: string | number; name: string; logoUrl?: string; logoAlt?: string; href?: string; sortOrder?: number };
 
-const defaultPartners: CmsPartner[] = [
-  { id: 1, name: "PT Amerta Berkah Mandiri", logoUrl: "/images/partners/pt-amerta-berkah-mandiri.png", logoAlt: "PT Amerta Berkah Mandiri" },
-  { id: 2, name: "Cloud+", logoUrl: "/images/partners/cloud-plus.png", logoAlt: "Cloud+" },
-  { id: 3, name: "PT Samudra Karsa Raya", logoUrl: "/images/partners/pt-samudra-karsa-raya.png", logoAlt: "PT Samudra Karsa Raya" },
-  { id: 4, name: "CV Inusi Solusindo", logoUrl: "/images/partners/cv-inusi-solusindo.png", logoAlt: "CV Inusi Solusindo" },
-  { id: 5, name: "CV Sinar Listrik Indonesia", logoUrl: "/images/partners/cv-sinar-listrik-indonesia.png", logoAlt: "CV Sinar Listrik Indonesia" },
-  { id: 6, name: "PT Elanus International Resources", logoUrl: "/images/partners/pt-elanus-international-resources.png", logoAlt: "PT Elanus International Resources" },
-  { id: 7, name: "PAN Education & Training Center", logoUrl: "/images/partners/pan-education-training-center.png", logoAlt: "PAN Education & Training Center" },
-];
+const defaultPartners: CmsPartner[] = clientLogos;
 
 export const getCmsPartners = cache(async function getCmsPartners(): Promise<CmsPartner[]> {
   try {
