@@ -459,7 +459,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "cihampelas",
-        name: "EasyOffice Cihampelas",
+        name: "EasyOffice Bandung",
         description:
           "Kantor virtual di kawasan Cihampelas, Bandung, dengan alamat bisnis komersial strategis, legalitas gedung lengkap (IMB, PBB), LED Smart TV, dan siap PKP.",
         address:
@@ -518,7 +518,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "sovereign-plaza",
-        name: "EasyOffice Sovereign Plaza",
+        name: "EasyOffice Jakarta",
         description:
           "Kantor virtual di Sovereign Plaza TB Simatupang, Jakarta Selatan. Alamat bisnis komersial prestisius, fasilitas meeting room proyektor, dan bisa PKP.",
         address:
@@ -573,7 +573,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "summarecon",
-        name: "EasyOffice Summarecon Bekasi",
+        name: "EasyOffice Bekasi",
         description:
           "Kantor virtual di Emerald Commercial Summarecon Bekasi. Alamat komersial strategis, fasilitas Smart TV, Whiteboard, dan bisa PKP.",
         address:
@@ -583,92 +583,6 @@ export const serviceLocations: ServiceLocation[] = [
         whatsapp: "62818881425",
       },
     ],
-  },
-  {
-    serviceSlug: "virtual-office",
-    locationSlug: "jakarta",
-    tagline: "Alamat prestisius ibu kota untuk jangkauan bisnis nasional.",
-    startingPrice: "Rp 450 rb",
-    image:
-      "/images/unsplash/office-08.webp",
-    imageAlt: "Kantor virtual office EasyOffice di Jakarta",
-    gallery: [
-      {
-        src: "/images/unsplash/office-09.webp",
-        alt: "Area resepsionis dan front office representatif",
-      },
-      {
-        src: "/images/unsplash/office-10.webp",
-        alt: "Sudut fasilitas cetak dan mesin fotokopi kantor",
-      },
-      {
-        src: "/images/unsplash/office-11.webp",
-        alt: "Area lounge santai untuk istirahat dan diskusi",
-      },
-    ],
-    pricing: [
-      plan("Basic", "Rp 450 rb", "/bulan", [
-        "Alamat bisnis Jakarta Selatan",
-        "Penanganan surat",
-        "Pemberitahuan via email",
-      ]),
-      plan("Business", "Rp 850 rb", "/bulan", [
-        "Semua fitur Basic",
-        "Layanan resepsionis",
-        "4 jam meeting room / bulan",
-        "Nomor telepon khusus",
-      ]),
-      plan("Premium", "Rp 1,6 jt", "/bulan", [
-        "Semua fitur Business",
-        "12 jam meeting room / bulan",
-        "Akses coworking 8 hari / bulan",
-        "Prioritas dukungan",
-      ]),
-    ],
-    facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door", "coffee", "car", "clock"),
-  },
-  {
-    serviceSlug: "virtual-office",
-    locationSlug: "bekasi",
-    tagline: "Solusi hemat di kawasan penyangga Jakarta.",
-    startingPrice: "Rp 300 rb",
-    image:
-      "/images/unsplash/office-12.webp",
-    imageAlt: "Kantor virtual office EasyOffice di Bekasi",
-    gallery: [
-      {
-        src: "/images/unsplash/office-13.webp",
-        alt: "Meja resepsionis dan penyambutan tamu profesional",
-      },
-      {
-        src: "/images/unsplash/office-14.webp",
-        alt: "Fasilitas loker surat dan penanganan paket",
-      },
-      {
-        src: "/images/unsplash/office-15.webp",
-        alt: "Area pantry dengan perlengkapan kopi dan teh",
-      },
-    ],
-    pricing: [
-      plan("Basic", "Rp 300 rb", "/bulan", [
-        "Alamat bisnis",
-        "Penanganan surat",
-        "Pemberitahuan via email",
-      ]),
-      plan("Business", "Rp 550 rb", "/bulan", [
-        "Semua fitur Basic",
-        "Layanan resepsionis",
-        "2 jam meeting room / bulan",
-        "Nomor telepon khusus",
-      ]),
-      plan("Premium", "Rp 1 jt", "/bulan", [
-        "Semua fitur Business",
-        "6 jam meeting room / bulan",
-        "Akses coworking 4 hari / bulan",
-        "Prioritas dukungan",
-      ]),
-    ],
-    facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door"),
   },
   {
     serviceSlug: "coworking-space",
@@ -719,7 +633,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "cihampelas",
-        name: "EasyOffice Cihampelas (Bandung)",
+        name: "EasyOffice Bandung",
         description: "Area kerja bersama yang nyaman dan fleksibel di kawasan Cihampelas Bandung, dilengkapi internet cepat dan fasilitas lengkap.",
         address: "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
@@ -773,7 +687,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "sovereign-plaza",
-        name: "EasyOffice Sovereign Plaza (Jakarta)",
+        name: "EasyOffice Jakarta",
         description: "Coworking space modern dan representatif di Sovereign Plaza TB Simatupang, Cilandak, Jakarta Selatan untuk produktivitas maksimal.",
         address: "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
@@ -827,7 +741,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "summarecon",
-        name: "EasyOffice Summarecon Bekasi",
+        name: "EasyOffice Bekasi",
         description: "Ruang kerja bersama fleksibel dan hemat di Emerald Commercial Summarecon Bekasi dengan suasana kerja profesional.",
         address: "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
@@ -885,7 +799,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "cihampelas",
-        name: "EasyOffice Cihampelas (Bandung)",
+        name: "EasyOffice Bandung",
         description: "Ruang meeting eksklusif di Cihampelas Bandung, dilengkapi LED Smart TV, whiteboard, dan koneksi internet cepat.",
         address: "Jl. Cihampelas No.201A, RT/RW 01/02 Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
@@ -943,7 +857,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "sovereign-plaza",
-        name: "EasyOffice Sovereign Plaza (Jakarta)",
+        name: "EasyOffice Jakarta",
         description: "Ruang meeting profesional di Sovereign Plaza TB Simatupang Jakarta Selatan dengan proyektor dan perlengkapan presentasi.",
         address: "Dewata Office, Sovereign Plaza, 12th Floor, Jl. TB Simatupang No. 36, Cilandak Barat, Cilandak, Jakarta Selatan 12430",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",
@@ -997,7 +911,7 @@ export const serviceLocations: ServiceLocation[] = [
     offices: [
       {
         slug: "summarecon",
-        name: "EasyOffice Summarecon Bekasi",
+        name: "EasyOffice Bekasi",
         description: "Ruang meeting representatif di Emerald Commercial Summarecon Bekasi dengan fasilitas LED Smart TV dan Whiteboard.",
         address: "Emerald Commercial Summarecon Bekasi Blok UF No. 10, Jl. Bulevar Selatan, Marga Mulya, Bekasi Utara, Kota Bekasi, Jawa Barat 17142",
         operatingHours: "Senin–Jumat, 08.00–17.00 WIB",

@@ -29,7 +29,13 @@ export function ServiceLocationGrid({
          }]
     ).map((office) => ({ location, combo, office })),
   );
-  const cards = officeItems;
+  const seen = new Set<string>();
+  const cards = officeItems.filter(({ location, office }) => {
+    const key = location.slug || office.slug;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   return (
     <>
       <div>

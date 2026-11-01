@@ -61,15 +61,22 @@ export default async function ServiceLandingPage({
   const service = cmsServices.find((item) => item.slug === slug);
   if (!service) notFound();
 
-   const cmsServiceCombos = cmsCombos.filter((combo) => combo.serviceSlug === service.slug);
-   const serviceLocationItems = cmsServiceCombos.map((combo) => ({
-     location: {
-       slug: combo.locationSlug,
-       name: combo.offices?.[0]?.name ?? combo.locationSlug,
-     },
-     combo,
-     office: combo.offices?.[0],
-   }));
+  const seenLocations = new Set<string>();
+  const cmsServiceCombos = cmsCombos
+    .filter((combo) => combo.serviceSlug === service.slug)
+    .filter((combo) => {
+      if (seenLocations.has(combo.locationSlug)) return false;
+      seenLocations.add(combo.locationSlug);
+      return true;
+    });
+  const serviceLocationItems = cmsServiceCombos.map((combo) => ({
+    location: {
+      slug: combo.locationSlug,
+      name: combo.offices?.[0]?.name ?? combo.locationSlug,
+    },
+    combo,
+    office: combo.offices?.[0],
+  }));
    const serviceLegalNotes = [...new Set(cmsServiceCombos.map((combo) => combo.catatanLegalitas).filter(Boolean))];
   return (
     <>

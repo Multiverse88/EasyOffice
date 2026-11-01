@@ -51,9 +51,15 @@ export default async function Home() {
   const homepageTestimonials = cmsTestimonials.length ? cmsTestimonials : googleReviews;
   const homepageTestimonialsSourceUrl = cmsTestimonials.length ? undefined : googleReviewsUrl;
   const virtualOfficeService = cmsServices.find((service) => service.slug === "virtual-office");
+  const seenLocations = new Set<string>();
   const virtualOfficeItems = virtualOfficeService
     ? cmsServiceLocations
         .filter((item) => item.serviceSlug === virtualOfficeService.slug)
+        .filter((combo) => {
+          if (seenLocations.has(combo.locationSlug)) return false;
+          seenLocations.add(combo.locationSlug);
+          return true;
+        })
         .map((combo) => ({
           location: cmsLocations.find((location) => location.slug === combo.locationSlug) ?? {
             slug: combo.locationSlug,
