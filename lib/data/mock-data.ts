@@ -67,6 +67,12 @@ export const locations: Location[] = [
   {
     slug: "bekasi",
     name: "Bekasi",
+    card: {
+      title: "EasyOffice Bekasi",
+      description: "Alternatif strategis dan hemat di Emerald Commercial Summarecon Bekasi dengan legalitas gedung lengkap dan siap PKP.",
+      image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+      imageAlt: "Kantor EasyOffice Bekasi",
+    },
     shortDescription:
       "Alternatif strategis dan hemat di Emerald Commercial Summarecon Bekasi dengan legalitas gedung lengkap dan siap PKP.",
     address:
@@ -534,20 +540,28 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bekasi",
     tagline: "Solusi hemat di kawasan penyangga Jakarta.",
     startingPrice: "Rp 300 rb",
-    image: "/images/easyoffice/office-lounge.png",
-    imageAlt: "Kantor virtual office EasyOffice di Summarecon Bekasi",
+    image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+    imageAlt: "Fasilitas meeting room dan kantor virtual EasyOffice Summarecon Bekasi",
     gallery: [
       {
-        src: "/images/easyoffice/office-lounge.png",
-        alt: "Lounge dan resepsionis EasyOffice Summarecon Bekasi",
+        src: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dilengkapi Smart TV dan meja konferensi EasyOffice Bekasi",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Ruang kerja dan fasilitas kantor Summarecon Bekasi",
+        src: "/images/offices/bekasi/summarecon-meeting-wide.png",
+        alt: "Ruang rapat berkapasitas 8 orang dengan papan tulis flipchart",
       },
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Fasilitas Smart TV dan ruang rapat EasyOffice Bekasi",
+        src: "/images/offices/bekasi/summarecon-meeting-table.png",
+        alt: "Meja rapat kayu modern dan fasilitas AC ruangan rapat Bekasi",
+      },
+      {
+        src: "/images/offices/bekasi/summarecon-meeting-perspective.png",
+        alt: "Perspektif ruang meeting representatif Emerald Commercial Summarecon Bekasi",
+      },
+      {
+        src: "/images/easyoffice/kantor-bekasi.jpg",
+        alt: "Gedung kantor EasyOffice Summarecon Bekasi",
       },
     ],
     pricing: [
@@ -701,20 +715,28 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bekasi",
     tagline: "Ruang kerja hemat di kawasan penyangga Jakarta.",
     startingPrice: "Rp 60.000",
-    image: "/images/easyoffice/office-lounge.png",
-    imageAlt: "Coworking space EasyOffice di Bekasi",
+    image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+    imageAlt: "Coworking space dan fasilitas kantor EasyOffice di Bekasi",
     gallery: [
       {
-        src: "/images/easyoffice/office-lounge.png",
-        alt: "Ruang kerja bersama yang ergonomis dan nyaman",
+        src: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dilengkapi Smart TV dan meja konferensi EasyOffice Bekasi",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Area diskusi tim dan pojok santai",
+        src: "/images/offices/bekasi/summarecon-meeting-wide.png",
+        alt: "Ruang rapat berkapasitas 8 orang dengan papan tulis flipchart",
       },
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Fasilitas loker pribadi dan area cetak dokumen",
+        src: "/images/offices/bekasi/summarecon-meeting-table.png",
+        alt: "Meja rapat kayu modern dan fasilitas AC ruangan rapat Bekasi",
+      },
+      {
+        src: "/images/offices/bekasi/summarecon-meeting-perspective.png",
+        alt: "Perspektif ruang meeting representatif Emerald Commercial Summarecon Bekasi",
+      },
+      {
+        src: "/images/easyoffice/kantor-bekasi.jpg",
+        alt: "Gedung kantor EasyOffice Summarecon Bekasi",
       },
     ],
     pricing: [
@@ -871,20 +893,28 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bekasi",
     tagline: "Ruang meeting profesional dan lengkap di Bekasi.",
     startingPrice: "Rp 120.000",
-    image: "/images/easyoffice/office-meeting.png",
-    imageAlt: "Meeting room EasyOffice di Bekasi",
+    image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+    imageAlt: "Meeting room representatif EasyOffice di Summarecon Bekasi",
     gallery: [
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Ruang rapat eksekutif dengan peredam suara",
+        src: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dilengkapi Smart TV dan meja konferensi EasyOffice Bekasi",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Peralatan presentasi dan koneksi internet stabil",
+        src: "/images/offices/bekasi/summarecon-meeting-wide.png",
+        alt: "Ruang rapat berkapasitas 8 orang dengan papan tulis flipchart",
       },
       {
-        src: "/images/easyoffice/office-lounge.png",
-        alt: "Area penyambutan tamu khusus ruang meeting",
+        src: "/images/offices/bekasi/summarecon-meeting-table.png",
+        alt: "Meja rapat kayu modern dan fasilitas AC ruangan rapat Bekasi",
+      },
+      {
+        src: "/images/offices/bekasi/summarecon-meeting-perspective.png",
+        alt: "Perspektif ruang meeting representatif Emerald Commercial Summarecon Bekasi",
+      },
+      {
+        src: "/images/easyoffice/kantor-bekasi.jpg",
+        alt: "Gedung kantor EasyOffice Summarecon Bekasi",
       },
     ],
     pricing: [
