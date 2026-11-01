@@ -18,6 +18,7 @@ const icons = { wallet: Wallet, laptop: Laptop, building: Building2, headset: He
 
 export function BenefitsSection({ items = [], title, description, eyebrow = "Manfaat" }: { serviceSlug?: string; items?: { icon: string; title: string; description: string; image?: string }[]; title?: string; description?: string; eyebrow?: string }) {
   const displayItems = items.filter((item, index, list) => list.findIndex((candidate) => candidate.title.trim().toLowerCase() === item.title.trim().toLowerCase()) === index);
+  if (displayItems.length === 0) return null;
   const layoutClass = displayItems.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-6";
   return (
     <Section eyebrow={eyebrow} title={title ?? ""} description={description}>
@@ -27,22 +28,19 @@ export function BenefitsSection({ items = [], title, description, eyebrow = "Man
           return (
             <div
               key={item.title}
-              className={`overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-navy/30 hover:shadow-card ${displayItems.length !== 4 ? "lg:col-span-2" : ""} ${displayItems.length === 5 && index === 3 ? "lg:col-start-2" : ""} ${displayItems.length === 5 && index === 4 ? "lg:col-start-4" : ""}`}
+              className={`rounded-3xl border border-neutral-200 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-navy/30 hover:shadow-card ${displayItems.length !== 4 ? "lg:col-span-2" : ""} ${displayItems.length === 5 && index === 3 ? "lg:col-start-2" : ""} ${displayItems.length === 5 && index === 4 ? "lg:col-start-4" : ""}`}
             >
               {item.image ? (
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy/5">
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                <div className="relative mb-3 h-14 w-14 overflow-hidden">
+                  <Image src={item.image} alt={item.title} fill sizes="56px" className="object-contain" />
                 </div>
-              ) : null}
-              <div className="p-6">
-                {!item.image ? (
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-navy text-white shadow-soft">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                ) : null}
-                <h3 className="mt-2 font-display text-base font-bold text-navy">{item.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{item.description}</p>
-              </div>
+              ) : (
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-navy text-white shadow-soft">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+              )}
+              <h3 className="mt-3 font-display text-base font-bold text-navy">{item.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{item.description}</p>
             </div>
           );
         })}

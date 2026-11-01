@@ -84,7 +84,12 @@ export const getCmsServices = cache(async function getCmsServices(): Promise<Ser
       benefitsTitle: doc.manfaatTitle ?? mock?.benefitsTitle ?? "",
       benefitsDescription: doc.manfaatDescription ?? mock?.benefitsDescription ?? "",
       keunggulanItems: Array.isArray(doc.keunggulanItems) && doc.keunggulanItems.length
-        ? doc.keunggulanItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" }))
+        ? doc.keunggulanItems.map((item: { icon?: string; title?: string; description?: string; image?: unknown }) => ({
+            icon: item.icon ?? "sparkles",
+            title: item.title ?? "",
+            description: item.description ?? "",
+            image: mediaUrl(item.image) ?? (mock?.keunggulanItems?.find((m) => m.title.toLowerCase() === (item.title ?? "").toLowerCase())?.image),
+          }))
         : (mock?.keunggulanItems ?? []),
       manfaatItems: Array.isArray(doc.manfaatItems) && doc.manfaatItems.length
         ? doc.manfaatItems.map((item: { icon?: string; title?: string; description?: string }) => ({ icon: item.icon ?? "sparkles", title: item.title ?? "", description: item.description ?? "" }))
