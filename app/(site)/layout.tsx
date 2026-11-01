@@ -15,9 +15,18 @@ export async function generateMetadata() {
   return {
     title: { default: site.defaultSeoTitle || "EasyOffice — Virtual Office, Coworking Space & Meeting Room", template: "%s | EasyOffice" },
     description: site.defaultSeoDescription || "EasyOffice menyediakan Virtual Office, Coworking Space, dan Meeting Room profesional di Bandung, Jakarta, dan Bekasi.",
+    icons: {
+      icon: [
+        { url: "/favicon.ico" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
+    },
   };
 }
-
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const [site, services] = await Promise.all([getCmsSite(), getCmsServices()]);
   const whatsappNumber = routedWhatsappNumber(site.whatsappNumbers, site.primaryWhatsapp);
