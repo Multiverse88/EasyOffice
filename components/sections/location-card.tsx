@@ -24,7 +24,10 @@ function parsePrice(raw: string | number | undefined): number {
 }
 
 export function LocationCard({ location, service, combo, office }: LocationCardProps) {
-  const locTitle = location.name.charAt(0).toUpperCase() + location.name.slice(1);
+  const cleanCity = (location.name || location.slug || "")
+    .replace(/^(easyoffice\s*)+/i, "")
+    .trim();
+  const locTitle = cleanCity.charAt(0).toUpperCase() + cleanCity.slice(1);
   const officeName = `EasyOffice ${locTitle}`;
   const officeDesc = office.description || location.shortDescription || combo.tagline;
   const officeAddr = office.address || location.address;

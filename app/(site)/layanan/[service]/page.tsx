@@ -72,7 +72,7 @@ export default async function ServiceLandingPage({
   const serviceLocationItems = cmsServiceCombos.map((combo) => ({
     location: {
       slug: combo.locationSlug,
-      name: combo.offices?.[0]?.name ?? combo.locationSlug,
+      name: combo.locationSlug.charAt(0).toUpperCase() + combo.locationSlug.slice(1),
     },
     combo,
     office: combo.offices?.[0],
