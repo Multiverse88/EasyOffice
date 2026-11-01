@@ -31,6 +31,12 @@ export const locations: Location[] = [
   {
     slug: "bandung",
     name: "Bandung",
+    card: {
+      title: "EasyOffice Cihampelas (Bandung)",
+      description: "Kantor Pusat EasyOffice di Cihampelas Bandung — alamat bisnis komersial prestisius, fasilitas meeting room, dan bisa PKP.",
+      image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+      imageAlt: "Kantor EasyOffice Cihampelas Bandung",
+    },
     shortDescription:
       "Lokasi utama EasyOffice di Cihampelas Bandung — alamat bisnis komersial prestisius, legalitas lengkap, dan bisa PKP.",
     address:
@@ -406,20 +412,24 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bandung",
     tagline: "Kehadiran bisnis kredibel di pusat kota Bandung.",
     startingPrice: "Rp 350 rb",
-    image: "/images/easyoffice/office-bandung.png",
-    imageAlt: "Kantor virtual office EasyOffice Cihampelas di Bandung",
+    image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+    imageAlt: "Fasilitas meeting room dan kantor virtual EasyOffice Cihampelas Bandung",
     gallery: [
       {
-        src: "/images/easyoffice/office-bandung.png",
-        alt: "Gedung dan kantor EasyOffice Cihampelas Bandung",
+        src: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dengan Smart TV ganda dan meja konferensi Cihampelas Bandung",
       },
       {
-        src: "/images/easyoffice/office-hero.jpg",
-        alt: "Area resepsionis profesional EasyOffice Cihampelas",
+        src: "/images/offices/bandung/cihampelas-meeting-room-whiteboard.png",
+        alt: "Ruang rapat dilengkapi papan tulis flipchart dan kursi ergonomis",
       },
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Ruang meeting eksklusif EasyOffice Bandung",
+        src: "/images/offices/bandung/cihampelas-meeting-room-ac.png",
+        alt: "Fasilitas AC dan pencahayaan modern ruang meeting EasyOffice Bandung",
+      },
+      {
+        src: "/images/easyoffice/kantor-bandung.jpg",
+        alt: "Gedung kantor EasyOffice Cihampelas Bandung",
       },
     ],
     pricing: [
@@ -665,20 +675,24 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bandung",
     tagline: "Ruang kerja fleksibel di jantung kota Bandung.",
     startingPrice: "Rp 75.000",
-    image: "/images/easyoffice/office-bandung.png",
-    imageAlt: "Coworking space EasyOffice di Bandung",
+    image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+    imageAlt: "Coworking space dan ruang meeting EasyOffice di Bandung",
     gallery: [
       {
-        src: "/images/easyoffice/office-bandung.png",
-        alt: "Area hot desk kerja bersama yang terang dan luas",
+        src: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dengan Smart TV ganda dan meja konferensi Cihampelas Bandung",
       },
       {
-        src: "/images/easyoffice/office-workspace.png",
-        alt: "Meja kerja dedicated dan fasilitas stopkontak individual",
+        src: "/images/offices/bandung/cihampelas-meeting-room-whiteboard.png",
+        alt: "Ruang rapat dilengkapi papan tulis flipchart dan kursi ergonomis",
       },
       {
-        src: "/images/easyoffice/office-lounge.png",
-        alt: "Fasilitas lounge dan area santai EasyOffice Bandung",
+        src: "/images/offices/bandung/cihampelas-meeting-room-ac.png",
+        alt: "Fasilitas AC dan pencahayaan modern ruang meeting EasyOffice Bandung",
+      },
+      {
+        src: "/images/easyoffice/kantor-bandung.jpg",
+        alt: "Gedung kantor EasyOffice Cihampelas Bandung",
       },
     ],
     pricing: [
@@ -827,20 +841,24 @@ export const serviceLocations: ServiceLocation[] = [
     locationSlug: "bandung",
     tagline: "Ruang meeting profesional dan lengkap di Bandung.",
     startingPrice: "Rp 150.000",
-    image: "/images/easyoffice/office-meeting.png",
-    imageAlt: "Meeting room EasyOffice di Bandung",
+    image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+    imageAlt: "Meeting room EasyOffice Cihampelas di Bandung",
     gallery: [
       {
-        src: "/images/easyoffice/office-meeting.png",
-        alt: "Ruang rapat dilengkapi layar proyektor dan white board",
+        src: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
+        alt: "Ruang meeting representatif dengan Smart TV ganda dan meja konferensi Cihampelas Bandung",
       },
       {
-        src: "/images/easyoffice/office-hero.jpg",
-        alt: "Meja rapat besar dengan stopkontak di setiap kursi",
+        src: "/images/offices/bandung/cihampelas-meeting-room-whiteboard.png",
+        alt: "Ruang rapat dilengkapi papan tulis flipchart dan kursi ergonomis",
       },
       {
-        src: "/images/easyoffice/office-lounge.png",
-        alt: "Peralatan audio video konferensi online siap pakai",
+        src: "/images/offices/bandung/cihampelas-meeting-room-ac.png",
+        alt: "Fasilitas AC dan pencahayaan modern ruang meeting EasyOffice Bandung",
+      },
+      {
+        src: "/images/easyoffice/kantor-bandung.jpg",
+        alt: "Gedung kantor EasyOffice Cihampelas Bandung",
       },
     ],
     pricing: [
