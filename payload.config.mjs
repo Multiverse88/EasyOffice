@@ -115,8 +115,52 @@ export default buildConfig({
   graphQL: {
     disable: true,
   },
-    typescript: {
-      outputFile: path.resolve(dirname, "payload-types.ts"),
+  typescript: {
+    outputFile: path.resolve(dirname, "payload-types.ts"),
+  },
+  onInit: async (payload) => {
+    const adminEmail = (process.env.PAYLOAD_ADMIN_EMAIL || "admin@easyoffice.local").trim();
+    const adminPassword = (process.env.PAYLOAD_ADMIN_PASSWORD || "admin123").trim();
+
+    if (adminEmail && adminPassword) {
+      try {
+        const users = await payload.find({
+          collection: "users",
+          where: {
+            email: {
+              equals: adminEmail,
+            },
+          },
+          depth: 0,
+          limit: 1,
+        });
+
+        if (users.totalDocs === 0) {
+          await payload.create({
+            collection: "users",
+            data: {
+              email: adminEmail,
+              password: adminPassword,
+              role: "admin",
+              name: "Administrator",
+            },
+          });
+          payload.logger.info(`[Auth] Created admin user from environment variables: ${adminEmail}`);
+        } else {
+          await payload.update({
+            collection: "users",
+            id: users.docs[0].id,
+            data: {
+              password: adminPassword,
+              role: "admin",
+            },
+          });
+          payload.logger.info(`[Auth] Synchronized admin credentials from environment variables: ${adminEmail}`);
+        }
+      } catch (error) {
+        payload.logger.error(`[Auth] Failed to sync admin user from environment variables: ${error}`);
+      }
+    }
   },
   telemetry: false,
 });

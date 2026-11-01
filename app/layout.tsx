@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-W3HFMD3V";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-BDCMXYRJ8S";
+
 export async function generateMetadata(): Promise<Metadata> {
   const metadataBase = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://easyoffice.co.id");
   try {
@@ -46,7 +49,43 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className="h-full antialiased">
-      <body>{children}</body>
+      <head>
+        {/* Google Tag Manager */}
+        <script async src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} />
+        <script
+          id="gtm-datalayer"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
+
+        {/* Google Analytics 4 (GA4) */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+        <script
+          id="ga4-config"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`,
+          }}
+        />
+      </head>
+      <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
