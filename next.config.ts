@@ -12,6 +12,22 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Short vanity URLs (e.g. /virtualofficebandung -> /layanan/virtual-office/bandung)
+      // WhatsApp Rotator Direct URLs
+      {
+        source: "/wa",
+        destination: "/api/wa",
+        permanent: false,
+      },
+      {
+        source: "/whatsapp",
+        destination: "/api/wa",
+        permanent: false,
+      },
+      {
+        source: "/rotator",
+        destination: "/api/wa",
+        permanent: false,
+      },
       {
         source: "/virtualofficebandung",
         destination: "/layanan/virtual-office/bandung",

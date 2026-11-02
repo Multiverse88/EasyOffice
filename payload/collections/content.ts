@@ -73,7 +73,7 @@ const iconOptions = [
 export const Services: CollectionConfig = {
   slug: "services",
   access: { read: () => true, create: isAdminOrEditor, update: isAdminOrEditor, delete: isAdmin },
-  admin: { useAsTitle: "title", defaultColumns: ["title", "isActive"], description: "Kelola layanan yang tampil di website. Isi konten, gambar, keunggulan, dan SEO." },
+  admin: { useAsTitle: "title", defaultColumns: ["title", "isActive"], group: "Layanan & Kantor", description: "Kelola layanan utama (Virtual Office, Coworking Space, Meeting Room)." },
   fields: [{ type: "tabs", tabs: [
     { label: "Informasi Layanan", fields: [
       { name: "title", type: "text", required: true, label: "Nama Layanan", validate: (value: unknown) => typeof value === "string" && value.trim().length >= 2 || "Nama layanan minimal 2 karakter." },
@@ -115,7 +115,7 @@ const slugify = (value: unknown) => String(value ?? "").trim().toLowerCase().nor
 export const Kantor: CollectionConfig = {
   slug: "kantor",
   access: { read: () => true, create: isAdminOrEditor, update: isAdminOrEditor, delete: isAdmin },
-  admin: { useAsTitle: "nama", defaultColumns: ["nama", "kota", "aktif"], description: "Kelola data kantor, kontak, foto, dan nomor WhatsApp berdasarkan lokasi." },
+  admin: { useAsTitle: "nama", defaultColumns: ["nama", "kota", "aktif"], group: "Layanan & Kantor", description: "Kelola cabang kantor fisik (Bandung, Jakarta, Bekasi)." },
   fields: [
     { name: "nama", type: "text", label: "Nama Kantor", required: true }, { name: "slug", type: "text", required: true, unique: true, admin: { readOnly: true, description: "Dibuat otomatis dari kota." } }, { name: "kota", type: "text", label: "Kota", required: true },
     { name: "deskripsi", type: "textarea" }, { name: "alamat", type: "textarea", required: true }, { name: "jamOperasional", type: "text" }, { name: "email", type: "email" }, { name: "telepon", type: "text" }, { name: "whatsapp", type: "text", admin: { hidden: true, description: "Nomor lama; gunakan Daftar WhatsApp Kantor." } }, { name: "whatsappNumbers", type: "array", fields: [{ name: "label", type: "text" }, { name: "number", type: "text", required: true }, { name: "active", type: "checkbox", defaultValue: true }, { name: "priority", type: "number", defaultValue: 0 }] }, { name: "linkGoogleMaps", type: "text", label: "Link Google Maps", admin: { description: "Tempel link lokasi dari Google Maps." } }, { name: "latitude", type: "number", admin: { hidden: true } }, { name: "longitude", type: "number", admin: { hidden: true } }, { name: "foto", type: "upload", relationTo: "media" }, { name: "altFoto", type: "text" }, { name: "galeri", type: "array", fields: galleryFields }, { name: "seo", type: "group", label: "SEO & Google", fields: seoFields }, { name: "aktif", type: "checkbox", label: "Tampilkan di Website", defaultValue: true },
@@ -127,7 +127,7 @@ export const Kantor: CollectionConfig = {
 export const LayananKantor: CollectionConfig = {
   slug: "layanan-kantor",
   access: { read: () => true, create: isAdminOrEditor, update: isAdminOrEditor, delete: isAdmin },
-  admin: { useAsTitle: "namaTampilan", defaultColumns: ["namaTampilan", "kantor", "layanan", "aktif"], description: "Hubungkan layanan dengan kantor, lalu isi harga, fasilitas, foto, dan SEO." },
+  admin: { useAsTitle: "namaTampilan", defaultColumns: ["namaTampilan", "kantor", "layanan", "aktif"], group: "Layanan & Kantor", description: "Kelola paket harga dan fasilitas layanan per cabang kantor." },
   fields: [{ type: "tabs", tabs: [
     { label: "Kantor & Layanan", fields: [{ name: "kantor", type: "relationship", relationTo: "kantor", required: true, label: "Kantor", admin: { description: "Pilih kantor tempat layanan tersedia." } }, { name: "layanan", type: "relationship", relationTo: "services", required: true, label: "Layanan", admin: { description: "Pilih jenis layanan." } }, { name: "slug", type: "text", required: true, unique: true, admin: { hidden: true } }, { name: "namaTampilan", type: "text", label: "Nama Tampilan" }, { name: "deskripsi", type: "textarea", label: "Deskripsi" }, { name: "tagline", type: "text", label: "Tagline" }, { name: "hargaMulai", type: "text", label: "Harga Mulai" }, { name: "catatanLegalitas", type: "textarea", label: "Catatan Legalitas / PKP" }, { name: "linkShopee", type: "text", admin: { hidden: true } }] },
     { label: "Harga & Fasilitas", fields: [{ name: "paketHarga", type: "array", minRows: 1, labels: { singular: "Paket Harga", plural: "Paket Harga" }, fields: pricingFields }, { name: "fasilitas", type: "array", labels: { singular: "Fasilitas", plural: "Fasilitas" }, admin: { description: "Jumlah fasilitas fleksibel. Saat ini desain biasanya menggunakan 6 item, tetapi tidak wajib." }, fields: facilityFields }] },
@@ -155,6 +155,7 @@ const simpleContentAccess = { read: () => true, create: isAdminOrEditor, update:
 export const Media: CollectionConfig = {
   slug: "media",
   access: simpleContentAccess,
+  admin: { group: "Media & File", description: "Kelola perpustakaan gambar dan foto kantor." },
   upload: { mimeTypes: ["image/jpeg", "image/png", "image/webp"] },
   fields: [{ name: "alt", type: "text", label: "Teks Alternatif Gambar", admin: { description: "Jelaskan isi gambar untuk aksesibilitas dan SEO." } }],
 };
@@ -162,7 +163,7 @@ export const Media: CollectionConfig = {
 export const Promotions: CollectionConfig = {
   slug: "promotions",
   access: simpleContentAccess,
-  admin: { useAsTitle: "title" },
+  admin: { useAsTitle: "title", group: "Pemasaran & Konten", description: "Kelola banner dan penawaran promo." },
   fields: [
     { name: "badge", type: "select", label: "Jenis Promo", defaultValue: "promo", options: [{ label: "Promo — Claim Promo", value: "promo" }, { label: "Trial — Coba Gratis", value: "trial" }, { label: "Diskon — Claim Diskon", value: "diskon" }], admin: { description: "Kategori ini menentukan badge dan teks tombol promo di website." } }, { name: "title", type: "text", required: true },
     { name: "description", type: "textarea", label: "Deskripsi Promo" }, { name: "period", type: "text", label: "Periode Promo", admin: { description: "Contoh: Berlaku sampai 31 Desember 2026." } },
@@ -174,7 +175,7 @@ export const Promotions: CollectionConfig = {
 export const Testimonials: CollectionConfig = {
   slug: "testimonials",
   access: simpleContentAccess,
-  admin: { useAsTitle: "name", description: "Kelola testimoni pelanggan." },
+  admin: { useAsTitle: "name", group: "Pemasaran & Konten", description: "Kelola testimoni pelanggan dan ulasan Google." },
   fields: [
     { name: "name", type: "text", label: "Nama Pelanggan", required: true }, { name: "company", type: "text", label: "Perusahaan" },
     { name: "quote", type: "textarea", label: "Isi Testimoni", required: true }, { name: "isActive", type: "checkbox", defaultValue: true },
@@ -184,7 +185,7 @@ export const Testimonials: CollectionConfig = {
 export const Partners: CollectionConfig = {
   slug: "partners",
   access: simpleContentAccess,
-  admin: { useAsTitle: "name", defaultColumns: ["name", "sortOrder", "isActive"], description: "Kelola logo mitra yang ditampilkan sebelum testimoni." },
+  admin: { useAsTitle: "name", defaultColumns: ["name", "sortOrder", "isActive"], group: "Pemasaran & Konten", description: "Kelola logo mitra dan klien yang tampil di marquee." },
   fields: [
     { name: "name", type: "text", label: "Nama Mitra", required: true },
     { name: "logo", type: "upload", relationTo: "media", label: "Logo", required: true },
@@ -198,7 +199,7 @@ export const Partners: CollectionConfig = {
 export const ComparisonRows: CollectionConfig = {
   slug: "comparison-rows",
   access: simpleContentAccess,
-  admin: { useAsTitle: "feature", description: "Tambahkan satu fitur per baris. Isi nama fitur dan pilih status ketersediaannya." },
+  admin: { useAsTitle: "feature", group: "Pemasaran & Konten", description: "Kelola tabel perbandingan fitur EasyOffice dengan kantor lain." },
   fields: [{ type: "tabs", tabs: [
     { label: "Informasi Fitur", fields: [{ name: "feature", type: "text", required: true, label: "Nama Fitur", admin: { description: "Tulis satu nama fitur singkat, misalnya: Alamat bisnis profesional." } }] },
     { label: "Ketersediaan", fields: [
@@ -227,7 +228,7 @@ export const PageLayout: CollectionConfig = {
     },
     delete: isAdmin,
   },
-  admin: { useAsTitle: "name", defaultColumns: ["name", "route", "status", "isActive", "editVisual"], description: "Kelola halaman visual dan routing website. Gunakan tombol Edit Visual dengan Puck untuk mengatur tampilan halaman." },
+  admin: { useAsTitle: "name", defaultColumns: ["name", "route", "status", "isActive", "editVisual"], group: "Pemasaran & Konten", description: "Kelola visual builder dan routing halaman Puck." },
   labels: { singular: "Halaman", plural: "Halaman" },
   hooks: {
     beforeValidate: [({ data, req }) => {
@@ -262,7 +263,7 @@ export const PageLayout: CollectionConfig = {
 export const Faqs: CollectionConfig = {
   slug: "faqs",
   access: simpleContentAccess,
-  admin: { useAsTitle: "title", description: "Buat satu grup FAQ, lalu tambahkan pertanyaan dan jawaban di dalamnya." },
+  admin: { useAsTitle: "title", group: "Pemasaran & Konten", description: "Kelola tanya jawab (FAQ) umum dan per layanan." },
   fields: [
     { name: "title", type: "text", required: true, label: "Judul FAQ", admin: { description: "Contoh: Pertanyaan Umum Virtual Office." } },
     { name: "placement", type: "select", label: "Penempatan FAQ", options: [{ label: "Global", value: "global" }, { label: "Layanan", value: "service" }], admin: { description: "Pilih Global atau Layanan. FAQ tanpa penempatan tidak akan ditampilkan." } },
@@ -283,7 +284,7 @@ export const Faqs: CollectionConfig = {
 export const HomepageFacilities: CollectionConfig = {
   slug: "homepage-facilities",
   access: simpleContentAccess,
-  admin: { useAsTitle: "title", description: "Kelola judul dan isi promo." },
+  admin: { useAsTitle: "title", group: "Pemasaran & Konten", description: "Kelola fasilitas yang tampil di beranda." },
   fields: [
     { name: "title", type: "text", label: "Judul Fasilitas", required: true },
     { name: "description", type: "textarea" },
@@ -296,7 +297,7 @@ export const HomepageFacilities: CollectionConfig = {
 export const Leads: CollectionConfig = {
   slug: "leads",
   access: { read: isAuthenticated, create: () => true, update: isAdminOrEditor, delete: isAdmin },
-  admin: { useAsTitle: "name", defaultColumns: ["name", "contact", "status", "createdAt"] },
+  admin: { useAsTitle: "name", defaultColumns: ["name", "contact", "status", "createdAt"], group: "WhatsApp & Rotator", description: "Daftar data prospek yang menghubungi via website." },
   fields: [
     { name: "name", type: "text", required: true },
     { name: "contact", type: "text", required: true },
@@ -442,6 +443,82 @@ export const Articles: CollectionConfig = {
         { name: "deskripsi", label: "Deskripsi SEO", type: "textarea" },
         { name: "janganIndeks", label: "Jangan Indeks Halaman Ini", type: "checkbox", defaultValue: false },
       ],
+    },
+  ],
+};
+
+export const WhatsAppNumbers: CollectionConfig = {
+  slug: "nomor-whatsapp",
+  labels: {
+    singular: "WhatsApp Rotator",
+    plural: "WhatsApp Rotator",
+  },
+  admin: {
+    useAsTitle: "label",
+    defaultColumns: ["label", "phoneNumber", "enabled", "weight", "assignedCount", "lastAssignedAt"],
+    group: "WhatsApp & Rotator",
+    description: "Kelola nomor CS untuk rotasi lead otomatis. Admin bisa mengatur giliran dan memantau jumlah lead masuk.",
+  },
+  access: {
+    read: () => true,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
+  },
+  fields: [
+    {
+      name: "label",
+      label: "Label / Nama CS",
+      type: "text",
+      required: true,
+      admin: { description: "Contoh: 'CS 1 - Rina', 'CS Bandung', 'CS Ads'." },
+    },
+    {
+      name: "phoneNumber",
+      label: "Nomor WhatsApp (dengan kode negara)",
+      type: "text",
+      required: true,
+      admin: { description: "Format internasional tanpa '+' (contoh: 62818881425)." },
+    },
+    {
+      name: "enabled",
+      label: "Status Aktif (Ikut Rotasi)",
+      type: "checkbox",
+      defaultValue: true,
+      admin: { description: "Centang untuk mengikutsertakan nomor ini dalam rotasi lead." },
+    },
+    {
+      name: "weight",
+      label: "Bobot Rotasi (Weight)",
+      type: "number",
+      defaultValue: 1,
+      min: 1,
+      admin: { description: "Peluang penerimaan lead (misal: 2 menerima 2x lebih sering dibanding 1)." },
+    },
+    {
+      name: "priority",
+      label: "Prioritas",
+      type: "number",
+      defaultValue: 1,
+      min: 1,
+    },
+    {
+      name: "assignedCount",
+      label: "Total Lead Masuk",
+      type: "number",
+      defaultValue: 0,
+      admin: { position: "sidebar", readOnly: true, description: "Jumlah pengunjung yang diarahkan ke nomor ini." },
+    },
+    {
+      name: "lastAssignedAt",
+      label: "Terakhir Menerima Lead",
+      type: "date",
+      admin: { position: "sidebar", readOnly: true },
+    },
+    {
+      name: "notes",
+      label: "Catatan Internal",
+      type: "textarea",
     },
   ],
 };

@@ -1,7 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { whatsappUrl } from "@/lib/whatsapp";
 import { getCmsServices, getCmsSite } from "@/lib/data/cms-data";
 import { routedWhatsappNumber } from "@/lib/whatsapp";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
@@ -35,7 +34,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <main className="flex-1"><ScrollReveal>{children}</ScrollReveal></main>
        <Footer site={site} services={services} navItems={site.navigation} />
       <a
-         href={whatsappUrl("Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", whatsappNumber)}
+        href="/api/wa?pesan=Halo%20EasyOffice%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Hubungi EasyOffice via WhatsApp"
