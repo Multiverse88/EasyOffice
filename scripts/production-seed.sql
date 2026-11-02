@@ -230,47 +230,87 @@ VALUES (
   'virtual-office-bandung',
   'Virtual Office Bandung',
   'Kantor virtual di kawasan Cihampelas, Bandung, dengan alamat bisnis komersial strategis, legalitas gedung lengkap (IMB, PBB), LED Smart TV, dan siap PKP.',
-  'Kehadiran bisnis kredibel di pusat kota Bandung.',
-  'Rp 350 rb',
+  'Alamat bisnis komersial & bergengsi di Cihampelas Bandung. Promo 50% UMKM Festival.',
+  'Rp 166.583',
   '',
   true,
   now(),
   now(),
   'Fasilitas meeting room dan kantor virtual EasyOffice Cihampelas Bandung',
   'virtual office bandung | EasyOffice',
-  'Kehadiran bisnis kredibel di pusat kota Bandung.',
+  'Alamat bisnis komersial & bergengsi di Cihampelas Bandung. Promo 50% UMKM Festival.',
   '/layanan/virtual-office/bandung',
   false,
   'virtual-office-bandung'
 );
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (1, 1, 'virtual-office-bandung-plan-1', 'Basic', '', 350000, '/bulan', false, NULL);
+VALUES (1, 1, 'virtual-office-bandung-plan-1', 'Paket Ekonomi', 'Hanya Rp 166.583/Bulan (Diskon 50% dari Rp 4.000.000)', 1999000, '/tahun', true, 50);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-1', 'Alamat bisnis');
+VALUES (1, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-1', 'Virtual Office 12 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-2', 'Penanganan surat');
+VALUES (2, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-3', 'Pemberitahuan via email');
+VALUES (3, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-3', 'Surat Perjanjian Sewa & Domisili');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (4, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-4', 'Resepsionis Profesional');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-5', 'Mail Handling & Notifikasi Real-time');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-6', 'Bonus: 1 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bandung-plan-1', 'virtual-office-bandung-plan-1-feat-7', 'Bonus: Voucher EasyLegal & EasyTax Rp 100.000');
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (2, 1, 'virtual-office-bandung-plan-2', 'Business', 'Paket kantor virtual untuk bisnis yang membutuhkan alamat dan layanan administrasi profesional.', 550000, '/bulan', true, 20);
+VALUES (2, 1, 'virtual-office-bandung-plan-2', 'Paket Bisnis', 'Hanya Rp 199.923/Bulan (Diskon dari Rp 5.000.000)', 2599000, '/tahun', true, 48);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-1', 'Semua fitur Basic');
+VALUES (1, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-1', 'Virtual Office 12 Bulan + 1 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-2', 'Layanan resepsionis');
+VALUES (2, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-3', '2 jam meeting room / bulan');
+VALUES (3, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-3', 'Surat Perjanjian Sewa & Domisili');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-4', 'Nomor telepon khusus');
+VALUES (4, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-4', 'Resepsionis Profesional & Mail Handling');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-5', 'High Speed Internet, Smart TV & Whiteboard');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-6', 'Gratis Air Mineral, Kopi & Teh');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-7', 'Akses Penggunaan Ruang Meeting Total 72 Jam');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (8, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-8', 'Akses Meeting Room di Bandung, Bekasi & Jakarta');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (9, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-9', 'Penggunaan Virtual Office untuk PKP');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (10, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-10', 'Nama & Logo di Meeting Room');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (11, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-11', 'Bonus: 1 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (12, 'virtual-office-bandung-plan-2', 'virtual-office-bandung-plan-2-feat-12', 'Bonus: Voucher EasyLegal & EasyTax Rp 200.000');
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (3, 1, 'virtual-office-bandung-plan-3', 'Premium', '', 1200000, '/bulan', false, NULL);
+VALUES (3, 1, 'virtual-office-bandung-plan-3', 'Paket Eksekutif', 'Hanya Rp 266.600/Bulan (Diskon 50% dari Rp 8.000.000)', 3999000, '/tahun', true, 50);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-1', 'Semua fitur Business');
+VALUES (1, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-1', 'Virtual Office 12 Bulan + 3 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-2', '8 jam meeting room / bulan');
+VALUES (2, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-3', 'Akses coworking 4 hari / bulan');
+VALUES (3, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-3', 'Surat Perjanjian Sewa & Domisili');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-4', 'Prioritas dukungan');
+VALUES (4, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-4', 'Resepsionis Profesional & Mail Handling');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-5', 'High Speed Internet, Smart TV & Whiteboard');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-6', 'Gratis Air Mineral, Kopi & Teh');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-7', 'Akses Penggunaan Ruang Meeting Total 144 Jam');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (8, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-8', 'Akses Meeting Room di Bandung, Bekasi & Jakarta');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (9, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-9', 'Penggunaan Virtual Office untuk PKP');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (10, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-10', 'Nama & Logo di Meeting Room & Lobi');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (11, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-11', 'Bonus: 2 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (12, 'virtual-office-bandung-plan-3', 'virtual-office-bandung-plan-3-feat-12', 'Bonus: Voucher EasyLegal & EasyTax Rp 300.000');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
 VALUES (1, 1, 'virtual-office-bandung-fac-1', 'map-pin', 'Alamat Bisnis', 'Alamat prestisius untuk legalitas dan citra usaha.');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
@@ -291,47 +331,63 @@ VALUES (
   'virtual-office-jakarta',
   'Virtual Office Jakarta',
   'Kantor virtual di Sovereign Plaza TB Simatupang, Jakarta Selatan. Alamat bisnis komersial prestisius, fasilitas meeting room proyektor, dan bisa PKP.',
-  'Alamat prestisius ibu kota untuk jangkauan bisnis nasional.',
-  'Rp 450 rb',
+  'Alamat prestisius Sovereign Plaza TB Simatupang Jakarta Selatan (Dewata Office by EasyOffice).',
+  'Rp 216.583',
   '',
   true,
   now(),
   now(),
   'Ruang meeting dan kantor virtual EasyOffice di Sovereign Plaza Jakarta',
   'virtual office jakarta | EasyOffice',
-  'Alamat prestisius ibu kota untuk jangkauan bisnis nasional.',
+  'Alamat prestisius Sovereign Plaza TB Simatupang Jakarta Selatan (Dewata Office by EasyOffice).',
   '/layanan/virtual-office/jakarta',
   false,
   'virtual-office-jakarta'
 );
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (1, 2, 'virtual-office-jakarta-plan-1', 'Basic', '', 450000, '/bulan', false, NULL);
+VALUES (1, 2, 'virtual-office-jakarta-plan-1', 'Paket Ekonomi', 'Hanya Rp 216.583/Bulan', 2599000, '/tahun', false, NULL);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-1', 'Alamat bisnis Jakarta Selatan');
+VALUES (1, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-1', 'Virtual Office 1 Tahun');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-2', 'Penanganan surat');
+VALUES (2, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-3', 'Pemberitahuan via email');
+VALUES (3, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-3', 'Surat Perjanjian Sewa & Domisili');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (4, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-4', 'Resepsionis Profesional');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-5', 'Mail Handling & Notifikasi Real-Time');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-6', 'Bonus: 1 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-jakarta-plan-1', 'virtual-office-jakarta-plan-1-feat-7', 'Bonus: 100+ E-Course Digital Marketing');
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (2, 2, 'virtual-office-jakarta-plan-2', 'Business', '', 850000, '/bulan', false, NULL);
+VALUES (2, 2, 'virtual-office-jakarta-plan-2', 'Paket Eksekutif', 'Hanya Rp 249.916/Bulan', 2999000, '/tahun', false, NULL);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-1', 'Semua fitur Basic');
+VALUES (1, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-1', 'Virtual Office 1 Tahun');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-2', 'Layanan resepsionis');
+VALUES (2, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-3', '4 jam meeting room / bulan');
+VALUES (3, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-3', 'Surat Perjanjian Sewa & Domisili');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-4', 'Nomor telepon khusus');
-INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (3, 2, 'virtual-office-jakarta-plan-3', 'Premium', '', 1600000, '/bulan', false, NULL);
+VALUES (4, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-4', 'Resepsionis Profesional & Mail Handling');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-jakarta-plan-3', 'virtual-office-jakarta-plan-3-feat-1', 'Semua fitur Business');
+VALUES (5, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-5', 'High Speed Internet, Projector & Whiteboard');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-jakarta-plan-3', 'virtual-office-jakarta-plan-3-feat-2', '12 jam meeting room / bulan');
+VALUES (6, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-6', 'Gratis Air Mineral, Kopi & Teh');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-jakarta-plan-3', 'virtual-office-jakarta-plan-3-feat-3', 'Akses coworking 8 hari / bulan');
+VALUES (7, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-7', 'Akses Penggunaan Ruang Meeting 8 Jam/Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-jakarta-plan-3', 'virtual-office-jakarta-plan-3-feat-4', 'Prioritas dukungan');
+VALUES (8, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-8', 'Company Signage');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (9, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-9', 'Penggunaan Meeting Room di Jakarta, Bandung & Bekasi');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (10, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-10', 'Penggunaan Virtual Office untuk PKP');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (11, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-11', 'Bonus: 2 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (12, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-12', 'Bonus: 100+ E-Course Digital Marketing');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (13, 'virtual-office-jakarta-plan-2', 'virtual-office-jakarta-plan-2-feat-13', 'Bonus: 2.500+ Template Konten Digital & Kalender Konten');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
 VALUES (1, 2, 'virtual-office-jakarta-fac-1', 'map-pin', 'Alamat Bisnis', 'Alamat prestisius untuk legalitas dan citra usaha.');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
@@ -356,47 +412,87 @@ VALUES (
   'virtual-office-bekasi',
   'Virtual Office Bekasi',
   'Kantor virtual di Emerald Commercial Summarecon Bekasi. Alamat komersial strategis, fasilitas Smart TV, Whiteboard, dan bisa PKP.',
-  'Solusi hemat di kawasan penyangga Jakarta.',
-  'Rp 300 rb',
+  'Alamat bisnis komersial & bergengsi di Summarecon Bekasi. Promo 50% UMKM Festival.',
+  'Rp 166.583',
   '',
   true,
   now(),
   now(),
   'Fasilitas meeting room dan kantor virtual EasyOffice Summarecon Bekasi',
   'virtual office bekasi | EasyOffice',
-  'Solusi hemat di kawasan penyangga Jakarta.',
+  'Alamat bisnis komersial & bergengsi di Summarecon Bekasi. Promo 50% UMKM Festival.',
   '/layanan/virtual-office/bekasi',
   false,
   'virtual-office-bekasi'
 );
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (1, 3, 'virtual-office-bekasi-plan-1', 'Basic', '', 300000, '/bulan', false, NULL);
+VALUES (1, 3, 'virtual-office-bekasi-plan-1', 'Paket Ekonomi', 'Hanya Rp 166.583/Bulan (Diskon 50% dari Rp 4.000.000)', 1999000, '/tahun', true, 50);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-1', 'Alamat bisnis');
+VALUES (1, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-1', 'Virtual Office 12 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-2', 'Penanganan surat');
+VALUES (2, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-3', 'Pemberitahuan via email');
+VALUES (3, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-3', 'Surat Perjanjian Sewa & Domisili');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (4, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-4', 'Resepsionis Profesional');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-5', 'Mail Handling & Notifikasi Real-time');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-6', 'Bonus: 1 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bekasi-plan-1', 'virtual-office-bekasi-plan-1-feat-7', 'Bonus: Voucher EasyLegal & EasyTax Rp 100.000');
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (2, 3, 'virtual-office-bekasi-plan-2', 'Business', '', 550000, '/bulan', false, NULL);
+VALUES (2, 3, 'virtual-office-bekasi-plan-2', 'Paket Bisnis', 'Hanya Rp 199.923/Bulan (Diskon dari Rp 5.000.000)', 2599000, '/tahun', true, 48);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-1', 'Semua fitur Basic');
+VALUES (1, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-1', 'Virtual Office 12 Bulan + 1 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-2', 'Layanan resepsionis');
+VALUES (2, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-3', '2 jam meeting room / bulan');
+VALUES (3, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-3', 'Surat Perjanjian Sewa & Domisili');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-4', 'Nomor telepon khusus');
+VALUES (4, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-4', 'Resepsionis Profesional & Mail Handling');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-5', 'High Speed Internet, Smart TV & Whiteboard');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-6', 'Gratis Air Mineral, Kopi & Teh');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-7', 'Akses Penggunaan Ruang Meeting Total 72 Jam');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (8, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-8', 'Akses Meeting Room di Bandung, Bekasi & Jakarta');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (9, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-9', 'Penggunaan Virtual Office untuk PKP');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (10, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-10', 'Nama & Logo di Meeting Room');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (11, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-11', 'Bonus: 1 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (12, 'virtual-office-bekasi-plan-2', 'virtual-office-bekasi-plan-2-feat-12', 'Bonus: Voucher EasyLegal & EasyTax Rp 200.000');
 INSERT INTO layanan_kantor_paket_harga (_order, _parent_id, id, name, description, price, unit, discount_active, discount_percentage)
-VALUES (3, 3, 'virtual-office-bekasi-plan-3', 'Premium', '', 1000000, '/bulan', false, NULL);
+VALUES (3, 3, 'virtual-office-bekasi-plan-3', 'Paket Eksekutif', 'Hanya Rp 266.600/Bulan (Diskon 50% dari Rp 8.000.000)', 3999000, '/tahun', true, 50);
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (1, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-1', 'Semua fitur Business');
+VALUES (1, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-1', 'Virtual Office 12 Bulan + 3 Bulan');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (2, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-2', '6 jam meeting room / bulan');
+VALUES (2, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-2', 'Alamat Bisnis Komersial & Bergengsi');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (3, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-3', 'Akses coworking 4 hari / bulan');
+VALUES (3, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-3', 'Surat Perjanjian Sewa & Domisili');
 INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
-VALUES (4, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-4', 'Prioritas dukungan');
+VALUES (4, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-4', 'Resepsionis Profesional & Mail Handling');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (5, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-5', 'High Speed Internet, Smart TV & Whiteboard');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (6, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-6', 'Gratis Air Mineral, Kopi & Teh');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (7, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-7', 'Akses Penggunaan Ruang Meeting Total 144 Jam');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (8, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-8', 'Akses Meeting Room di Bandung, Bekasi & Jakarta');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (9, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-9', 'Penggunaan Virtual Office untuk PKP');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (10, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-10', 'Nama & Logo di Meeting Room & Lobi');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (11, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-11', 'Bonus: 2 pcs Logam Mulia Emas 24K');
+INSERT INTO layanan_kantor_paket_harga_benefits (_order, _parent_id, id, value)
+VALUES (12, 'virtual-office-bekasi-plan-3', 'virtual-office-bekasi-plan-3-feat-12', 'Bonus: Voucher EasyLegal & EasyTax Rp 300.000');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
 VALUES (1, 3, 'virtual-office-bekasi-fac-1', 'map-pin', 'Alamat Bisnis', 'Alamat prestisius untuk legalitas dan citra usaha.');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
@@ -407,6 +503,8 @@ INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, descr
 VALUES (4, 3, 'virtual-office-bekasi-fac-4', 'wifi', 'WiFi Cepat', 'Internet stabil untuk kerja dan meeting online.');
 INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
 VALUES (5, 3, 'virtual-office-bekasi-fac-5', 'door', 'Meeting Room', 'Ruang meeting profesional dengan peralatan lengkap.');
+INSERT INTO layanan_kantor_fasilitas (_order, _parent_id, id, icon, title, description)
+VALUES (6, 3, 'virtual-office-bekasi-fac-6', 'coffee', 'Lounge & Pantry', 'Area santai dengan kopi, teh, dan air minum.');
 INSERT INTO layanan_kantor (id, kantor_id, layanan_id, slug, nama_tampilan, deskripsi, tagline, harga_mulai, catatan_legalitas, aktif, created_at, updated_at, alt_foto, seo_title, seo_description, seo_canonical_url, seo_no_index, seo_slug)
 VALUES (
   4,
