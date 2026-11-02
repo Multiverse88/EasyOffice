@@ -308,6 +308,143 @@ export const Leads: CollectionConfig = {
   ],
 };
 
+export const Kategori: CollectionConfig = {
+  slug: "kategori",
+  labels: { singular: "Kategori Artikel", plural: "Kategori Artikel" },
+  admin: {
+    useAsTitle: "nama",
+    defaultColumns: ["nama", "slug"],
+    group: "Artikel & Berita",
+  },
+  access: {
+    read: () => true,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
+  },
+  fields: [
+    { name: "nama", label: "Nama Kategori", type: "text", required: true },
+    {
+      name: "slug",
+      label: "Slug",
+      type: "text",
+      unique: true,
+      index: true,
+      admin: {
+        description: "Versi huruf kecil untuk filter (otomatis diisi dari nama jika dikosongkan).",
+      },
+    },
+  ],
+};
+
+export const Articles: CollectionConfig = {
+  slug: "artikel",
+  labels: { singular: "Artikel", plural: "Artikel" },
+  admin: {
+    useAsTitle: "judul",
+    defaultColumns: ["judul", "kategoriTeks", "tanggalTerbit", "penulis"],
+    group: "Artikel & Berita",
+    description: "Kelola artikel blog, panduan usaha, dan wawasan bisnis EasyOffice.",
+  },
+  access: {
+    read: () => true,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
+  },
+  fields: [
+    { name: "judul", label: "Judul", type: "text", required: true },
+    {
+      name: "slug",
+      label: "Slug (URL)",
+      type: "text",
+      required: true,
+      unique: true,
+      index: true,
+      admin: { position: "sidebar", description: "Alamat URL artikel (misal: sewa-virtual-office-hemat-biaya)." },
+    },
+    {
+      name: "ringkasan",
+      label: "Ringkasan",
+      type: "textarea",
+      required: true,
+      admin: {
+        description: "Tampil pada kartu daftar artikel di /blog dan meta description Google.",
+      },
+    },
+    {
+      name: "sampul",
+      label: "Gambar Sampul",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
+      name: "sampulUrl",
+      label: "URL Gambar Sampul (Alternatif)",
+      type: "text",
+      admin: {
+        description: "Gunakan jika gambar berasal dari aset lokal (misal: /images/easyoffice/blog/...).",
+      },
+    },
+    {
+      name: "kategori",
+      label: "Kategori",
+      type: "relationship",
+      relationTo: "kategori",
+      admin: {
+        allowCreate: true,
+        description: "Pilih kategori artikel atau klik '+' untuk menambahkan kategori baru.",
+      },
+    },
+    {
+      name: "kategoriTeks",
+      label: "Kategori Teks Cadangan",
+      type: "text",
+      admin: {
+        description: "Nama kategori cadangan jika relasi belum dipilih (misal: Virtual Office).",
+      },
+    },
+    {
+      name: "penulis",
+      label: "Penulis",
+      type: "text",
+      defaultValue: "EasyOffice Team",
+      admin: { position: "sidebar" },
+    },
+    {
+      name: "tanggalTerbit",
+      label: "Tanggal Terbit",
+      type: "date",
+      admin: { position: "sidebar", date: { pickerAppearance: "dayOnly" } },
+    },
+    {
+      name: "waktuBaca",
+      label: "Estimasi Waktu Baca",
+      type: "text",
+      defaultValue: "5 menit",
+      admin: { position: "sidebar" },
+    },
+    {
+      name: "konten",
+      label: "Isi Artikel (HTML / Teks)",
+      type: "textarea",
+      required: true,
+      admin: {
+        description: "Konten lengkap artikel (mendukung tag HTML dan paragraf).",
+      },
+    },
+    {
+      name: "seo",
+      label: "SEO & Google",
+      type: "group",
+      fields: [
+        { name: "judul", label: "Judul SEO", type: "text" },
+        { name: "deskripsi", label: "Deskripsi SEO", type: "textarea" },
+        { name: "janganIndeks", label: "Jangan Indeks Halaman Ini", type: "checkbox", defaultValue: false },
+      ],
+    },
+  ],
+};
 export const SiteSettings: import("payload").GlobalConfig = {
   slug: "site-settings",
   label: "Pengaturan Website",

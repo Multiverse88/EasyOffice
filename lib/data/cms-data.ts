@@ -18,6 +18,7 @@ import {
 import { googleReviews } from "./google-reviews";
 import { clientLogos } from "./client-logos";
 
+import { blogPosts, type BlogPost } from "./blog-data";
 type PayloadList<T> = { docs?: T[] };
 
 const apiBase = process.env.NEXT_PUBLIC_SERVER_URL ?? "http://localhost:3000";
@@ -471,3 +472,60 @@ export async function getCmsPublishedPuckPage(route: string, previewToken?: stri
   const page = data.docs?.[0];
   return page ? { ...page, layout: normalizeLayout(page.layout) as HomepageLayoutData } : null;
 }
+
+export type CmsArticle = BlogPost;
+
+export const getCmsArticles = cache(async function getCmsArticles(): Promise<CmsArticle[]> {
+  try {
+    const response = await fetch(`${apiBase}/api/artikel?limit=100&sort=-tanggalTerbit`, {
+      headers: { Accept: "application/json" },
+      ...cmsCache,
+    });
+    if (!response.ok) return blogPosts;
+    const data = await response.json();
+    const docs = data.docs ?? [];
+    if (!docs.length) return blogPosts;
+    return docs.map((doc: Record<string, unknown>) => ({
+      id: Number(doc.id) || 1,
+      title: String(doc.judul ?? ""),
+      slug: String(doc.slug ?? ""),
+      date: String(doc.tanggalTerbit ?? doc.createdAt ?? new Date().toISOString()),
+      excerpt: String(doc.ringkasan ?? ""),
+      image: mediaUrl(doc.sampul) || String(doc.sampulUrl ?? "/images/easyoffice/office-hero.jpg"),
+      contentHtml: String(doc.konten ?? ""),
+      category: String((doc.kategori as Record<string, unknown>)?.nama ?? doc.kategoriTeks ?? "Virtual Office"),
+      author: String(doc.penulis ?? "EasyOffice Team"),
+    }));
+  } catch {
+    return blogPosts;
+  }
+});
+
+export const getCmsArticleBySlug = cache(async function getCmsArticleBySlug(slug: string): Promise<CmsArticle | undefined> {
+  try {
+    const response = await fetch(`${apiBase}/api/artikel?where[slug][equals]=${encodeURIComponent(slug)}&limit=1`, {
+      headers: { Accept: "application/json" },
+      ...cmsCache,
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const doc = data.docs?.[0];
+      if (doc) {
+        return {
+          id: Number(doc.id) || 1,
+          title: String(doc.judul ?? ""),
+          slug: String(doc.slug ?? ""),
+          date: String(doc.tanggalTerbit ?? doc.createdAt ?? new Date().toISOString()),
+          excerpt: String(doc.ringkasan ?? ""),
+          image: mediaUrl(doc.sampul) || String(doc.sampulUrl ?? "/images/easyoffice/office-hero.jpg"),
+          contentHtml: String(doc.konten ?? ""),
+          category: String((doc.kategori as Record<string, unknown>)?.nama ?? doc.kategoriTeks ?? "Virtual Office"),
+          author: String(doc.penulis ?? "EasyOffice Team"),
+        };
+      }
+    }
+  } catch {
+    // fallback
+  }
+  return blogPosts.find((p) => p.slug === slug);
+});

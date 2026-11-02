@@ -4,7 +4,7 @@ import sharp from "sharp";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { buildConfig, type CollectionConfig } from "payload";
 import { s3Storage } from "@payloadcms/storage-s3";
-import { AboutPage, ComparisonRows, Faqs, HomepageFacilities, PageLayout, Kantor, Leads, LayananKantor, Media, Partners, Promotions, Services, SiteSettings, Testimonials, isAdmin } from "./payload/collections/content";
+import { AboutPage, Articles, ComparisonRows, Faqs, HomepageFacilities, Kategori, PageLayout, Kantor, Leads, LayananKantor, Media, Partners, Promotions, Services, SiteSettings, Testimonials, isAdmin } from "./payload/collections/content";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -50,7 +50,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Services, Kantor, LayananKantor, Media, Partners, Promotions, Testimonials, ComparisonRows, PageLayout, Faqs, HomepageFacilities, Leads],
+  collections: [Users, Services, Kantor, LayananKantor, Kategori, Articles, Media, Partners, Promotions, Testimonials, ComparisonRows, PageLayout, Faqs, HomepageFacilities, Leads],
   plugins: [
     s3Storage({
       bucket: "media",

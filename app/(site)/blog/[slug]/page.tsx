@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowLeft, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { blogPosts, getBlogPost } from "@/lib/data/blog-data";
-import { getCmsSite } from "@/lib/data/cms-data";
+import { getCmsArticles, getCmsArticleBySlug, getCmsSite } from "@/lib/data/cms-data";
 import { whatsappFor } from "@/lib/whatsapp";
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  const posts = await getCmsArticles();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -18,9 +18,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getCmsArticleBySlug(slug);
   if (!post) return { title: "Artikel Tidak Ditemukan" };
-
   return {
     title: `${post.title} | Blog EasyOffice`,
     description: post.excerpt,
@@ -50,12 +49,11 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getCmsArticleBySlug(slug);
   if (!post) notFound();
 
-  const site = await getCmsSite();
-  const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
-
+  const [site, allPosts] = await Promise.all([getCmsSite(), getCmsArticles()]);
+  const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   return (
     <article className="bg-surface py-10 sm:py-14">
       <Container className="max-w-4xl">

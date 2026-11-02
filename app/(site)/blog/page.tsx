@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { blogPosts } from "@/lib/data/blog-data";
+import { getCmsArticles } from "@/lib/data/cms-data";
 
 export const metadata: Metadata = {
   title: "Blog & Wawasan Bisnis",
@@ -23,7 +23,8 @@ function formatDate(dateStr: string) {
   }
 }
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
+  const blogPosts = await getCmsArticles();
   return (
     <div className="bg-surface py-10 sm:py-14">
       <Container>
