@@ -107,7 +107,7 @@ const Articles = {
     {
       name: "blok",
       type: "richText",
-      label: "Isi Artikel (Editor Visual Lexical)",
+      label: "Isi Artikel (Rich Text Editor)",
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
@@ -116,7 +116,6 @@ const Articles = {
         ],
       }),
     },
-    { name: "konten", type: "textarea", label: "Kode HTML / Teks Mentah (Cadangan)" },
     { name: "seo", type: "group", fields: [
       { name: "judul", type: "text", label: "Judul SEO" },
       { name: "deskripsi", type: "textarea", label: "Deskripsi SEO" },

@@ -475,6 +475,43 @@ export async function getCmsPublishedPuckPage(route: string, previewToken?: stri
 
 export type CmsArticle = BlogPost;
 
+function lexicalToHtml(blok: unknown): string {
+  if (!blok || typeof blok !== "object") return "";
+  const root = (blok as { root?: { children?: unknown[] } }).root;
+  if (!root || !Array.isArray(root.children)) return "";
+
+  return root.children
+    .map((node: unknown) => {
+      if (!node || typeof node !== "object") return "";
+      const n = node as { type?: string; tag?: string; children?: unknown[] };
+      const textContent = Array.isArray(n.children)
+        ? n.children
+            .map((c) => (c && typeof c === "object" && "text" in c ? String((c as { text: unknown }).text ?? "") : ""))
+            .join("")
+        : "";
+      if (n.type === "heading") {
+        const tag = n.tag || "h2";
+        return `<${tag}>${textContent}</${tag}>`;
+      }
+      if (n.type === "list") {
+        const tag = n.tag || "ul";
+        const items = Array.isArray(n.children)
+          ? n.children
+              .map((item) => {
+                const subChildren = (item as { children?: unknown[] })?.children;
+                const itemText = Array.isArray(subChildren)
+                  ? subChildren.map((c) => (c && typeof c === "object" && "text" in c ? String((c as { text: unknown }).text ?? "") : "")).join("")
+                  : "";
+                return `<li>${itemText}</li>`;
+              })
+              .join("")
+          : "";
+        return `<${tag}>${items}</${tag}>`;
+      }
+      return `<p>${textContent}</p>`;
+    })
+    .join("\n");
+}
 export const getCmsArticles = cache(async function getCmsArticles(): Promise<CmsArticle[]> {
   try {
     const response = await fetch(`${apiBase}/api/artikel?limit=100&sort=-tanggalTerbit`, {
@@ -492,7 +529,7 @@ export const getCmsArticles = cache(async function getCmsArticles(): Promise<Cms
       date: String(doc.tanggalTerbit ?? doc.createdAt ?? new Date().toISOString()),
       excerpt: String(doc.ringkasan ?? ""),
       image: mediaUrl(doc.sampul) || String(doc.sampulUrl ?? "/images/easyoffice/office-hero.jpg"),
-      contentHtml: String(doc.konten ?? ""),
+      contentHtml: lexicalToHtml(doc.blok) || String(doc.konten ?? ""),
       category: String((doc.kategori as Record<string, unknown>)?.nama ?? doc.kategoriTeks ?? "Virtual Office"),
       author: String(doc.penulis ?? "EasyOffice Team"),
     }));
@@ -518,7 +555,7 @@ export const getCmsArticleBySlug = cache(async function getCmsArticleBySlug(slug
           date: String(doc.tanggalTerbit ?? doc.createdAt ?? new Date().toISOString()),
           excerpt: String(doc.ringkasan ?? ""),
           image: mediaUrl(doc.sampul) || String(doc.sampulUrl ?? "/images/easyoffice/office-hero.jpg"),
-          contentHtml: String(doc.konten ?? ""),
+          contentHtml: lexicalToHtml(doc.blok) || String(doc.konten ?? ""),
           category: String((doc.kategori as Record<string, unknown>)?.nama ?? doc.kategoriTeks ?? "Virtual Office"),
           author: String(doc.penulis ?? "EasyOffice Team"),
         };

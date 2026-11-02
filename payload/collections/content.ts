@@ -428,8 +428,9 @@ export const Articles: CollectionConfig = {
     },
     {
       name: "blok",
-      label: "Isi Artikel (Editor Visual Lexical)",
+      label: "Isi Artikel (Rich Text Editor)",
       type: "richText",
+      required: false,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
@@ -438,15 +439,7 @@ export const Articles: CollectionConfig = {
         ],
       }),
       admin: {
-        description: "Tulis dan format artikel menggunakan editor visual seperti di EasyTax (Heading, Tebal, Miring, List, Link).",
-      },
-    },
-    {
-      name: "konten",
-      label: "Kode HTML / Teks Mentah (Cadangan)",
-      type: "textarea",
-      admin: {
-        description: "Format teks mentah atau kode HTML untuk artikel impor.",
+        description: "Tulis dan kelola isi artikel menggunakan Rich Text Editor resmi seperti di EasyTax (Heading H2/H3/H4, Tebal, Miring, List, Kutipan, Tautan).",
       },
     },
     {
