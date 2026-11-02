@@ -11,6 +11,136 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Short vanity URLs (e.g. /virtualofficebandung -> /layanan/virtual-office/bandung)
+      {
+        source: "/virtualofficebandung",
+        destination: "/layanan/virtual-office/bandung",
+        permanent: true,
+      },
+      {
+        source: "/virtualofficejakarta",
+        destination: "/layanan/virtual-office/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/virtualofficebekasi",
+        destination: "/layanan/virtual-office/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/virtualoffice",
+        destination: "/layanan/virtual-office",
+        permanent: true,
+      },
+      {
+        source: "/virtual-office-bandung",
+        destination: "/layanan/virtual-office/bandung",
+        permanent: true,
+      },
+      {
+        source: "/virtual-office-jakarta",
+        destination: "/layanan/virtual-office/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/virtual-office-bekasi",
+        destination: "/layanan/virtual-office/bekasi",
+        permanent: true,
+      },
+
+      // Coworking vanity URLs
+      {
+        source: "/coworkingspacebandung",
+        destination: "/layanan/coworking-space/bandung",
+        permanent: true,
+      },
+      {
+        source: "/coworkingspacejakarta",
+        destination: "/layanan/coworking-space/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/coworkingspacebekasi",
+        destination: "/layanan/coworking-space/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/coworkingbandung",
+        destination: "/layanan/coworking-space/bandung",
+        permanent: true,
+      },
+      {
+        source: "/coworkingjakarta",
+        destination: "/layanan/coworking-space/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/coworkingbekasi",
+        destination: "/layanan/coworking-space/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/coworkingspace",
+        destination: "/layanan/coworking-space",
+        permanent: true,
+      },
+      {
+        source: "/coworking",
+        destination: "/layanan/coworking-space",
+        permanent: true,
+      },
+      {
+        source: "/coworking-space-bandung",
+        destination: "/layanan/coworking-space/bandung",
+        permanent: true,
+      },
+      {
+        source: "/coworking-space-jakarta",
+        destination: "/layanan/coworking-space/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/coworking-space-bekasi",
+        destination: "/layanan/coworking-space/bekasi",
+        permanent: true,
+      },
+
+      // Meeting Room vanity URLs
+      {
+        source: "/meetingroombandung",
+        destination: "/layanan/meeting-room/bandung",
+        permanent: true,
+      },
+      {
+        source: "/meetingroomjakarta",
+        destination: "/layanan/meeting-room/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/meetingroombekasi",
+        destination: "/layanan/meeting-room/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/meetingroom",
+        destination: "/layanan/meeting-room",
+        permanent: true,
+      },
+      {
+        source: "/meeting-room-bandung",
+        destination: "/layanan/meeting-room/bandung",
+        permanent: true,
+      },
+      {
+        source: "/meeting-room-jakarta",
+        destination: "/layanan/meeting-room/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/meeting-room-bekasi",
+        destination: "/layanan/meeting-room/bekasi",
+        permanent: true,
+      },
       // Legacy Phase 2 routes → canonical /layanan architecture.
       {
         source: "/virtual-office",
