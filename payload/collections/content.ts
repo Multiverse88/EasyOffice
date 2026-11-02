@@ -1,4 +1,5 @@
 import type { Access, CollectionConfig, Field } from "payload";
+import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from "@payloadcms/richtext-lexical";
 import { revalidatePath } from "next/cache";
 
 type RoleUser = { role?: string };
@@ -426,12 +427,26 @@ export const Articles: CollectionConfig = {
       admin: { position: "sidebar" },
     },
     {
-      name: "konten",
-      label: "Isi Artikel (HTML / Teks)",
-      type: "textarea",
-      required: true,
+      name: "blok",
+      label: "Isi Artikel (Editor Visual Lexical)",
+      type: "richText",
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          FixedToolbarFeature(),
+          HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
+        ],
+      }),
       admin: {
-        description: "Konten lengkap artikel (mendukung tag HTML dan paragraf).",
+        description: "Tulis dan format artikel menggunakan editor visual seperti di EasyTax (Heading, Tebal, Miring, List, Link).",
+      },
+    },
+    {
+      name: "konten",
+      label: "Kode HTML / Teks Mentah (Cadangan)",
+      type: "textarea",
+      admin: {
+        description: "Format teks mentah atau kode HTML untuk artikel impor.",
       },
     },
     {

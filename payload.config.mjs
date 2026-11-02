@@ -4,6 +4,7 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { buildConfig } from "payload";
 import { s3Storage } from "@payloadcms/storage-s3";
 import sharp from "sharp";
+import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from "@payloadcms/richtext-lexical";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -103,7 +104,19 @@ const Articles = {
     { name: "penulis", type: "text", defaultValue: "EasyOffice Team", admin: { position: "sidebar" } },
     { name: "tanggalTerbit", type: "date", admin: { position: "sidebar", date: { pickerAppearance: "dayOnly" } } },
     { name: "waktuBaca", type: "text", defaultValue: "5 menit", admin: { position: "sidebar" } },
-    { name: "konten", type: "textarea", required: true, label: "Isi Konten Artikel (HTML / Teks)" },
+    {
+      name: "blok",
+      type: "richText",
+      label: "Isi Artikel (Editor Visual Lexical)",
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          FixedToolbarFeature(),
+          HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
+        ],
+      }),
+    },
+    { name: "konten", type: "textarea", label: "Kode HTML / Teks Mentah (Cadangan)" },
     { name: "seo", type: "group", fields: [
       { name: "judul", type: "text", label: "Judul SEO" },
       { name: "deskripsi", type: "textarea", label: "Deskripsi SEO" },
@@ -151,8 +164,14 @@ export default buildConfig({
     },
   },
   collections: [Users, Services, Kantor, LayananKantor, Kategori, Articles, WhatsAppNumbers, Media, Partners, Promotions, Testimonials, ComparisonRows, PageLayout, Faqs, HomepageFacilities, Leads],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
+    ],
+  }),
   plugins: [s3Storage({
-    bucket: "media",
     clientUploads: true,
     collections: { media: { prefix: "", disableLocalStorage: true, generateFileURL: ({ filename, prefix }) => { const objectPath = [prefix, filename].filter(Boolean).map((part) => encodeURIComponent(part)).join("/"); return `${process.env.SUPABASE_URL ?? "https://qbfgapkitvhlylyrbivs.supabase.co"}/storage/v1/object/public/media/${objectPath}`; } } },
     config: {

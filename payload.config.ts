@@ -5,6 +5,7 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { buildConfig, type CollectionConfig } from "payload";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { AboutPage, Articles, ComparisonRows, Faqs, HomepageFacilities, Kategori, PageLayout, Kantor, Leads, LayananKantor, Media, Partners, Promotions, Services, SiteSettings, Testimonials, WhatsAppNumbers, isAdmin } from "./payload/collections/content";
+import { lexicalEditor, FixedToolbarFeature, HeadingFeature } from "@payloadcms/richtext-lexical";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -77,6 +78,13 @@ export default buildConfig({
     }),
   ],
   globals: [SiteSettings, AboutPage],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
+    ],
+  }),
   db: postgresAdapter({
     migrationDir: path.resolve(dirname, "migrations"),
     push: false,
