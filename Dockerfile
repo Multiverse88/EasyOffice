@@ -8,7 +8,7 @@ RUN npm config set fetch-retries 5 \
     && npm config set fetch-retry-factor 2 \
     && npm config set fetch-retry-mintimeout 1000 \
     && npm config set fetch-retry-maxtimeout 30000 \
-    && npm ci
+    && (npm ci || npm install --legacy-peer-deps)
 
 FROM node:22-bookworm-slim AS builder
 WORKDIR /app
