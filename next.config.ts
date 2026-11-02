@@ -32,6 +32,52 @@ const nextConfig: NextConfig = {
         destination: "/layanan/meeting-room/:slug",
         permanent: true,
       },
+      // Direct hyphen slug redirects (e.g. /layanan/virtual-office-bekasi -> /layanan/virtual-office/bekasi)
+      {
+        source: "/layanan/virtual-office-bandung",
+        destination: "/layanan/virtual-office/bandung",
+        permanent: true,
+      },
+      {
+        source: "/layanan/virtual-office-bekasi",
+        destination: "/layanan/virtual-office/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/layanan/virtual-office-jakarta",
+        destination: "/layanan/virtual-office/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/layanan/coworking-space-bandung",
+        destination: "/layanan/coworking-space/bandung",
+        permanent: true,
+      },
+      {
+        source: "/layanan/coworking-space-bekasi",
+        destination: "/layanan/coworking-space/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/layanan/coworking-space-jakarta",
+        destination: "/layanan/coworking-space/jakarta",
+        permanent: true,
+      },
+      {
+        source: "/layanan/meeting-room-bandung",
+        destination: "/layanan/meeting-room/bandung",
+        permanent: true,
+      },
+      {
+        source: "/layanan/meeting-room-bekasi",
+        destination: "/layanan/meeting-room/bekasi",
+        permanent: true,
+      },
+      {
+        source: "/layanan/meeting-room-jakarta",
+        destination: "/layanan/meeting-room/jakarta",
+        permanent: true,
+      },
       // Legacy office-service slugs → canonical office-service slugs.
       {
         source: "/layanan/virtual-office/easyoffice-bandung",
