@@ -204,6 +204,7 @@ export const getCmsServiceLocations = cache(async function getCmsServiceLocation
         period: String(plan.unit ?? "/bulan"),
         features: Array.isArray(plan.benefits) ? plan.benefits.map((benefit: string | { value?: string }) => typeof benefit === "string" ? benefit : String(benefit.value ?? "")) : [],
         discountPercent: typeof (plan.discount as Record<string, unknown> | undefined)?.percentage === "number" ? (plan.discount as Record<string, number>).percentage : undefined,
+        discountedPrice: mockCombo?.pricing.find((mp) => mp.name === String(plan.name ?? ""))?.discountedPrice,
         ctaLabel: "Hubungi via WhatsApp",
       })) : (mockCombo?.pricing ?? []);
       const numbers = Array.isArray(office.whatsappNumbers) ? office.whatsappNumbers as Office["whatsappNumbers"] : mockCombo?.whatsappNumbers;

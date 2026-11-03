@@ -472,7 +472,7 @@ export const serviceLocations: ServiceLocation[] = [
     ],
     pricing: [
       {
-        ...plan("Paket Ekonomi", "Rp 1.999.000", "/tahun", [
+        ...plan("Paket Ekonomi", "Rp 4.000.000", "/tahun", [
           "Virtual Office 12 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -483,9 +483,10 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 166.583/Bulan (Diskon 50% dari Rp 4.000.000)",
         discountPercent: 50,
+        discountedPrice: "Rp 1.999.000",
       },
       {
-        ...plan("Paket Bisnis", "Rp 2.599.000", "/tahun", [
+        ...plan("Paket Bisnis", "Rp 5.000.000", "/tahun", [
           "Virtual Office 12 Bulan + 1 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -501,9 +502,10 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 199.923/Bulan (Diskon dari Rp 5.000.000)",
         discountPercent: 48,
+        discountedPrice: "Rp 2.599.000",
       },
       {
-        ...plan("Paket Eksekutif", "Rp 3.999.000", "/tahun", [
+        ...plan("Paket Eksekutif", "Rp 8.000.000", "/tahun", [
           "Virtual Office 12 Bulan + 3 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -519,6 +521,7 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 266.600/Bulan (Diskon 50% dari Rp 8.000.000)",
         discountPercent: 50,
+        discountedPrice: "Rp 3.999.000",
       },
     ],
     facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door", "coffee"),
@@ -639,7 +642,7 @@ export const serviceLocations: ServiceLocation[] = [
     ],
     pricing: [
       {
-        ...plan("Paket Ekonomi", "Rp 1.999.000", "/tahun", [
+        ...plan("Paket Ekonomi", "Rp 4.000.000", "/tahun", [
           "Virtual Office 12 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -650,9 +653,10 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 166.583/Bulan (Diskon 50% dari Rp 4.000.000)",
         discountPercent: 50,
+        discountedPrice: "Rp 1.999.000",
       },
       {
-        ...plan("Paket Bisnis", "Rp 2.599.000", "/tahun", [
+        ...plan("Paket Bisnis", "Rp 5.000.000", "/tahun", [
           "Virtual Office 12 Bulan + 1 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -668,9 +672,10 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 199.923/Bulan (Diskon dari Rp 5.000.000)",
         discountPercent: 48,
+        discountedPrice: "Rp 2.599.000",
       },
       {
-        ...plan("Paket Eksekutif", "Rp 3.999.000", "/tahun", [
+        ...plan("Paket Eksekutif", "Rp 8.000.000", "/tahun", [
           "Virtual Office 12 Bulan + 3 Bulan",
           "Alamat Bisnis Komersial & Bergengsi",
           "Surat Perjanjian Sewa & Domisili",
@@ -686,6 +691,7 @@ export const serviceLocations: ServiceLocation[] = [
         ]),
         description: "Hanya Rp 266.600/Bulan (Diskon 50% dari Rp 8.000.000)",
         discountPercent: 50,
+        discountedPrice: "Rp 3.999.000",
       },
     ],
     facilities: pickFacilities("map-pin", "bell", "printer", "wifi", "door", "coffee"),
