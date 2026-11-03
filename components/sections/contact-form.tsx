@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { whatsappRotatorUrl } from "@/lib/whatsapp";
 
 const topics = [
   "Virtual Office",
@@ -25,7 +25,7 @@ export function ContactForm({ services = [], whatsappNumber }: { services?: Arra
     const message = String(data.get("message") ?? "");
     const service = services.find((item) => item.title === topic);
     const text = `Halo EasyOffice, saya ${name}${business ? ` dari ${business}` : ""}. Topik: ${topic}. ${message}`;
-    window.open(whatsappUrl(text, whatsappNumber), "_blank", "noopener,noreferrer");
+    window.open(whatsappRotatorUrl(text), "_blank", "noopener,noreferrer");
     setSubmitted(false);
     setError("");
     setSubmitting(true);

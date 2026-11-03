@@ -12,7 +12,7 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { getCmsFaqs, getCmsServices, getCmsSite } from "@/lib/data/cms-data";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { whatsappRotatorUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Kontak",
@@ -28,7 +28,7 @@ function buildQuickCards(site: Awaited<ReturnType<typeof getCmsSite>>) {
     title: site.phoneDisplay || "Hubungi kami via WhatsApp",
     text: "Respons cepat via WhatsApp. Tersedia Senin–Jumat, 08.00–17.00 WIB.",
     action: "Mulai chat WhatsApp",
-    href: whatsappUrl("Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", site.primaryWhatsapp),
+    href: whatsappRotatorUrl("Halo EasyOffice, saya ingin bertanya tentang layanan Anda."),
     external: true,
   },
   {

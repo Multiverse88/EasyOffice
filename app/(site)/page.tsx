@@ -15,7 +15,7 @@ import { Section } from "@/components/ui/section";
 import { StatsBand } from "@/components/sections/stats-band";
 import { Testimonials } from "@/components/sections/testimonials";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { BlogPreviewSection } from "@/components/sections/blog-preview";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -77,7 +77,7 @@ export default async function Home() {
         description={site.homepageHeroDescription ?? "Virtual Office, Coworking Space, dan Meeting Room untuk mendukung kebutuhan bisnis Anda — dengan alamat prestisius dan layanan profesional."}
         primaryCta={{
            label: site.homepageHeroPrimaryCtaLabel ?? "Hubungi Kami",
-             href: whatsappUrl(site.homepageHeroPrimaryCtaMessage, site.whatsappNumber),
+             href: whatsappRotatorUrl(site.homepageHeroPrimaryCtaMessage),
           external: true,
         }}
         secondaryCta={{ label: site.homepageHeroSecondaryCtaLabel ?? "Lihat Layanan", href: site.homepageHeroSecondaryCtaHref ?? "/layanan/virtual-office" }}

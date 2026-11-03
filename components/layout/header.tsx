@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { MobileNav } from "./mobile-nav";
 import { navItems as defaultNavItems, type NavItem } from "./nav";
 
@@ -94,7 +94,7 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
 
         <div className="hidden lg:block">
           <a
-             href={whatsappUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", whatsappNumber)}
+             href={whatsappRotatorUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy/90"

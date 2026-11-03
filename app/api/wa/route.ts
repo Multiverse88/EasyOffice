@@ -11,9 +11,10 @@ export async function GET(request: NextRequest) {
     searchParams.get("pesan") ||
     "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.";
   const city = (searchParams.get("city") || searchParams.get("kota") || "").toLowerCase();
+  const leadSource = searchParams.get("src") || request.cookies.get("eo_src")?.value || "Website";
+  const finalText = `${text}\n\nFrom: ${leadSource}`;
 
   let targetNumber = FALLBACK_NUMBER;
-
   try {
     const apiBase = (process.env.NEXT_PUBLIC_SERVER_URL ?? "http://localhost:3000").replace(/\/$/, "");
     const res = await fetch(`${apiBase}/api/nomor-whatsapp?where[enabled][equals]=true&limit=100`, {
@@ -73,7 +74,7 @@ export async function GET(request: NextRequest) {
   }
 
   const cleanNumber = targetNumber.replace(/\D/g, "") || FALLBACK_NUMBER;
-  const waTarget = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
+  const waTarget = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(finalText)}`;
 
   return NextResponse.redirect(waTarget, 307);
 }

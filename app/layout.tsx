@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AttributionTracker } from "@/components/attribution-tracker";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-W3HFMD3V";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-BDCMXYRJ8S";
@@ -74,6 +75,7 @@ gtag('config', '${GA_ID}');`,
         />
       </head>
       <body>
+        <AttributionTracker />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

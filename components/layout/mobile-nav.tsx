@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { navItems as defaultNavItems, type NavItem } from "./nav";
 
@@ -65,7 +65,7 @@ export function MobileNav({ onNavigate, whatsappNumber, ctaLabel = "Hubungi Kami
         )}
       </ul>
       <a
-         href={whatsappUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", whatsappNumber)}
+         href={whatsappRotatorUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.")}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-navy px-5 py-3 text-sm font-semibold text-white hover:bg-navy/90"
