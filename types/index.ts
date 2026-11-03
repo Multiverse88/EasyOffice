@@ -148,6 +148,9 @@ export interface ServiceLocation {
   serviceSlug: string;
   locationSlug: string;
   tagline: string;
+  /** Custom hero headline/sub override for the service × location page. */
+  headline?: string;
+  headlineSub?: string;
   startingPrice: string;
   pricing: PricingPlan[];
   facilities: Facility[];

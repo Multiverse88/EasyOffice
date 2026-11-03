@@ -81,8 +81,8 @@ export default async function ServiceLocationPage({
       />
       <Hero
         eyebrow={`${service.title} — ${location.name}`}
-        title={officeName}
-        description={officeDescription}
+        title={combo.headline ?? officeName}
+        description={combo.headlineSub ?? officeDescription}
         image={combo.image}
         imageAlt={combo.imageAlt}
         imageLabel={officeName}
