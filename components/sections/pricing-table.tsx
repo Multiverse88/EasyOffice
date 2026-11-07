@@ -39,7 +39,7 @@ export function PricingTable({
 }: PricingTableProps) {
   return (
     <Section eyebrow={eyebrow} title={title} description={description} tone={tone}>
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className={`mx-auto grid gap-6 ${plans.length === 1 ? "max-w-lg lg:grid-cols-1" : plans.length === 2 ? "max-w-4xl lg:grid-cols-2" : "lg:grid-cols-3"}`}>
         {plans.map((plan) => (
           (() => {
             const salePrice = discountedPrice(plan);

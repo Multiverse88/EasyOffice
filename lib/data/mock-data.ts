@@ -142,9 +142,9 @@ export const services: Service[] = [
     title: "Coworking Space",
     shortTitle: "Coworking",
     description:
-      "Ruang kerja fleksibel untuk individu dan tim, harian hingga bulanan.",
+      "Meja siap pakai, kerja jadi lebih fokus. Sewa harian cukup Rp 150.000/hari.",
     intro:
-      "Pilih hot desk untuk fleksibilitas maksimal atau dedicated desk untuk tim yang membutuhkan ruang tetap — didukung komunitas profesional.",
+      "Susah fokus kerja di rumah? Coba kerja Coworking di EasyOffice — meja siap pakai, ruangan nyaman ber-AC, Wi-Fi cepat, dan colokan listrik di setiap meja.",
     benefits: [
       "Hot Desk Fleksibel — Hot desk untuk kerja harian dengan suasana produktif dan nyaman.",
       "Dedicated Desk — Dedicated desk permanen untuk tim yang butuh ruang kerja tetap.",
@@ -185,9 +185,9 @@ export const services: Service[] = [
     title: "Meeting Room",
     shortTitle: "Meeting Room",
     description:
-      "Ruang meeting profesional untuk presentasi, diskusi, dan kebutuhan bisnis.",
+      "Ruang meeting profesional Rp 250.000/jam. Promo Spesial Bandung & Bekasi: Sewa 2 Jam, Gratis 1 Jam!",
     intro:
-      "Tersedia ruangan Small (hingga 6 orang), Medium (hingga 12 orang), dan Large (hingga 20 orang) dengan whiteboard, proyektor, dan layanan konsumsi.",
+      "Tersedia ruang meeting ber-AC dilengkapi Smart TV/proyektor, Wi-Fi cepat, kopi/teh & air mineral, serta tampilan logo perusahaan Anda saat meeting.",
     benefits: [
       "Kapasitas Fleksibel — Tiga pilihan kapasitas hingga 20 orang untuk berbagai kebutuhan rapat.",
       "Peralatan Lengkap — Proyektor, whiteboard, dan audio-video siap pakai untuk presentasi profesional.",
@@ -718,8 +718,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "coworking-space",
     locationSlug: "bandung",
-    tagline: "Ruang kerja fleksibel di jantung kota Bandung.",
-    startingPrice: "Rp 75.000",
+    tagline: "Meja siap pakai, kerja jadi lebih fokus di jantung kota Bandung.",
+    startingPrice: "Rp 150.000",
     image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
     imageAlt: "Coworking space dan ruang meeting EasyOffice di Bandung",
     gallery: [
@@ -741,24 +741,17 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Harian", "Rp 75.000", "/hari", [
-        "Hot desk",
-        "WiFi cepat",
-        "Air minum",
-        "Akses lounge",
-      ]),
-      plan("Bulanan", "Rp 850.000", "/bulan", [
-        "Hot desk fleksibel",
-        "WiFi cepat",
-        "2 jam meeting room / bulan",
-        "Akses komunitas",
-      ]),
-      plan("Dedicated", "Rp 1.500.000", "/bulan", [
-        "Meja khusus permanen",
-        "Locker pribadi",
-        "8 jam meeting room / bulan",
-        "Alamat surat",
-      ]),
+      {
+        ...plan("Sewa Harian", "Rp 150.000", "/hari", [
+          "1 Meja & Kursi siap pakai",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Colokan Listrik di setiap meja",
+          "Free Air Mineral, Kopi & Teh",
+        ]),
+        description: "Meja siap pakai, kerja jadi lebih fokus tanpa kontrak bulanan.",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door", "clock", "car"),
     offices: [
@@ -776,8 +769,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "coworking-space",
     locationSlug: "jakarta",
-    tagline: "Ruang kerja fleksibel di jantung bisnis Jakarta.",
-    startingPrice: "Rp 95.000",
+    tagline: "Meja siap pakai, kerja jadi lebih fokus di jantung bisnis Jakarta Selatan.",
+    startingPrice: "Rp 150.000",
     image: "/images/offices/jakarta/sovereign-meeting-room.png",
     imageAlt: "Ruang kerja dan coworking space EasyOffice di Jakarta",
     gallery: [
@@ -795,24 +788,17 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Harian", "Rp 95.000", "/hari", [
-        "Hot desk",
-        "WiFi cepat",
-        "Air minum",
-        "Akses lounge",
-      ]),
-      plan("Bulanan", "Rp 1.100.000", "/bulan", [
-        "Hot desk fleksibel",
-        "WiFi cepat",
-        "2 jam meeting room / bulan",
-        "Akses komunitas",
-      ]),
-      plan("Dedicated", "Rp 1.900.000", "/bulan", [
-        "Meja khusus permanen",
-        "Locker pribadi",
-        "8 jam meeting room / bulan",
-        "Alamat surat",
-      ]),
+      {
+        ...plan("Sewa Harian", "Rp 150.000", "/hari", [
+          "1 Meja & Kursi siap pakai",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Colokan Listrik di setiap meja",
+          "Free Air Mineral, Kopi & Teh",
+        ]),
+        description: "Meja siap pakai, kerja jadi lebih fokus tanpa kontrak bulanan.",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door", "clock", "car"),
     offices: [
@@ -830,8 +816,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "coworking-space",
     locationSlug: "bekasi",
-    tagline: "Ruang kerja hemat di kawasan penyangga Jakarta.",
-    startingPrice: "Rp 60.000",
+    tagline: "Meja siap pakai, kerja jadi lebih fokus di Summarecon Bekasi.",
+    startingPrice: "Rp 150.000",
     image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
     imageAlt: "Coworking space dan fasilitas kantor EasyOffice di Bekasi",
     gallery: [
@@ -857,24 +843,17 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Harian", "Rp 60.000", "/hari", [
-        "Hot desk",
-        "WiFi cepat",
-        "Air minum",
-        "Akses lounge",
-      ]),
-      plan("Bulanan", "Rp 700.000", "/bulan", [
-        "Hot desk fleksibel",
-        "WiFi cepat",
-        "2 jam meeting room / bulan",
-        "Akses komunitas",
-      ]),
-      plan("Dedicated", "Rp 1.200.000", "/bulan", [
-        "Meja khusus permanen",
-        "Locker pribadi",
-        "8 jam meeting room / bulan",
-        "Alamat surat",
-      ]),
+      {
+        ...plan("Sewa Harian", "Rp 150.000", "/hari", [
+          "1 Meja & Kursi siap pakai",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Colokan Listrik di setiap meja",
+          "Free Air Mineral, Kopi & Teh",
+        ]),
+        description: "Meja siap pakai, kerja jadi lebih fokus tanpa kontrak bulanan.",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("wifi", "coffee", "printer", "door"),
     offices: [
@@ -892,8 +871,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "meeting-room",
     locationSlug: "bandung",
-    tagline: "Ruang meeting profesional dan lengkap di Bandung.",
-    startingPrice: "Rp 150.000",
+    tagline: "Promo Spesial Bandung: Sewa 2 Jam, Gratis 1 Jam (Bayar 2 Jam Nikmati 3 Jam Meeting!).",
+    startingPrice: "Rp 250.000",
     image: "/images/offices/bandung/cihampelas-meeting-room-tv.png",
     imageAlt: "Meeting room EasyOffice Cihampelas di Bandung",
     gallery: [
@@ -915,24 +894,21 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Small", "Rp 150.000", "/jam", [
-        "Kapasitas hingga 6 orang",
-        "Whiteboard",
-        "Air minum",
-        "WiFi cepat",
-      ]),
-      plan("Medium", "Rp 250.000", "/jam", [
-        "Kapasitas hingga 12 orang",
-        "Proyektor dan whiteboard",
-        "Snack dan minuman",
-        "Dukungan teknis",
-      ]),
-      plan("Large", "Rp 450.000", "/jam", [
-        "Kapasitas hingga 20 orang",
-        "Sistem audio-video",
-        "Catering tersedia",
-        "Asisten acara",
-      ]),
+      {
+        ...plan("Meeting Room (Maks. 8 Orang)", "Rp 500.000", "/jam", [
+          "Kapasitas maksimal 8 orang",
+          "Promo Sewa 2 Jam, Gratis 1 Jam (Nikmati 3 Jam Meeting!)",
+          "Smart TV / Proyektor & Whiteboard",
+          "Kopi, Teh & Air Mineral",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Tampilan Logo Perusahaan Saat Meeting",
+        ]),
+        description: "Promo Spesial Bandung — Bayar 2 Jam Nikmati 3 Jam Meeting! (Belum termasuk PPN)",
+        discountPercent: 50,
+        discountedPrice: "Rp 250.000",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "printer", "car", "clock"),
     offices: [
@@ -950,8 +926,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "meeting-room",
     locationSlug: "jakarta",
-    tagline: "Ruang meeting profesional dan lengkap di Jakarta.",
-    startingPrice: "Rp 200.000",
+    tagline: "Meeting Room representatif di lokasi strategis Sovereign Plaza Jakarta Selatan.",
+    startingPrice: "Rp 250.000",
     image: "/images/offices/jakarta/sovereign-boardroom-wide.png",
     imageAlt: "Meeting room representatif EasyOffice di Sovereign Plaza Jakarta",
     gallery: [
@@ -973,24 +949,29 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Small", "Rp 200.000", "/jam", [
-        "Kapasitas hingga 6 orang",
-        "Whiteboard",
-        "Air minum",
-        "WiFi cepat",
-      ]),
-      plan("Medium", "Rp 350.000", "/jam", [
-        "Kapasitas hingga 12 orang",
-        "Proyektor dan whiteboard",
-        "Snack dan minuman",
-        "Dukungan teknis",
-      ]),
-      plan("Large", "Rp 600.000", "/jam", [
-        "Kapasitas hingga 20 orang",
-        "Sistem audio-video",
-        "Catering tersedia",
-        "Asisten acara",
-      ]),
+      {
+        ...plan("Meeting Room Kapasitas 7 Orang", "Rp 250.000", "/jam", [
+          "Kapasitas hingga 7 orang",
+          "Smart TV / Proyektor & Whiteboard",
+          "Kopi, Teh & Air Mineral",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Tampilan Logo Perusahaan Saat Meeting",
+        ]),
+        description: "Lokasi strategis di Sovereign Plaza Jakarta Selatan (Belum termasuk PPN)",
+      },
+      {
+        ...plan("Meeting Room Kapasitas Besar (15 Orang)", "Rp 400.000", "/jam", [
+          "Kapasitas besar hingga 15 orang",
+          "Smart TV / Proyektor & Whiteboard",
+          "Kopi, Teh & Air Mineral",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Tampilan Logo Perusahaan Saat Meeting",
+        ]),
+        description: "Ruang boardroom kapasitas besar di Jakarta Selatan (Belum termasuk PPN)",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "printer", "car", "clock"),
     offices: [
@@ -1008,8 +989,8 @@ export const serviceLocations: ServiceLocation[] = [
   {
     serviceSlug: "meeting-room",
     locationSlug: "bekasi",
-    tagline: "Ruang meeting profesional dan lengkap di Bekasi.",
-    startingPrice: "Rp 120.000",
+    tagline: "Promo Spesial Bekasi: Sewa 2 Jam, Gratis 1 Jam (Bayar 2 Jam Nikmati 3 Jam Meeting!).",
+    startingPrice: "Rp 250.000",
     image: "/images/offices/bekasi/summarecon-meeting-room-tv.png",
     imageAlt: "Meeting room representatif EasyOffice di Summarecon Bekasi",
     gallery: [
@@ -1035,24 +1016,21 @@ export const serviceLocations: ServiceLocation[] = [
       },
     ],
     pricing: [
-      plan("Small", "Rp 120.000", "/jam", [
-        "Kapasitas hingga 6 orang",
-        "Whiteboard",
-        "Air minum",
-        "WiFi cepat",
-      ]),
-      plan("Medium", "Rp 200.000", "/jam", [
-        "Kapasitas hingga 12 orang",
-        "Proyektor dan whiteboard",
-        "Snack dan minuman",
-        "Dukungan teknis",
-      ]),
-      plan("Large", "Rp 350.000", "/jam", [
-        "Kapasitas hingga 20 orang",
-        "Sistem audio-video",
-        "Catering tersedia",
-        "Asisten acara",
-      ]),
+      {
+        ...plan("Meeting Room (Maks. 8 Orang)", "Rp 500.000", "/jam", [
+          "Kapasitas maksimal 8 orang",
+          "Promo Sewa 2 Jam, Gratis 1 Jam (Nikmati 3 Jam Meeting!)",
+          "Smart TV / Proyektor & Whiteboard",
+          "Kopi, Teh & Air Mineral",
+          "High-Speed Internet (WiFi)",
+          "Ruangan Nyaman Ber-AC",
+          "Tampilan Logo Perusahaan Saat Meeting",
+        ]),
+        description: "Promo Spesial Bekasi — Bayar 2 Jam Nikmati 3 Jam Meeting! (Belum termasuk PPN)",
+        discountPercent: 50,
+        discountedPrice: "Rp 250.000",
+        featured: true,
+      },
     ],
     facilities: pickFacilities("door", "wifi", "coffee", "car"),
     offices: [
