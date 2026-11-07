@@ -28,6 +28,22 @@ const nextConfig: NextConfig = {
         destination: "/api/wa",
         permanent: false,
       },
+      // Private Office Bekasi Landing Page Redirects
+      {
+        source: "/private-office-bekasi",
+        destination: "/privat-office-bekasi",
+        permanent: true,
+      },
+      {
+        source: "/privateofficebekasi",
+        destination: "/privat-office-bekasi",
+        permanent: true,
+      },
+      {
+        source: "/privatofficebekasi",
+        destination: "/privat-office-bekasi",
+        permanent: true,
+      },
       {
         source: "/virtualofficebandung",
         destination: "/layanan/virtual-office/bandung",
