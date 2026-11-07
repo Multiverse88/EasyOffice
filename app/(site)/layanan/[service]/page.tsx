@@ -11,6 +11,7 @@ import { PartnersCarousel } from "@/components/sections/partners-carousel";
 import { FaqSection } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
 import { ServiceLocationGrid } from "@/components/sections/service-location-grid";
+import { ServicePricingTabs } from "@/components/sections/service-pricing-tabs";
 import { StatsBand } from "@/components/sections/stats-band";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
 import { getCmsComparisonRows, getCmsFaqs, getCmsPartners, getCmsPromotions, getCmsServiceLocations, getCmsServices, getCmsSite, getCmsTestimonials } from "@/lib/data/cms-data";
@@ -77,6 +78,12 @@ export default async function ServiceLandingPage({
     combo,
     office: combo.offices?.[0],
   }));
+  const cityPricingGroups = cmsServiceCombos.map((combo) => ({
+    citySlug: combo.locationSlug,
+    cityName: combo.locationSlug.charAt(0).toUpperCase() + combo.locationSlug.slice(1),
+    tagline: combo.tagline,
+    plans: combo.pricing,
+  }));
    const serviceLegalNotes = [...new Set(cmsServiceCombos.map((combo) => combo.catatanLegalitas).filter(Boolean))];
   return (
     <>
@@ -127,6 +134,7 @@ export default async function ServiceLandingPage({
          description={site.homepagePromoDescription ?? `Lihat penawaran EasyOffice untuk layanan ${service.title} dan temukan paket yang sesuai dengan kebutuhan bisnis Anda.`}
        />
 
+       <ServicePricingTabs serviceTitle={service.title} groups={cityPricingGroups} />
       <Section
         eyebrow="Pilih Kantor"
         title={`Kantor ${service.title} Tersedia`}
