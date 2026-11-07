@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Copy, AlertTriangle, ShieldCheck, ExternalLink, MessageCircle } from "lucide-react";
+import { Check, Copy, AlertTriangle, ShieldCheck, ExternalLink } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Container } from "@/components/ui/container";
 
 export default function VerificationPage() {
@@ -169,7 +170,7 @@ export default function VerificationPage() {
               rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-xs font-bold text-white transition hover:bg-navy/90"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               Verifikasi via WhatsApp
             </a>
           </div>

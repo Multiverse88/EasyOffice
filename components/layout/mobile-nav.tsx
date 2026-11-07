@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown, MessageCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { navItems as defaultNavItems, type NavItem } from "./nav";
@@ -70,7 +71,7 @@ export function MobileNav({ onNavigate, whatsappNumber, ctaLabel = "Hubungi Kami
         rel="noopener noreferrer"
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-navy px-5 py-3 text-sm font-semibold text-white hover:bg-navy/90"
       >
-        <MessageCircle className="h-4 w-4" aria-hidden />
+        <WhatsAppIcon className="h-4 w-4" />
          {ctaLabel}
       </a>
     </nav>

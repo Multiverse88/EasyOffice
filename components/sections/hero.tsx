@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
@@ -66,7 +67,7 @@ export function Hero({
               size="lg"
               className="rounded-full px-9 shadow-soft transition-all duration-300 hover:bg-yellow-400 hover:text-navy"
             >
-              <MessageCircle className="h-5 w-5" aria-hidden />
+              <WhatsAppIcon className="h-5 w-5" />
               {primaryCta.label}
             </Button>
             {secondaryCta ? (

@@ -1,4 +1,5 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { whatsappFor } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -50,7 +51,7 @@ export function WhatsappCta({
                 size="lg"
                 className="rounded-full px-9"
               >
-                <MessageCircle className="h-5 w-5" aria-hidden />
+                <WhatsAppIcon className="h-5 w-5" />
                 Hubungi via WhatsApp
               </Button>
               <Button

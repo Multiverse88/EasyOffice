@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Clock, Mail, MessageCircle } from "lucide-react";
+import { Clock, Mail } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { navItems as defaultNavItems, type NavItem } from "./nav";
 import type { Service } from "@/types";
@@ -68,7 +69,7 @@ export function Footer({ site, services, navItems }: { site: { name?: string; ta
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 py-2 transition-colors hover:text-white"
                 >
-                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  <WhatsAppIcon className="h-4 w-4" />
                   {site.phoneDisplay || "Hubungi EasyOffice"}
                 </a>
               </li>

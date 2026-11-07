@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { getCmsServices, getCmsSite } from "@/lib/data/cms-data";
@@ -38,9 +38,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Hubungi EasyOffice via WhatsApp"
-        className="fixed bottom-5 right-5 z-50 inline-flex h-13 w-13 items-center justify-center rounded-full bg-navy p-3.5 text-white shadow-lg transition-colors hover:bg-navy/90"
+        className="fixed bottom-6 right-6 z-50 inline-flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-all duration-200 hover:scale-105 hover:bg-[#1ea655] active:scale-95"
       >
-        <MessageCircle className="h-6 w-6" aria-hidden />
+        <WhatsAppIcon className="h-8 w-8" />
       </a>
     </div>
   );

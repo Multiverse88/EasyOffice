@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { cn } from "@/lib/utils";
 import { whatsappRotatorUrl } from "@/lib/whatsapp";
 import { MobileNav } from "./mobile-nav";
@@ -99,7 +100,7 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy/90"
           >
-            <MessageCircle className="h-4 w-4" aria-hidden />
+            <WhatsAppIcon className="h-4 w-4" />
              {ctaLabel}
           </a>
         </div>

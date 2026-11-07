@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ArrowLeft, MessageCircle } from "lucide-react";
+import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Container } from "@/components/ui/container";
 import { getCmsArticles, getCmsArticleBySlug, getCmsSite } from "@/lib/data/cms-data";
 import { whatsappFor } from "@/lib/whatsapp";
@@ -118,7 +119,7 @@ export default async function BlogPostPage({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-navy transition hover:bg-yellow-400"
               >
-                <MessageCircle className="h-4 w-4" aria-hidden />
+                <WhatsAppIcon className="h-4 w-4" />
                 Konsultasi via WhatsApp
               </a>
             </div>

@@ -1,8 +1,9 @@
-import { Award, BadgeCheck, Banknote, Building2, CalendarDays, Check, Clock3, Globe2, Headphones, MapPin, MessageCircle, Rocket, ShieldCheck, ShoppingBag, Star, Target, Trophy, Users, BriefcaseBusiness, Zap, Handshake, Heart, WalletCards } from "lucide-react";
+import { Award, BadgeCheck, Banknote, Building2, CalendarDays, Check, Clock3, Globe2, Headphones, MapPin, Rocket, ShieldCheck, ShoppingBag, Star, Target, Trophy, Users, BriefcaseBusiness, Zap, Handshake, Heart, WalletCards } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 const stats = [
   { value: "13.000+", label: "Bisnis Terlayani", icon: "users" },
-  { value: "5 Menit", label: "Respon WhatsApp", icon: "check" },
+  { value: "5 Menit", label: "Respon WhatsApp", icon: "message" },
   { value: "4.9 ★", label: "Rating Google (700+)", icon: "star" },
   { value: "100%", label: "Legal & Resmi", icon: "shield" },
 ];
@@ -10,7 +11,7 @@ const stats = [
 export function StatsBand({ items, variant = "default" }: { items?: Array<{ value: string; label: string; icon?: string }>; variant?: "default" | "previous" }) {
   const displayItems = items && items.length ? items : stats;
   const iconForStat = (label: string, index: number, configuredIcon?: string) => {
-    const configured = { location: MapPin, users: Users, briefcase: BriefcaseBusiness, star: Star, shield: ShieldCheck, check: Check, message: MessageCircle, clock: Clock3, target: Target, building: Building2, award: Award, banknote: Banknote, calendar: CalendarDays, globe: Globe2, headset: Headphones, rocket: Rocket, shopping: ShoppingBag, trophy: Trophy, zap: Zap, handshake: Handshake, heart: Heart, wallet: WalletCards }[configuredIcon ?? ""];
+    const configured = { location: MapPin, users: Users, briefcase: BriefcaseBusiness, star: Star, shield: ShieldCheck, check: Check, message: WhatsAppIcon, clock: Clock3, target: Target, building: Building2, award: Award, banknote: Banknote, calendar: CalendarDays, globe: Globe2, headset: Headphones, rocket: Rocket, shopping: ShoppingBag, trophy: Trophy, zap: Zap, handshake: Handshake, heart: Heart, wallet: WalletCards }[configuredIcon ?? ""];
     if (configuredIcon && configuredIcon !== "auto" && configured) return configured;
     const normalized = label.toLowerCase();
     if (normalized.includes("kota") || normalized.includes("lokasi")) return MapPin;

@@ -1,4 +1,5 @@
-import { Check, MessageCircle } from "lucide-react";
+import { Check } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import type { PricingPlan } from "@/types";
 import { whatsappFor } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
@@ -92,7 +93,7 @@ export function PricingTable({
                 variant="primary"
                 fullWidth
               >
-                <MessageCircle className="h-4 w-4" aria-hidden />
+                <WhatsAppIcon className="h-4 w-4" />
                 {plan.ctaLabel}
               </Button>
             </div>

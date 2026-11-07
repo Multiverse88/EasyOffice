@@ -1,4 +1,5 @@
-import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Clock, Mail, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import type { Location } from "@/types";
 import { whatsappFor } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
@@ -54,7 +55,7 @@ export function LocationDetailCard({
       </dl>
       <div className="pt-8">
         <Button href={whatsappFor(topic, location.name, whatsappNumber ?? location.whatsapp)} external fullWidth className="h-16 rounded-2xl text-lg">
-          <MessageCircle className="h-5 w-5" aria-hidden />
+          <WhatsAppIcon className="h-5 w-5" />
           WhatsApp {location.name}
         </Button>
       </div>

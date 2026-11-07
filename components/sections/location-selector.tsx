@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Clock, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, Clock, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { whatsappFor } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -80,7 +81,7 @@ export function LocationSelector({
         </dl>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
            <Button href={whatsappFor("layanan", current.name, current.whatsapp || whatsappNumber)} external>
-            <MessageCircle className="h-4 w-4" aria-hidden />
+            <WhatsAppIcon className="h-4 w-4" />
             WhatsApp {current.name}
           </Button>
           <Button href={`/layanan/virtual-office/${current.slug}`} variant="outline">

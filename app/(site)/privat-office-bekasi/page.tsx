@@ -5,7 +5,6 @@ import {
   Clock,
   Coffee,
   MapPin,
-  MessageCircle,
   Printer,
   ShieldCheck,
   Sparkles,
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Section } from "@/components/ui/section";
 import { Hero } from "@/components/sections/hero";
 import { StatsBand } from "@/components/sections/stats-band";
@@ -314,7 +314,7 @@ export default function PrivateOfficeBekasiPage() {
 
               <div className="mt-8 pt-2">
                 <Button href={waBookingUrl} external variant="outline" fullWidth size="lg">
-                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Pilih Paket Bulanan
                 </Button>
               </div>
@@ -367,7 +367,7 @@ export default function PrivateOfficeBekasiPage() {
 
               <div className="mt-8 pt-2">
                 <Button href={waPromo6BulanUrl} external variant="primary" fullWidth size="lg">
-                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Ambil Promo 6 Bulan
                 </Button>
               </div>
@@ -488,7 +488,7 @@ export default function PrivateOfficeBekasiPage() {
             </div>
 
             <Button href={waBookingUrl} external variant="primary" fullWidth size="lg">
-              <MessageCircle className="h-4 w-4" aria-hidden />
+              <WhatsAppIcon className="h-4 w-4" />
               Jadwalkan Survey Lokasi
             </Button>
           </div>

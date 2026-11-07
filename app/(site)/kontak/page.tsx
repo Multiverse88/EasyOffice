@@ -5,8 +5,8 @@ import {
   Clock,
   Mail,
   MapPin,
-  MessageCircle,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { FaqSection } from "@/components/sections/faq";
 import { ContactForm } from "@/components/sections/contact-form";
 import { WhatsappCta } from "@/components/sections/whatsapp-cta";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 function buildQuickCards(site: Awaited<ReturnType<typeof getCmsSite>>) {
  return [
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     eyebrow: "WHATSAPP · TERCEPAT",
     title: site.phoneDisplay || "Hubungi kami via WhatsApp",
     text: "Respons cepat via WhatsApp. Tersedia Senin–Jumat, 08.00–17.00 WIB.",

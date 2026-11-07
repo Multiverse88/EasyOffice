@@ -15,9 +15,9 @@ import {
   Users,
   ArrowLeft,
   ArrowRight,
-  MessageCircle,
   MapPin,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import "./lp-eo.css";
 
 const marqueeWords = [
@@ -247,7 +247,7 @@ export default function LandingPageMetaAds() {
                 KONSULTASI SEKARANG <span>→</span>
               </a>
               <a href="https://wa.me/62818881425?text=Halo%20EasyOffice%2C%20saya%20tertarik%20sewa%20Virtual%20Office" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-wa">
-                <MessageCircle className="h-5 w-5 text-emerald-500" />
+                <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
                 <span>Chat WhatsApp</span>
               </a>
             </div>
