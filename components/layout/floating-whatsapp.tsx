@@ -6,8 +6,9 @@ import { whatsappRotatorUrl } from "@/lib/whatsapp";
 
 export function FloatingWhatsApp() {
   const pathname = usePathname();
+  const cleanPath = (pathname || "").replace(/\/$/, "");
   const isPrivateOfficeBekasi =
-    pathname === "/privat-office-bekasi" || pathname === "/private-office-bekasi";
+    cleanPath === "/privat-office-bekasi" || cleanPath === "/private-office-bekasi";
 
   const message = isPrivateOfficeBekasi
     ? "Halo EasyOffice, saya tertarik & ingin bertanya Private Office di Summarecon Bekasi"

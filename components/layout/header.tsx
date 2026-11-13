@@ -16,8 +16,9 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const items = navItems?.length ? navItems : defaultNavItems;
+  const cleanPath = (pathname || "").replace(/\/$/, "");
   const isPrivateOfficeBekasi =
-    pathname === "/privat-office-bekasi" || pathname === "/private-office-bekasi";
+    cleanPath === "/privat-office-bekasi" || cleanPath === "/private-office-bekasi";
   const activeCtaMessage = isPrivateOfficeBekasi
     ? "Halo EasyOffice, saya tertarik & ingin bertanya Private Office di Summarecon Bekasi"
     : (ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.");
