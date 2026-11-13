@@ -156,10 +156,10 @@ const faqs = [
 ];
 
 export default function PrivateOfficeBekasiPage() {
-  const waBookingUrl = whatsappRotatorUrl(
-    "Halo EasyOffice, saya tertarik dengan Private Office di Summarecon Bekasi dan ingin jadwalkan Free Trial 1 Hari.",
-    "Bekasi",
-  );
+  const waAutotext =
+    "Halo EasyOffice, saya tertarik & ingin bertanya Private Office di Summarecon Bekasi";
+
+  const waBookingUrl = whatsappRotatorUrl(waAutotext, "Bekasi");
 
   const waPromo6BulanUrl = whatsappRotatorUrl(
     "Halo EasyOffice, saya ingin mengambil Promo Sewa 6 Bulan Private Office Summarecon Bekasi (Rp 2.299.000/bulan). Mohon info rinciannya.",
@@ -201,7 +201,14 @@ export default function PrivateOfficeBekasiPage() {
         }}
       />
 
-      <StatsBand />
+      <StatsBand
+        items={[
+          { value: "1.000+", label: "Klien Terlayani", icon: "users" },
+          { value: "5 Menit", label: "Respon WhatsApp", icon: "message" },
+          { value: "5.0 ★", label: "Rating Google", icon: "star" },
+          { value: "100%", label: "Legal & Resmi", icon: "shield" },
+        ]}
+      />
 
       {/* Value Proposition — Asymmetric 2-col Editorial Layout */}
       <Section
@@ -263,6 +270,13 @@ export default function PrivateOfficeBekasiPage() {
           })}
         </div>
       </Section>
+
+      {/* Interactive Office Gallery — Ruangan & Fasilitas */}
+      <Gallery
+        title="Ruangan & Fasilitas EasyOffice Summarecon Bekasi"
+        description="Dokumentasi asli ruang rapat, meja kerja privat, dan gedung Emerald Commercial Summarecon Bekasi."
+        images={galleryImages}
+      />
 
       {/* Pricing Section — Aligned Baselines & Tabular Figures */}
       <div id="harga">
@@ -436,13 +450,6 @@ export default function PrivateOfficeBekasiPage() {
           </div>
         </div>
       </Section>
-
-      {/* Interactive Office Gallery */}
-      <Gallery
-        title="Ruangan & Fasilitas EasyOffice Summarecon Bekasi"
-        description="Dokumentasi asli ruang rapat, meja kerja privat, dan gedung Emerald Commercial Summarecon Bekasi."
-        images={galleryImages}
-      />
 
       {/* Location & Neighborhood */}
       <Section

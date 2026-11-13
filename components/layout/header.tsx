@@ -15,8 +15,13 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
-
   const items = navItems?.length ? navItems : defaultNavItems;
+  const isPrivateOfficeBekasi =
+    pathname === "/privat-office-bekasi" || pathname === "/private-office-bekasi";
+  const activeCtaMessage = isPrivateOfficeBekasi
+    ? "Halo EasyOffice, saya tertarik & ingin bertanya Private Office di Summarecon Bekasi"
+    : (ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.");
+  const activeCity = isPrivateOfficeBekasi ? "Bekasi" : undefined;
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-8 px-5 sm:h-[72px] sm:px-8">
@@ -95,7 +100,7 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
 
         <div className="hidden lg:block">
           <a
-             href={whatsappRotatorUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.")}
+             href={whatsappRotatorUrl(activeCtaMessage, activeCity)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy/90"
@@ -116,7 +121,7 @@ export function Header({ whatsappNumber, ctaLabel = "Hubungi Kami", ctaMessage, 
         </button>
       </div>
 
-      {open ? <MobileNav onNavigate={() => setOpen(false)} whatsappNumber={whatsappNumber} ctaLabel={ctaLabel} ctaMessage={ctaMessage} navItems={items} /> : null}
+      {open ? <MobileNav onNavigate={() => setOpen(false)} whatsappNumber={whatsappNumber} ctaLabel={ctaLabel} ctaMessage={activeCtaMessage} navItems={items} /> : null}
     </header>
   );
 }

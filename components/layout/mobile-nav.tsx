@@ -66,7 +66,7 @@ export function MobileNav({ onNavigate, whatsappNumber, ctaLabel = "Hubungi Kami
         )}
       </ul>
       <a
-         href={whatsappRotatorUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.")}
+         href={whatsappRotatorUrl(ctaMessage ?? "Halo EasyOffice, saya ingin bertanya tentang layanan Anda.", ctaMessage?.includes("Private Office di Summarecon Bekasi") ? "Bekasi" : undefined)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-navy px-5 py-3 text-sm font-semibold text-white hover:bg-navy/90"
